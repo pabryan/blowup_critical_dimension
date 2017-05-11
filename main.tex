@@ -24,33 +24,33 @@
 
 Consider a warped product metric of the form,
 \[
-ds^2 = du^2 + g(u)^2 d\phi^2
+ds^2 = dz^2 + u(z)^2 d\phi^2
 \]
-on $M = (0, a) \times (0, 2\pi)$. The metric extends smoothly to an open disc of radius $a > 0$ in $\R^2$ provided
+on $M = \{(z,\phi) \in (0, a) \times (0, 2\pi)\}$. The metric extends smoothly to an open disc of radius $a > 0$ in $\R^2$ provided
 \[
 \begin{cases}
-g(0) &= 0 \\
-g'(0) &= 1 \\
-g(-u) &= - g(u).
+u(0) &= 0 \\
+u'(0) &= 1 \\
+u(-z) &= - u(z).
 \end{cases}
 \]
 If in addition,
 \[
 \begin{cases}
-g(a) &= 0 \\
-g'(a) &= -1 \\
+u(a) &= 0 \\
+u'(a) &= -1 \\
 \end{cases}
 \]
-the the metric extends smoothly to $\S^2$. If $g'(a) \ne 0$, then we still obtain a metric on $\S^2$ but with a conical singularity at $a$.
+the the metric extends smoothly to $\S^2$. If $u'(a) \ne 0$, then we still obtain a metric on $\S^2$ but with a conical singularity at $a$.
 
 We consider maps
 \[
 f : B \times [0, T) \to (\S^2, ds^2)
 \]
-where $B \subset \R^2$ is the unit ball equipped with the flat metric. Let us write $(r, \theta)$ for polar coordinates on $\R^2$ identifying $B$ with $((0, 1) \times (0, 2\pi), dr^2 + r^2 d\theta^2)$. For a non-zero natural number \(\ell \in \N\), we say $f$ is \emph{degree $\ell$-equivariant} if
+where $B \subset \R^2$ is the unit ball equipped with the flat metric. Let us write $(r, \theta)$ for polar coordinates on $\R^2$ identifying $B \backslash \{0\}$ with $((0, 1) \times (0, 2\pi), dr^2 + r^2 d\theta^2)$. For a non-zero natural number \(\ell \in \N\), we say $f$ is \emph{degree $\ell$-equivariant} if
 \[
 f (r, \theta, t) = (\psi(r, t), \ell\theta (\operatorname{mod} 2\pi)).
 \]
-for some smooth $\psi : (0, 1) \times [0, T) \to (0, a)$.
+for some smooth $\psi : (0, 1) \times [0, T) \to (0, a)$ with \(\psi(0, t) = 0\) for every \(t \in [0, T)\).
 
 \end{document}
