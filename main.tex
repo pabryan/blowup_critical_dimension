@@ -184,4 +184,119 @@ But this gives a contradiction since using equation \eqref{eq:near_positive} for
 \]
 \end{proof}
 
+\section{Blow up}
+
+Our equation is
+\[
+\partial_t \psi = \psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi)
+\]
+Here we show that for bounded solutions, the phenomena of blow depends only on \(C\) and \(\lim_{z\to 0} z^{-1} F(z)\). Since we assume \(F\) is Lipschitz, we have \(|z^{-1} F(z)|\) is bounded near \(0\) and we now make the further assumption that the limit exists in which case, since \(F(0) = 0\) and \(F\) is odd and increasing,
+\[
+A = \lim_{z\to 0} z^{-1} F(z) \geq 0.
+\]
+The model case is if \(F\) is differentiable at \(z=0\), in which case the limit is simply \(A = F'(0)\) and if \(F\) is say \(C^2\), then \(F(z) = Az + \mathcal{O} (z^2)\) as \(z \to 0\).
+
+\subsection*{Heuristic Analysis}
+
+Because the coefficients are singular at \(r=0\), finite time blow up, if it occurs, must occur at the origin \(r = 0\) (see Lemma \ref{lem:apriori_bounds}). Heuristically then, to see when blow up occurs we need only consider the asymptotics near \(r = 0\). For the purpose of illustration then, it's sufficient to take \(\psi = r^{\beta}\) and \(F(z) = A z\) with \(A > 0\).
+
+With our choice of \(\psi\),
+\[
+\partial_t \psi = 0
+\]
+while
+\[
+\psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi) = \left[\beta(\beta-1) + C \beta - A\right]r^{\beta-2}.
+\]
+Thus \(\psi = r^{\beta}\) is a
+\begin{equation}
+\label{eq:betasubsuper}
+\begin{cases}
+\text{sub-solution if } & \beta(\beta-1) + C \beta - A \geq 0, \\
+\text{solution if } & \beta(\beta-1) + C \beta - A = 0, \\
+\text{super-solution if } & \beta(\beta-1) + C \beta - A \leq 0.
+\end{cases}
+\end{equation}
+In conjunction with the comparison principle, sub-solutions are used to show blow up while super-super solutions are used to show no blow-up occurs. A solution may of course be used for either purpose.
+
+Recall our boundary condition \(\psi(0, t) = 0\) which rules out the usefulness of \(\beta \leq 0\). The range \(0 < \beta < 1\) models \(C^1\) blow up while \(1 \leq \beta\) models no \(C^1\) blow up. The range \(1 < \beta < 2\) models \(C^2\) blow up and \(\beta \geq 2\) has no \(C^2\) blow up. Since our equation is second order, we typically are only interested in up-to-\(C^2\) blow up.
+
+Therefore, for fixed \(C > 0\) and \(A > 0\) we are interested in the roots of
+\[
+p(\beta) = \beta^2 + (C - 1) \beta - A.
+\]
+The discriminant is
+\[
+\Delta = (C-1)^2 + 4 A > 0
+\]
+and so we always have real, distinct roots \(\beta_1 < \beta_2\) given by
+\[
+\frac{1 - C}{2} \pm \frac{1}{2} \sqrt{(C-1)^2 + 4 A}.
+\]
+From \eqref{eq:betasubsuper}, we have \(p(\beta) < 0\) for \(\beta_1 < \beta < \beta_2\) corresponding to super-solutions, whereas \(p(\beta) > 0\) for \(\beta < \beta_2\) and for \(\beta > \beta_1\) corresponding to sub-solutions. Then large \(\beta\) always produces sub-solutions with no blow up but this has no significance. If \(\beta_2 < 1\), then we find a range of \(\beta \in (0, 1)\) giving blowing up sub-solutions. If \(\beta_1 > 1\), then we find a range \(\beta > 1\) giving super-solutions with out blow up.
+
+It's particularly instructive to consider the critical cases of two-dimensional harmonic map heat flow and four-dimensional Yang-Mills flow. In both cases \(C = 1\). In higher dimensions, \(C > 1\). Thus in the critical dimension,
+\[
+p(\beta) = \beta^2 - A
+\]
+hence \(\beta_1 = - \sqrt{A}\) and \(\beta_2 = \sqrt{A}\).
+
+For the degree \(\ell\)-harmonic map heat flow, \(A = \ell^2\) while for the Yang-Mills flow, \(A = 4\). Then for degree \(1\)-harmonic map heat flow, \(\beta_2 = 1\) lies on the boundary of \(C^1\) blow up, and it turns out this may be perturbed by a time-dependent term to induce blow up. For degree \(\ell\) harmonic map heat flow and for Yang Mills flow \(\beta_2 = 2\) and no \(C^1\) blow up occurs but again a time-dependent perturbation induces \(C^2\) blow up. Higher degree harmonic map heat flow does not undergo \(C^2\) blow up. Full details are given below.
+
+\subsection*{Blow up at the origin}
+
+With our heuristic motivation to hand, we move on to show that blow up, if it occurs at all, must occur at the origin. This is a straight forward application of standard estimates \cite[Theorem 10.1]{Ladyzhenskaja:/1967} but we record the details in the following lemma for convenience.
+
+\begin{lemma}
+\label{lem:apriori_bounds}
+Let \(\psi\) be a solution of \eqref{eq:pde}. If there exists a \(\rho \in (0, 1]\) and a \(\tau \in (0, T)\) such that
+\[
+\|\psi\|_{C^{k,\alpha}([0, \rho] \times [0, \tau])} < \infty,
+\]
+then
+\[
+\|\psi\|_{C^{k,\alpha}([0, 1] \times [0, \tau])} < \infty.
+\]
+In particular, if the maximal existence time \(T < \infty\), then
+\[
+\lim_{\tau\to T} \inf_{\rho \in (0, 1)} \{\|\psi\|_{C^2([0, \rho] \times [0, \tau])}\} = \infty.
+\]
+\end{lemma}
+
+\begin{proof}
+We need to show
+\[
+\|\psi\|_{C^{k,\alpha}([\rho, 1] \times [0, \tau])} < \infty,
+\]
+under the hypothesis
+\[
+\|\psi\|_{C^{k,\alpha}([0, \rho] \times [0, \tau])} < \infty.
+\]
+
+We use the notation of \cite[Theorem 10.1]{Ladyzhenskaja:/1967}. Define the linear operator
+\[
+\mathcal{L} \psi = \partial_t \psi - \psi_{rr} - \frac{C}{r} \psi_r
+\]
+and
+\[
+f(r, t) = -\frac{1}{r^2} F(\psi(r, t))
+\]
+so that
+\[
+\mathcal{L} \psi = f.
+\]
+
+Let \(\Omega = (0, 1)\), \(\Omega' = (\rho, 1)\), and \(\Omega'' = (\rho/2, 1)\), \(S = \{0, 1\}\), \(S' = S'' = \{1\}\). \cite[Theorem 10.1]{Ladyzhenskaja:/1967} gives constants \(c_1, c_2 > 0\) such that
+\[
+\begin{split}
+\|\psi\|_{C^{k,\alpha}([\rho, 1] \times [0, \tau])} &\leq c_1 \left(\|\tfrac{1}{r^2} F(\psi)\|_{C^{k-2,\alpha}([\rho/2, 1] \times [0, \tau])} + \|\psi_0\|_{C^{k,\alpha}([\rho/2, 1])} + \|\psi\|_{C^{k,\alpha}(\{1\} \times [0, \tau])} \right) \\
+&\quad + c_2 \|\psi\|_{C([\rho/2, 1] \times [0, \tau])}.
+\end{split}
+\]
+\end{proof}
+
+\subsection*{Finite time blow up}
+
+In this section we control arbitrary solutions with suitable boundary data by sub- and super-solutions thereby either demonstrating or ruling out finite time blow up.
+
 \end{document}
