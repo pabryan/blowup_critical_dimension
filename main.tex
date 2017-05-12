@@ -249,13 +249,21 @@ With our heuristic motivation to hand, we move on to show that blow up, if it oc
 
 \begin{lemma}
 \label{lem:apriori_bounds}
-Let \(\psi\) be a solution of \eqref{eq:pde}. If there exists a \(\rho \in (0, 1]\) and a \(\tau \in (0, T)\) such that
+Let \(\psi\) be a solution of \eqref{eq:pde} with initial data \(\psi_0\) satisfying
 \[
-\|\psi\|_{C^{k,\alpha}([0, \rho] \times [0, \tau])} < \infty,
+\|\psi_0\|_{C^{2,\alpha}([0, 1] \times [0, \tau])} < \infty
+\]
+If in addition,
+\[
+\|\psi\|_{C^{0,\alpha}([0, 1] \times [0, \tau])} < \infty
+\]
+and there exists a \(\rho \in (0, 1]\) and a \(\tau \in (0, T)\) such that
+\[
+\|\psi\|_{C^{2,\alpha}([0, \rho] \times [0, \tau])} < \infty,
 \]
 then
 \[
-\|\psi\|_{C^{k,\alpha}([0, 1] \times [0, \tau])} < \infty.
+\|\psi\|_{C^{2,\alpha}([0, 1] \times [0, \tau])} < \infty.
 \]
 In particular, if the maximal existence time \(T < \infty\), then
 \[
@@ -266,11 +274,11 @@ In particular, if the maximal existence time \(T < \infty\), then
 \begin{proof}
 We need to show
 \[
-\|\psi\|_{C^{k,\alpha}([\rho, 1] \times [0, \tau])} < \infty,
+\|\psi\|_{C^{2,\alpha}([\rho, 1] \times [0, \tau])} < \infty,
 \]
 under the hypothesis
 \[
-\|\psi\|_{C^{k,\alpha}([0, \rho] \times [0, \tau])} < \infty.
+\|\psi\|_{C^{2,\alpha}([0, \rho] \times [0, \tau])} < \infty.
 \]
 
 We use the notation of \cite[Theorem 10.1]{Ladyzhenskaja:/1967}. Define the linear operator
@@ -289,10 +297,12 @@ so that
 Let \(\Omega = (0, 1)\), \(\Omega' = (\rho, 1)\), and \(\Omega'' = (\rho/2, 1)\), \(S = \{0, 1\}\), \(S' = S'' = \{1\}\). \cite[Theorem 10.1]{Ladyzhenskaja:/1967} gives constants \(c_1, c_2 > 0\) such that
 \[
 \begin{split}
-\|\psi\|_{C^{k,\alpha}([\rho, 1] \times [0, \tau])} &\leq c_1 \left(\|\tfrac{1}{r^2} F(\psi)\|_{C^{k-2,\alpha}([\rho/2, 1] \times [0, \tau])} + \|\psi_0\|_{C^{k,\alpha}([\rho/2, 1])} + \|\psi\|_{C^{k,\alpha}(\{1\} \times [0, \tau])} \right) \\
+\|\psi\|_{C^{2,\alpha}([\rho, 1] \times [0, \tau])} &\leq c_1 \left(\|\tfrac{1}{r^2} F(\psi)\|_{C^{0,\alpha}([\rho/2, 1] \times [0, \tau])} + \|\psi_0\|_{C^{2,\alpha}([\rho/2, 1])} + \|\psi\|_{C^{2,\alpha}(\{1\} \times [0, \tau])} \right) \\
 &\quad + c_2 \|\psi\|_{C([\rho/2, 1] \times [0, \tau])}.
 \end{split}
 \]
+
+In the hypothesis of the theorem, we assume \(\psi\) has finite \(C^{0,\alpha}\) norm, hence the last term is finite. Since \(F\) is also Lipschitz, the first term \(r^{-2} F(\psi(r, t))\) has finite \(C^{0,\alpha}\) norm on \(r \in [\rho, 1], t \in [0, \tau]\). The second term is the initial data \(\psi_0\) which is assumed to have finite \(C^{2,\alpha}\) norm and finally the third term - the boundary term \(\psi|_{r=1}\) - is constant hence also has finite norm.
 \end{proof}
 
 \subsection*{Finite time blow up}
