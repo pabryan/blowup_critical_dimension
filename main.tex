@@ -344,8 +344,82 @@ Let \(\Omega = (0, 1)\), \(\Omega' = (\rho, 1)\), and \(\Omega'' = (\rho/2, 1)\)
 In the hypothesis of the theorem, we assume \(\psi\) has finite \(C^{0,\alpha}\) norm, hence the last term is finite. Since \(F\) is also Lipschitz, the first term \(r^{-2} F(\psi(r, t))\) has finite \(C^{0,\alpha}\) norm on \(r \in [\rho, 1], t \in [0, \tau]\). The second term is the initial data \(\psi_0\) which is assumed to have finite \(C^{2,\alpha}\) norm and finally the third term - the boundary term \(\psi|_{r=1}\) - is constant hence also has finite norm.
 \end{proof}
 
-\subsection*{Finite time blow up}
+\subsection*{Stationary solutions for \(C=1\)}
 
-In this section we control arbitrary solutions with suitable boundary data by sub- and super-solutions thereby either demonstrating or ruling out finite time blow up.
+In this section we control arbitrary solutions with suitable boundary data by sub- and super-solutions thereby either demonstrating or ruling out finite time blow up. The argument is based on constructing a one-parameter family of static-solutions and then allowing the parameter to vary producing sub- and super-solutions.
+
+
+Let us consider the case \(C = 1\) which is satisfied in critical dimension. We make the ansatz,
+\[
+\xi(r, t) = \xi_0(r^{\beta})
+\]
+for some smooth function \(\xi_0\) and some real number \(\beta > 0\). Then \(\partial_t \xi = 0\) and
+\[
+\begin{split}
+\xi_{rr} + \frac{1}{r} \xi_r - \frac{1}{r^2} F(\xi) &= \beta^2 r^{2(\beta-1)} \xi_0'' + \beta (\beta - 1) r^{\beta-2} \xi_0' + \beta \xi_0' r^{\beta-2} - \frac{1}{r^2} F(\xi_0) \\
+&= \beta^2 r^{-2} \left[(r^{\beta})^2 \xi_0'' + r^{\beta} \xi_0' + - \beta^{-2}F(\xi_0)\right].
+\end{split}
+\]
+
+Writing \(y = r^{\beta}\) for the argument to \(\xi_0\), we see that \(\xi\) is a solution satisfying \(\xi(0, t) = 0\) if and only if
+\[
+\begin{cases}
+y^2 \xi_0'' + y \xi_0' - \beta^{-2} F(\xi_0) &= 0 \\
+\xi_0(0) &= 0.
+\end{cases}
+\]
+We can solve this explicitly by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi_0(e^w)\), whence our problem becomes
+\[
+\begin{cases}
+\zeta'' &= e^{2w} \xi_0'' + e^w \xi_0' = \beta^{-2} F(\zeta) \\
+\zeta(-\infty) &= 0.
+\end{cases}
+\]
+Multiplying by \(\zeta'\) this becomes
+\[
+[(\zeta')^2]' = 2 \beta^{-2} F(\zeta) \zeta'.
+\]
+Integrating gives
+\[
+(\zeta')^2 = 2\beta^{-2} G(\zeta) + C_1, \quad \text{where} \quad G'(Z) = F(Z).
+\]
+Thus we must solve
+\[
+\frac{\zeta'}{\sqrt{2\beta^{-1} G(\zeta) + C_1}} = 1
+\]
+and hence our solution satisfies
+\[
+H_{C_1} (\zeta(w)) = w, \quad \text{where} \quad H_{C_1} (0) = -\infty \quad \text{and} \quad H_{C_1}'(Z) = \frac{1}{\sqrt{2\beta^{-1} G(Z) + C_1}}.
+\]
+In terms of \(\xi_0\),
+\[
+H_{C_1} (\xi_0(y)) = \ln y,
+\]
+and if \(H_{C_1}\) is invertible,
+\[
+\xi_0(y) = H_{C_1}^{-1} (\ln y).
+\]
+
+\subsection*{Stationary solutions for arbitrary \(C\)}
+
+Our stationary solutions satisfy
+\[
+\xi_{rr} + \frac{1}{r} \xi_r - \frac{1}{r^2} F(\xi)  = 0.
+\]
+Writing \(u = \xi, v = \xi_r\) this is equivalent to the system
+\[
+\begin{pmatrix}
+u' \\
+v'
+\end{pmatrix}
+=
+\begin{pmatrix}
+v \\
+\frac{1}{r^2} F(u) - \frac{C}{r} v
+\end{pmatrix}.
+\]
+The right hand side is a continuous function of \((u,v)\) (in fact Lipschitz since \(F\) is Lipschitz) for each fixed \(r > 0\) and is continuous in \(r > 0\) for each fixed \((u, v)\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem guarantees a \(\rho_1 > 0\) and a unique solution on \([0, \rho_2]\) (in \(W^{1,1}\)) given any initial condition \((u_0, v_0)\) at \(r=0\). (\textbf{is this true? Do I need the right hand side to be continuous in \((u,v)\) when \(r=0\)?}). But for any \(\rho_2 \in (0, \rho_1)\), the right hand side is uniformly Lipschitz in \((u, v)\) hence the Peano theorem gives a unique \(C^2\) solution on \([\rho_2, 1]\) given the data \((u(\rho_2), v(\rho_2))\) which must also agree with the solution obtained from the Cartheodary theorem on \([0, \rho_1]\).
+
+Therefore, there is a unique stationary solution \(\xi\) given any \(\xi(0), \xi_r(0)\) and hence a one-parameter family of stationary solutions with \(\xi(0) = 0\), uniquely determined by \(\xi'(0)\).
 
 \end{document}
