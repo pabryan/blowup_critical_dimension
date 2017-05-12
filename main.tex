@@ -22,11 +22,55 @@
 \section{Introduction}
 \label{sec:intro}
 
-Consider a warped product metric of the form,
+We consider the phenomena of \emph{blow up} for solutions of the problem,
+\begin{equation}
+\label{eq:pde}
+\begin{cases}
+\partial_t \psi &= \psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi) \\
+\psi(r, 0) &= \psi_0(r) \\
+\psi(0, t) &= 0, \quad \psi(1, t) = \psi_1, \quad t \in [0, T)
+\end{cases}
+\end{equation}
+where \(C > 0\) is a real constant and \(F\) is a Lipschitz function that is odd and increasing on some interval \((-\delta, \delta)\) around \(0\). Note that \(F(0) = 0\) since \(F\) is odd. A particular example is any \(C^2\), odd function \(F\) such that \(F'(0) > 0\).
+
+Such problems arise in studying equivariant \emph{harmonic map heat flow} and equivariant \emph{Yang-Mills flow}.
+
+\subsection*{Examples}
+
+\subsubsection*{Harmonic maps into the round sphere.}
+
+The round metric on the sphere is
+\[
+ds^2 = dz^2 + \sin^2(z) d\phi^2
+\]
+for \(z \in (0, \pi)\) and where \(d\phi^2\) is the round metric on \(\S^{n-1}\). The corresponding harmonic map heat flow is
+\[
+\partial_t \psi = \psi_{rr} + \frac{n-1}{r} \psi_r - \frac{n-1}{r^2} \frac{1}{2} \sin (2\psi).
+\]
+The so-called \emph{critical dimension} here is \(n=2\) for which the harmonic map heat flow is conformally invariant. In this case,
+\[
+\partial_t \psi = \psi_{rr} + \frac{1}{r} \psi_r - \frac{1}{r^2} \frac{1}{2} \sin (2\psi).
+\]
+
+\subsubsection*{\(SO(n)\)-equivariant Yang-Mills flow in \(\R^n\).}
+
+Equivariant Yang-Mills flow reduces to
+\[
+\partial_t \psi = \psi_{rr} + \frac{n-3}{r} \psi_r - \frac{2(n-2)}{r^2} \psi(1 - \psi)(1 - \tfrac{1}{2} \psi).
+\]
+
+Here the critical dimension is \(n=4\) for which the Yang-Mills flow is conformally invariant. In this case,
+\[
+\partial_t \psi = \psi_{rr} + \frac{1}{r} \psi_r - \frac{1}{r^2} 4 \psi(1 - \psi)(1 - \tfrac{1}{2} \psi).
+\]
+
+\subsubsection*{Degree \(\ell\) harmonic maps into two-dimensional warped products}
+
+Both the above situations fit into a broader framework. Consider a warped product metric of the form,
 \[
 ds^2 = dz^2 + u(z)^2 d\phi^2
 \]
-on $M = \{(z,\phi) \in (0, a) \times (0, 2\pi)\}$. The metric extends smoothly to an open disc of radius $a > 0$ in $\R^2$ provided
+on $M = \{(z,\phi) \in (0, a) \times (0, 2\pi)\}$ and with \(u > 0\) on \((0, a)\). The metric extends smoothly to an open disc of radius $a > 0$ in $\R^2$ provided
 \[
 \begin{cases}
 u(0) &= 0 \\
@@ -41,7 +85,7 @@ u(a) &= 0 \\
 u'(a) &= -1 \\
 \end{cases}
 \]
-the the metric extends smoothly to $\S^2$. If $u'(a) \ne 0$, then we still obtain a metric on $\S^2$ but with a conical singularity at $a$.
+the the metric extends smoothly to $\S^2$. If $u'(a) \ne -1$, then we still obtain a metric on $\S^2$ but with a conical singularity at $a$.
 
 We consider maps
 \[
@@ -66,49 +110,44 @@ The harmonic map heat flow with the stated boundary conditions then becomes
 \end{equation}
 where \(F(z) = u(z)u'(z)\).
 
-\subsection*{Examples}
-
-\subsubsection*{Harmonic maps into the sphere.}
-
-The round metric on the sphere is
+Note that the assumptions on \(u\) in order that we obtain a warped product metric imply that
 \[
-ds^2 = dz^2 + \sin^2(z) d\phi^2
+F(0) = 0, \quad F'(0) = 1,
 \]
-for \(z \in (0, \pi)\) and where \(d\phi^2\) is the round metric on \(\S^{n-1}\). The corresponding harmonic map heat flow is
+and if the metric extends to a smooth metric on \(\S^2\),
 \[
-\partial_t \psi = \psi_{rr} + \frac{n-1}{r} \psi_r - \frac{n-1}{r^2} \frac{1}{2} \sin (2\psi).
+F(a) = 0, \quad F'(a) = 1.
 \]
-The so-called \emph{critical dimension} here is \(n=2\) for which the harmonic map heat flow is conformally invariant. In this case,
-\[
-\partial_t \psi = \psi_{rr} + \frac{1}{r} \psi_r - \frac{1}{r^2} \frac{1}{2} \sin (2\psi)
-\]
-and \(F(z) = \tfrac{1}{2} \sin(2z)\) in equation \eqref{eq:harmonic_map_heat_flow}.
+In the presence of a conical singularity, \(F'(a) = (u'(a))^2 \ne 1\).
 
-\subsubsection*{\(SO(4)\)-equivariant Yang-Mills flow in \(\R^4\).}
+\subsubsection*{Degree \(\ell\) harmonic maps into warped products}
 
-Equivariant Yang-Mills flow reduces to
-\[
-\partial_t \psi = \psi_{rr} + \frac{n-3}{r} \psi_r - \frac{2(n-2)}{r^2} \psi(1 - \psi)(1 - \tfrac{1}{2} \psi).
-\]
+\textbf{todo}
 
-Here the critical dimension is \(n=4\) for which the Yang-Mills flow is conformally invariant. In this case,
-\[
-\partial_t \psi = \psi_{rr} + \frac{1}{r} \psi_r - \frac{1}{r^2} 4 \psi(1 - \psi)(1 - \tfrac{1}{2} \psi)
-\]
-and \(F(z) = 4 z(1 - z)(1 - \tfrac{1}{2} z)\) in equation \eqref{eq:harmonic_map_heat_flow}.
+Should be similar to the two-dimensional case but I don't know if a degree \(\ell\) map \(\S^{n-1} \to \S^{n-1}\) produces a factor like \(\ell^2\) as in the two-dimensional case.
+
+\subsubsection*{Relationships among the examples}
+
+The examples of harmonic maps into spheres and Yang-Mills flow are particular cases of \(F\) in \eqref{eq:harmonic_map_heat_flow}. It's worth pointing out that in the critical dimenstion, the coeefficient of \(\psi_r\) is \(1\). For the problem \eqref{eq:pde} we allow the more general situation where \(C \ne 1\) and so our study is applicible in higher dimensions. It also turns out that the value of \(F'(0)\) is crticial to the study of finite time blow up. We summarise these examples in the following table (absorbing the \(\ell^2\) into \(F\)):
+
+\begin{center}
+\begin{tabular}{ l | c | c | c}
+Flow & C & \(F(z)\) & \(F'(0)\) \\
+\hline
+Harmonic map heat flow into \(\S^n\) & \(n-1\) & \(\tfrac{n-1}{2} \sin(2z)\) & n-1 \\
+Yang-Mills flow on \(\R^n\) & \(n-3\) & \(2(n-2) z(1 - z)(1 - \tfrac{1}{2} z)\) & 2(n-2) \\
+Critical dimension Harmonic map heat flow into \(\S^2\) & \(1\) & \(\tfrac{1}{2} \sin(2z)\) & 1 \\
+Critical Yang-Mills flow on \(\R^4\) & \(1\) & \(4 z(1 - z)(1 - \tfrac{1}{2} z)\) & 4 \\
+Degree \(\ell\) Harmonic map heat flow into \(\S^2\) & \(1\) & \(\tfrac{\ell^2}{2} \sin(2z)\) & \(\ell^2\)
+\end{tabular}
+\end{center}
+
+Of particular note is the last three rows where \(C = 1\). In that case, the last column determines blow up which occurs if and only if \(F'(0) = 1\). The first two rows all have \(C > 1\) in which case blow up is dependent on \textbf{Find out what exactly!}.
+
 
 \section{Comparison Principle}
 
-Our argument is based on a comparison principle. In this section, let us consider the more general equation
-\begin{equation}
-\label{eq:pde}
-\begin{cases}
-\partial_t \psi &= \psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi) \\
-\psi(r, 0) &= \psi_0(r) \\
-\psi(0, t) &= 0, \quad \psi(1, t) = \psi_1, \quad t \in [0, T)
-\end{cases}
-\end{equation}
-where \(C > 0\) is a real constant and \(F\) is a Lipschitz function that is odd and increasing on some interval \((-\delta, \delta)\) around \(0\). Note that \(F(0) = 0\) since \(F\) is odd. A particular example is any \(C^2\), odd function \(F\) such that \(F(0)\) and \(F'(0) > 0\).
+Our argument is based on the following comparison principle:
 
 \begin{thm}[Comparison Principle]
 Let \(\psi\) satisfy equation \eqref{eq:pde} and let \(\overline{\xi}\) be a super-solution; that is
