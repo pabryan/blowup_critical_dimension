@@ -103,19 +103,19 @@ Our argument is based on a comparison principle. In this section, let us conside
 \begin{equation}
 \label{eq:pde}
 \begin{cases}
-\partial_t \psi &= \psi_{rr} + \frac{C_1}{r} \psi_r - \frac{C_2}{r^2} F(\psi) \\
+\partial_t \psi &= \psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi) \\
 \psi(r, 0) &= \psi_0(r) \\
 \psi(0, t) &= 0, \quad \psi(1, t) = \psi_1, \quad t \in [0, T)
 \end{cases}
 \end{equation}
-where \(C_1, C_2 > 0\) are real constants and \(F\) is a Lipschitz function that is odd and increasing on some interval \((-\delta, \delta)\) around \(0\). Note that \(F(0) = 0\) since \(F\) is odd. A particular example is any \(C^2\), odd function \(F\) such that \(F(0)\) and \(F'(0) > 0\).
+where \(C > 0\) is a real constant and \(F\) is a Lipschitz function that is odd and increasing on some interval \((-\delta, \delta)\) around \(0\). Note that \(F(0) = 0\) since \(F\) is odd. A particular example is any \(C^2\), odd function \(F\) such that \(F(0)\) and \(F'(0) > 0\).
 
 \begin{thm}[Comparison Principle]
 Let \(\psi\) satisfy equation \eqref{eq:pde} and let \(\overline{\xi}\) be a super-solution; that is
 \begin{equation}
 \label{eq:pde_super}
 \begin{cases}
-\partial_t \overline{\xi} &\geq \overline{\xi}_{rr} + \frac{C_1}{r} \overline{\xi}_r - \frac{C_2}{r^2} F(\overline{\xi}) \\
+\partial_t \overline{\xi} &\geq \overline{\xi}_{rr} + \frac{C}{r} \overline{\xi}_r - \frac{1}{r^2} F(\overline{\xi}) \\
 \overline{\xi}(r, 0) &\geq \psi_0(r) \\
 \overline{\xi}(0, t) &\geq 0, \quad \overline{\xi}(1, t) \geq \psi_1, \quad t \in [0, T).
 \end{cases}
@@ -145,12 +145,12 @@ for \(0 \leq r \leq \rho\) and \(0 \leq t \leq \tau\). By the assumptions \(F(0)
 \end{equation}
 Choose any
 \[
-\lambda > \frac{C_2}{\rho^2} \operatorname{Lip} (F) > 0
+\lambda > \frac{1}{\rho^2} \operatorname{Lip} (F) > 0
 \]
 where \(\operatorname{Lip} (F)\) is the Lipschitz constant of \(F\). Then for  \(r \geq \rho\) we have
 \begin{equation}
 \label{eq:far_positive}
-\lambda + \frac{C_2}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} > \lambda - \frac{C_2}{r^2} \operatorname{Lip} (F) > 0
+\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} > \lambda - \frac{1}{r^2} \operatorname{Lip} (F) > 0
 \end{equation}
 
 Now we may define
@@ -169,18 +169,18 @@ Let \((r_0, t_0) \in (0, 1) \times (0, \tau]\) realise the supremum. Computing, 
 \[
 \begin{split}
 \partial_t h &= - \lambda e^{-\lambda t} \varphi + e^{-\lambda t} \partial_t \varphi \\
-&\leq  -\lambda e^{-\lambda t} \varphi + e^{-\lambda t} \left[\psi_{rr} + \frac{C_1}{r} \psi_r - \frac{C_2}{r^2} F(\psi)\right] \\
-&\quad - e^{-\lambda t}\left[\overline{\xi}_{rr} + \frac{C_1}{r} \overline{\xi}_r - \frac{C_2}{r^2} F(\overline{\xi})\right] \\
-&= h_{rr} + \frac{C_1}{r} h_r - \left(\lambda + \frac{C_2}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}}\right) h.
+&\leq  -\lambda e^{-\lambda t} \varphi + e^{-\lambda t} \left[\psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi)\right] \\
+&\quad - e^{-\lambda t}\left[\overline{\xi}_{rr} + \frac{C}{r} \overline{\xi}_r - \frac{1}{r^2} F(\overline{\xi})\right] \\
+&= h_{rr} + \frac{C}{r} h_r - \left(\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}}\right) h.
 \end{split}
 \]
 At \((r_0, t_0)\) realising the supremum, \(h(r_0, t_0) > 0\), and hence
 \[
-\lambda + \frac{C_2}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} \leq \frac{1}{h} \left(h_{rr} + \frac{C_1}{r} h_r - \partial_t h\right) \leq 0.
+\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} \leq \frac{1}{h} \left(h_{rr} + \frac{C}{r} h_r - \partial_t h\right) \leq 0.
 \]
 But this gives a contradiction since using equation \eqref{eq:near_positive} for \(r_0 \leq \rho\), and equation \eqref{eq:far_positive} for \(r_0 \geq \rho\) gives
 \[
-\lambda + \frac{C_2}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} > 0.
+\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} > 0.
 \]
 \end{proof}
 
