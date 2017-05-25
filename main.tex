@@ -238,11 +238,11 @@ Here we show that for bounded solutions, the phenomena of blow depends only on \
 \[
 A = \lim_{z\to 0} z^{-1} F(z) \geq 0.
 \]
-The model case is if \(F\) is differentiable at \(z=0\), in which case the limit is simply \(A = F'(0)\) and if \(F\) is say \(C^2\), then \(F(z) = Az + \mathcal{O} (z^2)\) as \(z \to 0\).
+The model case is if \(F\) is differentiable at \(z=0\), in which case the limit is simply \(A = F'(0)\) and if \(F\) is say \(C^2\) near \(z=0\), then \(F(z) = Az + \mathcal{O} (z^2)\) as \(z \to 0\).
 
-\subsection*{Heuristic Analysis}
+\subsection{Heuristic Analysis}
 
-Because the coefficients are singular at \(r=0\), finite time blow up, if it occurs, must occur at the origin \(r = 0\) (see Lemma \ref{lem:apriori_bounds}). Heuristically then, to see when blow up occurs we need only consider the asymptotics near \(r = 0\). For the purpose of illustration then, it's sufficient to take \(\psi = r^{\beta}\) and \(F(z) = A z\) with \(A > 0\).
+Because the coefficients are singular at \(r=0\), finite time blow up of bounded solutions, if it occurs, must occur at the origin \(r = 0\) (see Lemma \ref{lem:apriori_bounds}). Heuristically then, to see when blow up occurs we need only consider the asymptotics near \(r = 0\). For the purpose of illustration then, it's sufficient to take \(\psi = r^{\beta}\) and \(F(z) = A z\) with \(A > 0\).
 
 With our choice of \(\psi\),
 \[
@@ -299,9 +299,9 @@ p(\beta) = \beta^2 - A
 \]
 hence \(\beta_0 = \sqrt{A}\).
 
-For the degree \(\ell\)-harmonic map heat flow, \(A = \ell^2\) while for the Yang-Mills flow, \(A = 4\). Thus for Yang-Mills and higher degree harmonic map heat flow (\(\ell > 1\)), we have \(\beta_0 > 1\) and no \(C^1\) blow up occurs. However for, \(\ell \leq 4\) and Yang-Mills we do expect \(C^2\) blow up. For \(\ell > 4\), there is no \(C^2\) blow up.
+For the degree \(\ell\)-harmonic map heat flow, \(\beta_0 = \ell\) while for the Yang-Mills flow, \(\beta_0 = 2\). Thus for Yang-Mills and higher degree harmonic map heat flow (\(\ell > 1\)), we have \(\beta_0 > 1\) and no \(C^1\) blow up occurs. However for, \(\ell \leq 2\) and Yang-Mills we do expect \(C^2\) blow up. For \(\ell > 2\), there is no \(C^2\) blow up.
 
-\subsection*{Blow up at the origin}
+\subsection{Blow up at the origin}
 
 With our heuristic motivation to hand, we move on to show that blow up, if it occurs at all, must occur at the origin. This is a straight forward application of standard estimates \cite[Theorem 10.1]{Ladyzhenskaja:/1967} but we record the details in the following lemma for convenience.
 
@@ -363,16 +363,40 @@ Let \(\Omega = (0, 1)\), \(\Omega' = (\rho, 1)\), and \(\Omega'' = (\rho/2, 1)\)
 In the hypothesis of the theorem, we assume \(\psi\) has finite \(C^{0,\alpha}\) norm, hence the last term is finite. Since \(F\) is also Lipschitz, the first term \(r^{-2} F(\psi(r, t))\) has finite \(C^{0,\alpha}\) norm on \(r \in [\rho, 1], t \in [0, \tau]\). The second term is the initial data \(\psi_0\) which is assumed to have finite \(C^{2,\alpha}\) norm and finally the third term - the boundary term \(\psi|_{r=1}\) - is constant hence also has finite norm.
 \end{proof}
 
-\subsection*{Stationary solutions for \(C=1\)}
+\subsection{Stationary solutions}
 
-In this section we control arbitrary solutions with suitable boundary data by sub- and super-solutions thereby either demonstrating or ruling out finite time blow up. The argument is based on constructing a one-parameter family of static-solutions and then allowing the parameter to vary producing sub- and super-solutions.
+In this section we study stationary solutions with suitable boundary data with a view to creating by sub- and super-solutions in the next section. Our stationary solutions satisfy
+\begin{equation}
+\label{eq:stationary}
+\xi_{rr} + \frac{1}{r} \xi_r - \frac{1}{r^2} F(\xi)  = 0.
+\end{equation}
+Writing \(u = \xi, v = \xi_r\) this is equivalent to the system
+\[
+\begin{pmatrix}
+u' \\
+v'
+\end{pmatrix}
+=
+\begin{pmatrix}
+v \\
+\frac{1}{r^2} F(u) - \frac{C}{r} v
+\end{pmatrix}.
+\]
+For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)\) for \(r>0\) since \(F\) is Lipschitz, but not uniformly in \(r\). The right hand side is also continuous with respect to \(r\) for \(r > 0\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem guarantees the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) given any initial condition \((u_0, v_0)\) at \(r=0\).
 
+Any such solution \(\xi\) extends uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. Imposing the initial condition \(\psi(0) = 0\) gives a one-parameter family of solutions, parametrised by \(\psi'(0)\). Note that the Cartheodary theorem doesn't guarantee uniqueness but for our purposes, existence is sufficient.
+
+\subsubsection*{Stationary solutions for \(C=1\)}
 
 Let us consider the case \(C = 1\) which is satisfied in critical dimension. We make the ansatz,
 \[
 \xi(r, t) = \xi_0(r^{\beta})
 \]
-for some smooth function \(\xi_0\) and some real number \(\beta > 0\). Then \(\partial_t \xi = 0\) and
+for some function \(\xi_0\) with \(\xi_0(0) = 0\) and some real number \(\beta > 0\). We may assume that \(\xi_0'(0) = 1\) by replacing \(\xi_0\) with \((\xi_0')^{-1} \xi_0\).
+
+\textbf{we'll need to know \(\xi_0' \ne 0\)! The regularity of the solution (dependent on the regularity of \(F\)) will be very important here. If a smooth enough solution can be found we may write it as  \(c_k y^k + c_{k+1} y^{k+1} + \cdots\) with \(c_k \ne 0\). Then we would take \(\psi_0 = c_k y + c_{2k} y + \cdots\) and \(\beta=k\). Of course we would need to show that \(c_{k+1} = \cdots = c_{2k -1} = 0\) which we hope will follow from asymptotics.}
+
+Then \(\partial_t \xi = 0\) and
 \[
 \begin{split}
 \xi_{rr} + \frac{1}{r} \xi_r - \frac{1}{r^2} F(\xi) &= \beta^2 r^{2(\beta-1)} \xi_0'' + \beta (\beta - 1) r^{\beta-2} \xi_0' + \beta \xi_0' r^{\beta-2} - \frac{1}{r^2} F(\xi_0) \\
@@ -387,6 +411,11 @@ y^2 \xi_0'' + y \xi_0' - \beta^{-2} F(\xi_0) &= 0 \\
 \xi_0(0) &= 0.
 \end{cases}
 \]
+The equation for \(\xi_0\) is effectively the same equation we started with, but the form given here is useful however for analysing the role of \(\beta\) in determining blow up. It also allows us to prove existence of stationary solutions In the notation of our heuristics we have
+\[
+A = \frac{F'(0)}{\beta^2}.
+\]
+
 We can solve this explicitly by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi_0(e^w)\), whence our problem becomes
 \[
 \begin{cases}
@@ -440,27 +469,12 @@ Here \(F = \ell^2 uu' = \tfrac{\ell^2}{2} (u^2)'\) and so
 \[
 G = \frac{\ell^2}{\beta^2} u^2.
 \]
-\subsection*{Stationary solutions for arbitrary \(C\)}
+\subsubsection*{Stationary solutions for arbitrary \(C\)}
 
-Our stationary solutions satisfy
-\[
-\xi_{rr} + \frac{1}{r} \xi_r - \frac{1}{r^2} F(\xi)  = 0.
-\]
-Writing \(u = \xi, v = \xi_r\) this is equivalent to the system
-\[
-\begin{pmatrix}
-u' \\
-v'
-\end{pmatrix}
-=
-\begin{pmatrix}
-v \\
-\frac{1}{r^2} F(u) - \frac{C}{r} v
-\end{pmatrix}.
-\]
-The right hand side is a continuous function of \((u,v)\) (in fact Lipschitz since \(F\) is Lipschitz) for each fixed \(r > 0\) and is continuous in \(r > 0\) for each fixed \((u, v)\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem guarantees the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) given any initial condition \((u_0, v_0)\) at \(r=0\). But for any \(\rho_2 \in (0, \rho_1)\), the right hand side is uniformly Lipschitz in \((u, v)\) hence the Picard-Lindel\"of theorem gives a unique \(C^2\) solution on \([\rho_2, 1]\) given the data \((u(\rho_2), v(\rho_2))\) which must also agree on \((0, \rho_1]\) with the solution obtained from the Cartheodary theorem. Since this is true for any \(\rho_2\), given any initial data \((\psi(0), \psi'(0))\), there exists a \(C^2\) solution on \((0, 1)\).
-
-For our purposes, we take \(\psi(0) = 0\) and so we obtain a one-parameter family of solutions, parametrised by \(\psi'(0)\).
 
 \textbf{I guess we also want to prescribe \(\psi(1)\) so work out what this does to \(\psi'(0)\).}
+\subsection{Barriers}
+
+The argument in this section is based on constructing a one-parameter family of stationary-solutions from the stationary solutions constructed in the last section.
+
 \end{document}
