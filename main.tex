@@ -384,15 +384,17 @@ v \\
 \]
 For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)\) for \(r>0\) since \(F\) is Lipschitz, but not uniformly in \(r\). The right hand side is also continuous with respect to \(r\) for \(r > 0\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem guarantees the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) given any initial condition \((u_0, v_0)\) at \(r=0\).
 
-Any such solution \(\xi\) extends uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. Imposing the initial condition \(\psi(0) = 0\) gives a one-parameter family of solutions, parametrised by \(\psi'(0)\). Note that the Cartheodary theorem doesn't guarantee uniqueness but for our purposes, existence is sufficient.
+Any such solution \(\xi\) extends uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. The solution so obtained is uniformly \(C^{1,\alpha}\) on any interval \([\rho_2, 1]\) where \(\rho_2 > 0\).
+
+Imposing the initial condition \(\psi(0) = 0\) gives a one-parameter family of solutions, parametrised by \(\psi'(0)\). Note that the Cartheodary theorem doesn't guarantee uniqueness but for our purposes, existence is sufficient.
 
 \subsubsection*{Stationary solutions for \(C=1\)}
 
-Let us consider the case \(C = 1\) which is satisfied in critical dimension. We make the ansatz,
+Let us first consider the case \(C = 1\) which is satisfied in critical dimension. We make the ansatz,
 \[
 \xi(r, t) = \xi_0(r^{\beta})
 \]
-for some function \(\xi_0\) with \(\xi_0(0) = 0\) and some real number \(\beta > 0\). We may assume that \(\xi_0'(0) = 1\) by replacing \(\xi_0\) with \((\xi_0')^{-1} \xi_0\).
+for some function \(\xi_0\) with \(\xi_0(0) = 0\) and some real number \(\beta > 0\).
 
 \textbf{we'll need to know \(\xi_0' \ne 0\)! The regularity of the solution (dependent on the regularity of \(F\)) will be very important here. If a smooth enough solution can be found we may write it as  \(c_k y^k + c_{k+1} y^{k+1} + \cdots\) with \(c_k \ne 0\). Then we would take \(\psi_0 = c_k y + c_{2k} y + \cdots\) and \(\beta=k\). Of course we would need to show that \(c_{k+1} = \cdots = c_{2k -1} = 0\) which we hope will follow from asymptotics.}
 
