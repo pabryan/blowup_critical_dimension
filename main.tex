@@ -365,6 +365,8 @@ In the hypothesis of the theorem, we assume \(\psi\) has finite \(C^{0,\alpha}\)
 
 \subsection{Stationary solutions}
 
+\textbf{The solutions here are \(C^{1,\alpha}\) weak solutions. Everything should work out just fine, but at the moment I've written them as classic solutions, i.e. as \(C^2\) functions. Later I'll fix it up and for now the computations are formal.}
+
 In this section we study stationary solutions with suitable boundary data with a view to creating by sub- and super-solutions in the next section. Our stationary solutions satisfy
 \begin{equation}
 \label{eq:stationary}
@@ -390,15 +392,13 @@ Imposing the initial condition \(\psi(0) = 0\) gives a one-parameter family of s
 
 \subsubsection*{Stationary solutions for \(C=1\)}
 
-Let us first consider the case \(C = 1\) which is satisfied in critical dimension. We make the ansatz,
+Let us first consider the case \(C = 1\) which is satisfied in critical dimension. Throughout this section we assume slightly more regularity than Lipschitz, namely that \(F\) is \(C^{1,\gamma}\).  We make the ansatz,
 \[
-\xi(r, t) = \xi_0(r^{\beta})
+\xi(r) = \xi_0(r^{\beta})
 \]
-for some function \(\xi_0\) with \(\xi_0(0) = 0\) and some real number \(\beta > 0\).
+for some \(C^{1,\alpha}\) function \(\xi_0\) with \(\xi_0(0) = 0\) and a real number \(\beta > 0\).
 
-\textbf{we'll need to know \(\xi_0' \ne 0\)! The regularity of the solution (dependent on the regularity of \(F\)) will be very important here. If a smooth enough solution can be found we may write it as  \(c_k y^k + c_{k+1} y^{k+1} + \cdots\) with \(c_k \ne 0\). Then we would take \(\psi_0 = c_k y + c_{2k} y + \cdots\) and \(\beta=k\). Of course we would need to show that \(c_{k+1} = \cdots = c_{2k -1} = 0\) which we hope will follow from asymptotics.}
-
-Then \(\partial_t \xi = 0\) and
+Then
 \[
 \begin{split}
 \xi_{rr} + \frac{1}{r} \xi_r - \frac{1}{r^2} F(\xi) &= \beta^2 r^{2(\beta-1)} \xi_0'' + \beta (\beta - 1) r^{\beta-2} \xi_0' + \beta \xi_0' r^{\beta-2} - \frac{1}{r^2} F(\xi_0) \\
@@ -406,19 +406,41 @@ Then \(\partial_t \xi = 0\) and
 \end{split}
 \]
 
-Writing \(y = r^{\beta}\) for the argument to \(\xi_0\), we see that \(\xi\) is a solution satisfying \(\xi(0, t) = 0\) if and only if
-\[
+Writing \(y = r^{\beta}\) for the argument to \(\xi_0\), we see that \(\xi\) is a stationary solution satisfying \(\xi(0) = 0\) if and only if
+\begin{equation}
+\label{eq:stationary_ansatz}
 \begin{cases}
 y^2 \xi_0'' + y \xi_0' - \beta^{-2} F(\xi_0) &= 0 \\
 \xi_0(0) &= 0.
 \end{cases}
-\]
-The equation for \(\xi_0\) is effectively the same equation we started with, but the form given here is useful however for analysing the role of \(\beta\) in determining blow up. It also allows us to prove existence of stationary solutions In the notation of our heuristics we have
-\[
-A = \frac{F'(0)}{\beta^2}.
-\]
+\end{equation}
 
-We can solve this explicitly by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi_0(e^w)\), whence our problem becomes
+The equation for \(\xi_0\) is effectively the same equation we started with, and we can solve it for any \(\beta > 0\) as in the previous section. Thus we aim to normalise \(\xi_0\) to obtain a canonical form. This canonical form is \(\xi_0'(0) = \lambda \ne 0\) in which case since \(\xi_0\) is \(C^{1,\alpha}\) we have
+\[
+\xi_0(r) = \lambda y + \mathcal{O}(y^{1+\alpha}).
+\]
+Before solving equation \eqref{eq:stationary_ansatz}, let us observe that with our normalisation, we must have \(\beta = F'(0)\): we have
+\[
+\xi_0' = \lambda + \mathcal{O}y^{\alpha}
+\]
+and
+\[
+\xi_0'' = \mathcal{O}^{\alpha-1}.
+\]
+Likewise,
+\[
+F(z) = F'(0) z + \mathcal{O}(z^{1+\gamma}).
+\]
+Substitution into equation \eqref{eq:stationary_ansatz} produces,
+\[
+\begin{split}
+0 &= y^2 \mathcal{O}(y^{\alpha-1}) + y \left(\lambda + \mathcal{O}(y^{1+\alpha})\right) - \beta^{-2} F(\lambda y + \mathcal{O} (y^{1 + \alpha})) \\
+&= \lambda(1 - \beta^{-2} F'(0)) y + \mathcal{O}(y^{1+\alpha})
+\end{split}
+\]
+and hence \(1 = \beta^{-2} F'(0)\).
+
+Now we can solve equation \eqref{eq:stationary_ansatz} explicitly (in terms of \(F\)) by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi_0(e^w)\), whence our problem becomes
 \[
 \begin{cases}
 \zeta'' &= e^{2w} \xi_0'' + e^w \xi_0' = \beta^{-2} F(\zeta) \\
@@ -439,15 +461,15 @@ Thus we must solve
 \]
 and hence our solution satisfies
 \[
-H_{C_1} (\zeta(w)) = w, \quad \text{where} \quad H_{C_1} (0) = -\infty \quad \text{and} \quad H_{C_1}'(Z) = \frac{1}{\sqrt{G(Z) + C_1}}.
+H_{C_1} (\zeta(w)) = w + C_2, \quad \text{where} \quad H_{C_1}'(Z) = \frac{1}{\sqrt{G(Z) + C_1}}.
 \]
 In terms of \(\xi\),
 \[
-H_{C_1} (\xi(r, t)) = H_{C_1} (\xi_0(r^{\beta})) = \ln r^{\beta},
+H_{C_1} (\xi(r)) = H_{C_1} (\xi_0(r^{\beta})) = \ln r^{\beta} + C_2,
 \]
 and if \(H_{C_1}\) is invertible,
 \[
-\xi(r, t) = H_{C_1}^{-1} (\ln r^{\beta}).
+\xi(r) = H_{C_1}^{-1} (\ln r^{\beta} + C_2).
 \]
 
 \subsubsection*{Example: Harmonic map heat flow in \(\S^2\)}
