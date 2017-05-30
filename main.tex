@@ -402,21 +402,27 @@ Integrating gives
 \[
 (\zeta')^2 = G(\zeta) + C_1, \quad \text{where} \quad G'(Z) = 2\beta^{-2} F(Z).
 \]
+By adjusting \(C_1\) if necessary, we may assume that \(G(0) = 0\). Then solutions with finite \(\zeta'(-\infty)\) and satisfying the initial condition \(\zeta(-\infty) = 0\) must satisfy
+\[
+C_1 = 2 \zeta(-\infty) \zeta'(-\infty) - G(0) = 0.
+\]
 Thus we must solve
 \[
-\frac{\zeta'}{\sqrt{G(\zeta) + C_1}} = 1
+\frac{\zeta'}{\sqrt{G(\zeta)}} = 1
 \]
 and hence our solution satisfies
 \[
-H_{C_1} (\zeta(w)) = w, \quad \text{where} \quad H_{C_1} (0) = -\infty \quad \text{and} \quad H_{C_1}'(Z) = \frac{1}{\sqrt{G(Z) + C_1}}.
+H (\zeta(w)) = w + \lambda, \quad \text{where} \quad H (0) = -\infty \quad \text{and} \quad H'(Z) = \frac{1}{\sqrt{G(Z)}}
 \]
+for an arbitrary constant \(\lambda\).
+
 In terms of \(\xi\),
 \[
-H_{C_1} (\xi(r, t)) = H_{C_1} (\xi_0(r^{\beta})) = \ln r^{\beta},
+H (\xi(r, t)) = H (\xi_0(r^{\beta})) = \ln r^{\beta} + \lambda,
 \]
-and if \(H_{C_1}\) is invertible,
+and if \(H\) is invertible,
 \[
-\xi(r, t) = H_{C_1}^{-1} (\ln r^{\beta}).
+\xi(r, t) = H^{-1} (\ln r^{\beta} + \lambda).
 \]
 
 \subsubsection*{Example: Harmonic map heat flow in \(\S^2\)}
