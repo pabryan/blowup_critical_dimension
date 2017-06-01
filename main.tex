@@ -126,6 +126,54 @@ In the presence of a conical singularity, \(F'(a) = (u'(a))^2 \ne 1\).
 
 Should be similar to the two-dimensional case but I don't know if a degree \(\ell\) map \(\S^{n-1} \to \S^{n-1}\) produces a factor like \(\ell^2\) as in the two-dimensional case.
 
+\subsubsection*{Heat flow with non-linear reaction}
+
+\(O(n)\) invariant solutions to equations of the form
+\[
+\partial_t u = \Delta u + F(u)
+\]
+on the open, unit ball fits into the framework. In fact, we can interpret such equations as Harmonic maps into a warped product space with metric
+\[
+ds^2 = dr^2 + g^2(r) d\theta^2
+\]
+where \(g\) solves the ODE
+\[
+\begin{cases}
+gg' &= F(g) \\
+g(0) &= 0
+\end{cases}
+\]
+which has a unique solution provided \(F(g)/g\) is Lipschitz.
+
+\textbf{Write down the energy here.}
+
+\textbf{One can probably add a gradient term here too.}
+
+In particular, radial solutions \(u(x, t) = \psi(|x|, t)\) of
+\[
+\partial_t u = \Delta u - A u^p, \quad p = 1, p \geq 2
+\]
+satisfy
+\[
+\partial_t \psi = \psi_{rr} + \frac{n-1}{r} \psi_r - \frac{1}{r^2} A u^p.
+\]
+
+\textbf{Check how the conformal factor in the Yamabe problem fits here. It seems more non-linear. Does one just mess about with \(v = u^{(n+2)/(n-2)}\) to push the non-linearity into lower order terms? Does that make the gradient term non-linear though?}
+
+\textbf{Really we want \(\Delta u + u^p\), or in other words \(A<0\) so \(F = A u^p\) is decreasing in this case. Probably it's okay, but might need to take that into account. Perhaps best to look at equations with \(+ \frac{1}{r} F(\psi)\) and assume \(F\) is odd and either increasing or decreasing. Should work out?}
+
+\subsubsection*{General Equivariant Harmonic Map Heat Flow}
+
+Let \(G\) be a Lie group and \(M, N\) homogeneous \(G\) spaces. Then look at warped product metrics
+\[
+dr^2 + u^2(r) g
+\]
+where \(g\) is a left/right/bi-invariant metric on \(M\). Likewise for \(N\). Then \(G\) equivariant harmonic map heat flow should reduce to an ODE similar to the spherical case.
+
+\subsubsection*{General Equivariant Yang-Mills Flow}
+
+Again \(G\)-equivariance on a warped-product should reduce to an ODE.
+
 \subsubsection*{Relationships among the examples}
 
 The examples of harmonic maps into spheres and Yang-Mills flow are particular cases of \(F\) in \eqref{eq:harmonic_map_heat_flow}. It's worth pointing out that in the critical dimenstion, the coeefficient of \(\psi_r\) is \(1\). For the problem \eqref{eq:pde} we allow the more general situation where \(C \ne 1\) and so our study is applicible in higher dimensions. It also turns out that the value of \(F'(0)\) is crticial to the study of finite time blow up. We summarise these examples in the following table (absorbing the \(\ell^2\) into \(F\)):
