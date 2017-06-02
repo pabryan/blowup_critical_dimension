@@ -311,10 +311,11 @@ Thus \(\psi = r^{\beta}\) is a
 \end{equation}
 In conjunction with the comparison principle, sub-solutions are used to show blow up while super-super solutions are used to show no blow-up occurs. A solution may of course be used for either purpose.
 
-Therefore, for fixed \(C > 0\) and \(A > 0\) we are interested in the roots of
-\[
+Therefore, for fixed \(C > 0\) and \(A > 0\) we are interested in the roots of the characteristic equation
+\begin{equation}
+\label{eq:char_poly}
 p(\beta) = \beta^2 + (C - 1) \beta - A.
-\]
+\end{equation}
 The discriminant is
 \[
 \Delta = (C-1)^2 + 4 A > 0,
@@ -338,6 +339,146 @@ We have
 \psi = r^{\beta}, \quad \psi' = \beta r^{\beta-1}, \quad \psi'' = \beta(\beta-1) r^{\beta - 2}.
 \]
 Thus if \(0 < \beta_0 < 1\) we obtain sub-solutions \(r^{\beta}, \beta_0 \leq \beta < 1\) with \(C^1\) blow up at the origin. If \(\beta_0 > 1\), we obtain super-solutions \(r^{\beta}, \beta_0 \leq \beta < 1\) with no \(C^1\) blow up at the origin. Similarly \(0 < \beta_0 < 2\) gives sub-solutions with \(C^2\) blow up while \(2 < \beta_0\) gives super-solutions with no \(C^2\) blow up. It turns out the boundary cases \(\beta_0 = 1, 2\) may be perturbed by a time-dependent factor to induce blow up.
+
+Now we look at formal asymptotics near \(r = 0\). Let us suppose that \(F\) is analytic,
+\[
+F(z) = \sum_{n=1}^{\infty} F_n z^n
+\]
+and that we have an analytic solution,
+\[
+\psi(r) = \sum_{n=1}^{\infty} \psi_n r^n.
+\]
+Then
+\[
+\psi' = \sum_{n=0}^{\infty} (n+1) \psi_{n+1} r^n, \quad \psi'' = \sum_{n=0}^{\infty} (n+1)(n+2) \psi_{n+2} r^n.
+\]
+and
+\[
+F(\psi) = F(\sum_{n=1}^{\infty} \psi_n r^n) = \sum_{n=1}^{\infty} a_n r^n
+\]
+with
+\[
+a_n = \sum_{k=1}^n F_k S_{n,k}(\psi_i)
+\]
+where
+\[
+S_{n,k}(\psi_i) = \sum_{\pi \in P_{n,k}} {k \choose \pi} \psi_1^{\pi_1} \cdots \psi_k^{\pi_k},
+\]
+and
+\[
+P_{n,k} = \{\pi = (\pi_1, \dots, \pi_n) : \sum_{i=1}^n \pi_i = k, \sum_{i=1}^n i \pi_i = n\},
+\]
+is a sum over partitions of \(n\) into \(k\) parts in frequency-of-parts form and
+\[
+{k \choose \pi} = \frac{k!}{\pi_1! \cdots \pi_n!}
+\]
+is the multinomial coefficient.
+
+Substitution gives
+\[
+\begin{split}
+0&= r^2 \psi_{rr} + Cr\psi_r - F(\psi) \\
+&= \sum_{n=2}^{\infty} n(n-1) \psi_n r^n + C \sum_{n=1}^{\infty} n \psi_n r^n - \sum_{n=1}^{\infty} a_n r^n \\
+&= (C \psi_1 - a_1) r + \sum_{n=2}^{\infty} \left[(n^2 + (C-1)n)\psi_n - a_n\right] r^n \\
+&= (C - F_1) \psi_1 r + \sum_{n=2}^{\infty} \left[(n^2 +(C-1)n)\psi_n - a_n\right] r^n \\
+\end{split}
+\]
+
+If our \(F\) and \(C\) are such that \(C = F_1\) (for example when \(C = 1\) and \(F'(0) = 1\)), we may freely choose \(\psi_1\). Otherwise, \(\psi_1 = 0\). Either way, we then seek to recursively solve
+\[
+(n^2 + (C-1)n)\psi_n - a_n = 0
+\]
+for \(\psi_n\). Note that in \(a_n\), from the definitions of \(S_{n,k}\) and \(P_{n,k}\) (namely that \(\sum_{i=1}^n \pi_i = k\) and \(\sum_{i=1}^n i \psi_i = n\)) the appearance of \(\psi_n\) is to first order and only in \(S_{n,1} = F_1 \psi_n\). This is just another way of saying that among the degree \(n\) terms of \(F(\psi)\), there is precisely one term, \(F_1 \psi_n\) involving \(\psi_n\).
+
+Thus we have,
+\[
+a_n = F_1 \psi_n + q_n(\psi_1, \dots, \psi_{n-1})
+\]
+where
+\[
+q_n = \sum_{k=2}^n F_k \sum_{\pi \in P_{n,k}} {k \choose \pi} \psi_1^{\pi_1} \cdots \psi_k^{\pi_k}
+\]
+is a degree \(n\) polynomial in \(n-1\) variables with \(q_n(z_1, \cdots, z_{n-1}) = 0\). Therefore,
+\[
+\left[n^2 + (C-1) n - F_1\right] \psi_n =  q(\psi_1, \dots, \psi_{n-1}).
+\]
+
+Thus we have the recurrence relation,
+\begin{equation}
+\label{eq:recurrence}
+p(n) \psi_n = q_n (\psi_1, \dots, \psi_{n-1})
+\end{equation}
+where \(p\) is the characteristic polynomial from equation \eqref{eq:char_poly} and in the case \(n=1\), \(p\) reduces to \(p(1) = C - F_1\) so that the recurrence relation \eqref{eq:recurrence} holds for \(n=1\) by defining \(q_1 = 0\).
+
+If \(p(n) \ne 0\) for all natural numbers, we may choose \(\psi_1\) freely and solve for the remaining coefficients \(\psi_n\), \(n > 1\). In this situation, by choosing \(\psi = \lambda(t)\) appropriately and such that \(\lambda(t) \to \infty\) in finite time, we are able to construct a sub-solution with \(C^1\) blow up.
+
+More generally, we have the following:
+
+\begin{lemma}
+Suppose \(n_0\) is a positive, integer root with \(p(n_0) = 0\). Then
+\[
+\psi(r) = \psi_0(r^{n_0})
+\]
+for some analytic function \(\psi_0\) with \(\psi_0(0) = 0\) and arbitrary \(\psi_0'(0)\). That is we may choose \(\psi_{n_0}\) arbitrarily, and \(\psi_n = 0\) for \(n\) not divisible by \(n_0\).
+\end{lemma}
+
+\begin{proof}
+To see this, first observe that \(n_0 = 1\) if and only if
+\[
+1^2 + (C - 1) \cdot 1 - F_1 = 0 \Leftrightarrow C = F_1
+\]
+in which case
+\[
+p(n) = n^2 + (C - 1) n - C = (n-1)(n + C)
+\]
+and the other root is \(-C = -F_1 < 0\). That is \(p(n) \ne 0\) for all \(n > 1\) and we may solve the recurrence relation \eqref{eq:recurrence} uniquely for \(\psi_n, n > 1\) given any \(\psi_1\).
+
+For \(n_0 > 1\) recall that we already observed that there is precisely one positive root of \(p\) and hence \(p(n) \ne 0\) for \(n \ne n_0\). Then we have \(p(1) \ne 0\) and recalling that we defined \(q_1 = 0\), the recurrence relation \eqref{eq:recurrence} is satisfied only if \(\psi_1 = 0\). But then observe that \(q_2 = q_1(\psi_1) = q_1(0) = 0\) and so
+\[
+p(2) \psi_2 = q_2 = 0
+\]
+and either \(p(2) = 0\) with \(\psi_2\) arbitrary if \(n_0 = 2\) or \(\psi_2 = 0\) if \(n_0 > 2\). If \(n_0 > 3\), we find \(q_3 = q_3(\psi_1, \psi_2) = q_3(0, 0) = 0\) implies \(\psi_3 = 0\). Continuing by induction we find that \(\psi_n = 0\) for all \(n\) with \(1 < n < n_0\). For \(n_0\) we get
+\[
+0 = p(n_0) \psi_{n_0} = q_{n_0-1} = 0
+\]
+and we may freely choose \(\psi_{n_0}\). So we have \(\psi_n = 0\) for \(n = 1, \cdots, n_0 - 1\) and \(\psi_{n_0}\) is arbitrary. Now we claim this implies \(q_{n_0 + j} = 0\) for \(j = 1, \cdots, n_0 - 1\). To see this, we recall that
+\[
+q_{n_0 + j} = \sum_{k=2}^{n_0 + j} F_k \sum_{\pi \in P_{n_0+j,k}} {k \choose \pi} \psi_1^{\pi_1} \cdots \psi_k^{\pi_k}
+\]
+with
+\[
+P_{n_0 + j,k} = \{\pi = (\pi_1, \dots, \pi_{n_0 + j}) : \sum_{i=1}^{n_0+j} \pi_i = k, \sum_{i=1}^{n_0+j} i \pi_i = n_0 + j\}.
+\]
+Consider the possible \(\pi\) with \(\pi_{n_0} \ne 0\). These must satisfy
+\[
+\sum_{i=1}^{n_0-1} i \pi_i + n_0 \pi_{n_0} + \sum_{i=n_0+1}^{n_0 + j} i\pi_i = n_0 + j
+\]
+which rearranges to
+\[
+\sum_{i=1}^{n_0-1} i \pi_i + \sum_{i=n_0+1}^{n_0 + j} i\pi_i = n_0(1 - \pi_{n_0}) + j
+\]
+If all the \(\pi_i\) with \(i \ne n_0\) vanish, then
+\[
+j = n_0(\pi_{n_0} - 1).
+\]
+But this is impossible since \(1 \leq j < n_0\) and \(\pi_{n_0} \geq 0\) is an integer.
+
+Therefore, any \(\pi\) with and entry \(\pi_{n_0} \ne 0\) must also have \(\pi_i \ne 0\) for some \(i \ne n_0\). For \(j = 1\) we have \(q_{n_0 + 1}\) is a polynomial in \(\psi_i\) for \(1 \leq i \leq n_0\). But \(\psi_i = 0\) for \(1 \leq i \leq n_0 -1\) and every term of \(q_{n_0 + 1}\) has a term \(\psi_i^{\pi_i}\) with \(i \ne n_0\) and thus \(q_{n_0 + j}\) vanishes. Now continue by induction (e.g. every term of \(q_{n_0 + 2}\) has \(\psi_i^{\pi_i}\) with \(1 \leq i \leq n_0 - 1\) or \(i = n_0 + 1\) and hence vanishes).
+
+Finally, a further induction argument may be used to show that \(\psi_{m n_0 +j} = 0\) for any natural number \(m\) and any \(j\) with \(1 \leq j \leq n_0 - 1\). The necessary ingredient is to show that any term of \(q_{m n_0 + j}\) involving \(\psi_{m n_0}^{\pi_{m n_0}}\) with \(\pi_{m n_0} \ne 0\) necessarily also includes terms of the form \(\psi_i^{\pi_i}\) with \(i\) not divisible by \(n_0\). This follows in the same way as before: we have
+\[
+\sum_{i=1}^m i n_0 \pi_{i n_0} + \sum_{i=1}^m \sum_{j=1}^{n_0 -1} (i n_0 + j) \pi_{i n_0 + j} = m n_0 + j
+\]
+rearranges to
+\[
+\sum_{i=1}^m \sum_{j=1}^{n_0 -1} (i n_0 + j) \pi_{i n_0 + j} = n_0\left(m - \sum_{i=1}^m i \pi_{i n_0}\right) + j
+\]
+and if the left hand side vanishes we have
+\[
+j = n_0\left(\sum_{i=1}^m i \pi_{i n_0} - m\right)
+\]
+but \(1 \leq j \leq n_0 - 1\) implies \(j\) is not divisible by \(n_0\) a contradiction. Thus at least one \(\pi_{im + j} \ne 0\) and we can repeat the same induction over \(j\).
+\end{proof}
 
 \subsubsection*{Example: Critical Dimension}
 
