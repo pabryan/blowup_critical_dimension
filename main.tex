@@ -644,11 +644,11 @@ v \\
 \frac{1}{r^2} F(u) - \frac{C}{r} v
 \end{pmatrix}.
 \]
-For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)\) for \(r>0\) since \(F\) is Lipschitz, but not uniformly in \(r\). The right hand side is also continuous with respect to \(r\) for \(r > 0\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem guarantees the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) given any initial condition \((u_0, v_0)\) at \(r=0\).
+For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)\) for \(r>0\) since \(F\) is Lipschitz, but not uniformly in \(r\). The right hand side is also continuous with respect to \(r\) for \(r > 0\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem \emph{does not}guarantee the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) since the coefficient function \(1/r\), \(1/r^2\) while measureable, are not integrable. We will obtain solutions by explicitly solving the equation.
 
-Any such solution \(\xi\) extends uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. The solution so obtained is uniformly \(C^{1,\alpha}\) on any interval \([\rho_2, 1]\) where \(\rho_2 > 0\).
+On the other hand, if we can obtain a solution \(\xi_r\) on \([0,\rho_1)\) for some \(\rho_1\), then this solution may be extended uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. The solution so obtained is uniformly \(C^{1,\alpha}\) on any interval \([\rho_2, 1]\) where \(\rho_2 > 0\).
 
-Imposing the initial condition \(\psi(0) = 0\) gives a one-parameter family of solutions, parametrised by \(\psi'(0)\). Note that the Cartheodary theorem doesn't guarantee uniqueness but for our purposes, existence is sufficient.
+Imposing the initial condition \(\psi(0) = 0\) gives a one-parameter family of solutions, parametrised by \(\psi'(0)\).
 
 \subsubsection*{Stationary solutions for \(C=1\)}
 
