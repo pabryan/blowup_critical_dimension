@@ -652,7 +652,7 @@ Imposing the initial condition \(\psi(0) = 0\) gives a one-parameter family of s
 
 \subsubsection*{Stationary solutions for \(C=1\)}
 
-Let us first consider the case \(C = 1\) which is satisfied in critical dimension. Throughout this section we assume slightly more regularity than Lipschitz, namely that \(F\) is \(C^{1,\gamma}\).  We make the ansatz,
+Let us first consider the case \(C = 1\) which is satisfied in critical dimension. Throughout this section we assume slightly more regularity than Lipschitz, namely that \(F\) is \(C^{1,\gamma}\). We make the ansatz,
 \[
 \xi(r) = \xi_0(r^{\beta})
 \]
@@ -675,17 +675,17 @@ y^2 \xi_0'' + y \xi_0' - \beta^{-2} F(\xi_0) &= 0 \\
 \end{cases}
 \end{equation}
 
-The equation for \(\xi_0\) is effectively the same equation we started with, and we can solve it for any \(\beta > 0\) as in the previous section. Thus we aim to normalise \(\xi_0\) to obtain a canonical form. This canonical form is \(\xi_0'(0) = \lambda \ne 0\) in which case since \(\xi_0\) is \(C^{1,\alpha}\) we have
+The equation for \(\xi_0\) is effectively the same equation we started with, and we expect to solve it for any \(\beta > 0\). Thus we aim to normalise \(\xi_0\) to obtain a canonical form. Motivated by the heuristic asymptotics in Lemma \ref{lem:heuristic_asymptotics}, the form we seek satisfies \(\xi_0'(0) = \lambda \ne 0\), in which case since \(\xi_0\) is \(C^{1,\alpha}\) we have
 \[
 \xi_0(r) = \lambda y + \mathcal{O}(y^{1+\alpha}).
 \]
-Before solving equation \eqref{eq:stationary_ansatz}, let us observe that with our normalisation, we must have \(\beta = F'(0)\): we have
+Before solving equation \eqref{eq:stationary_ansatz}, let us observe that with our normalisation, as in Lemma \ref{lem:heuristic_asymptotics} we must have \(\beta = F'(0)\): we have
 \[
-\xi_0' = \lambda + \mathcal{O}y^{\alpha}
+\xi_0' = \lambda + \mathcal{O} (y^{\alpha})
 \]
 and
 \[
-\xi_0'' = \mathcal{O}^{\alpha-1}.
+\xi_0'' = \mathcal{O} (y^{\alpha-1}).
 \]
 Likewise,
 \[
@@ -698,45 +698,106 @@ Substitution into equation \eqref{eq:stationary_ansatz} produces,
 &= \lambda(1 - \beta^{-2} F'(0)) y + \mathcal{O}(y^{1+\alpha})
 \end{split}
 \]
-and hence \(1 = \beta^{-2} F'(0)\).
+and hence \(1 = \beta^{-2} F'(0)\). In other words the function,
+\[
+F_{\beta}(z) = \beta^{-2} F(z)
+\]
+satisfies
+\[
+F_{\beta} (0) = 0, \quad F_{\beta}'(0) = 1.
+\]
 
-Now we can solve equation \eqref{eq:stationary_ansatz} explicitly (in terms of \(F\)) by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi_0(e^w)\), whence our problem becomes
+So from now on we work with such an \(F_{\beta}\). We can solve equation \eqref{eq:stationary_ansatz} explicitly (in terms of \(F\)) by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi_0(e^w)\), whence our problem becomes
 \[
 \begin{cases}
-\zeta'' &= e^{2w} \xi_0'' + e^w \xi_0' = \beta^{-2} F(\zeta) \\
+\zeta'' &= e^{2w} \xi_0'' + e^w \xi_0' = F_{\beta} (\zeta) \\
 \zeta(-\infty) &= 0.
 \end{cases}
 \]
 Multiplying by \(\zeta'\) this becomes
 \[
-[(\zeta')^2]' = 2 \beta^{-2} F(\zeta) \zeta'.
+[(\zeta')^2]' = 2 F_{\beta} (\zeta) \zeta'.
 \]
 Integrating gives
 \[
-(\zeta')^2 = G(\zeta) + C_1, \quad \text{where} \quad G'(Z) = 2\beta^{-2} F(Z).
+(\zeta')^2 = G(\zeta) + C_1, \quad \text{where} \quad G'(Z) = 2 F_{\beta}(Z).
 \]
 By adjusting \(C_1\) if necessary, we may assume that \(G(0) = 0\).
 
-\textbf{Joe claims \(C_1 = 0\) follows from the initial condition, but I don't see why}
+Referring to definition \ref{defn:energy} and remark \ref{rem:finite_energy}, in order to obtain finite energy solution we require that
+\[
+\frac{1}{2} \int_0^1 \left(\psi_r^2 + \frac{1}{r^2} u^2(\psi)\right) r dr < \infty.
+\]
+For the gradient term, substituting
+\[
+\psi(r) = \zeta(\ln r^{\beta})
+\]
+with \((\zeta')^2 = G(\zeta) + C_1\) we get
+\[
+\frac{1}{2} \int_0^1 \psi_r^2 r dr  = \frac{\beta^2}{2} \int_0^1 \frac{G(\zeta(\ln r^{\beta})) + C_1}{r} dr < \infty.
+\]
+Now if \(C_1 \ne 0\), then since \(\zeta(-\infty) = 0\) and \(G(0) = 0\), by continuity there is an interval \([0, \rho]\) on which \(\abs{G(\zeta(\ln r^{\beta}))} < \abs{C_1}/2\) and consequently
+\[
+\frac{\abs{G(\zeta(\ln r^{\beta})) + C_1}}{r} dr \geq \frac{\abs{C_1}}{2} \frac{1}{r}
+\]
+which is not integrable. Therefore we conclude that \(C_1 = 0\).
 
 Thus we must solve
 \[
-\frac{\zeta'}{\sqrt{G(\zeta)}} = 1
+\frac{\zeta'}{\sqrt{\abs{G(\zeta)}}} = 1
 \]
-and hence our solution satisfies
+Notice that near \(z = 0\) we have \(F_{\beta} (z) = z + \bigo(z^{1+\gamma})\) so that
 \[
-H (\zeta(w)) = w + \lambda, \quad \text{where} \quad H'(Z) = \frac{1}{\sqrt{G(Z)}}.
+G'(z) = 2F_{\beta}(z) \Rightarrow G(z) = z^2(1 + \bigo(z^{\gamma}))
+\]
+and so
+\[
+\sqrt{\abs{G(\zeta)}} = z \sqrt{1 + \bigo(z^{\gamma})} = z + \bigo(z^{\gamma/2})
+\]
+is continuous (even differentiable) near \(z = 0\).
+
+Hence our solution satisfies
+\[
+H (\zeta(w)) = w + \lambda, \quad \text{where} \quad H'(Z) = \frac{1}{\sqrt{\abs{G(Z)}}}.
 \]
 for an arbitrary constant \(\lambda\).
 
 In terms of \(\xi\),
+\begin{align*}
+H (\xi(r)) &= H (\xi_0(r^{\beta})) = \ln r^{\beta} + \lambda \\
+\xi'(r) &= \frac{\beta}{r}  \sqrt{G(\xi(r))} \\
+\xi''(r) &= \frac{\beta}{r} \frac{G'(\xi(r)) \xi'(r)}{2 \sqrt{G(\xi(r))}} - \frac{\beta}{r^2} \sqrt{G(\xi(r))} \\
+&= \frac{1}{r^2} \left(F(\xi(r))- \beta \sqrt{G(\xi(r))}\right).
+\end{align*}
+
+\textbf{The question now is whether this all makes sense! Effectively, we need \(H\) to be defined for \(z \in (0, a)\) mapping \((0, a) \to \R\) with \(H(0) = -\infty\) and \(H'(0) = \infty\). This seems likely to be okay since presumably \(H\) increases up from \(-\infty\) at least for a while. Maybe we can be very explicit as follows:}
+
 \[
-H (\xi(r, t)) = H (\xi_0(r^{\beta})) = \ln r^{\beta} + \lambda,
+G(z) = 2 \int_0^z F_{\beta}(u) du
 \]
-and if \(H\) is invertible,
+is the solution of \(G(0) = 0, G'(z) = 2 F_{\beta}(z)\) and is \(C^{2,\alpha}\).
+
+Now we have then \(G'(0) = 2 F_{\beta}(0) = 0\), and \(G''(0) = 2 F_{\beta}'(0) = 2\). So \(G > 0\) for a neighbourhood of \(z=0\) but not necessarily globaly. Ideally it would be globally positive.  So if we keep integrating past a zero \(F\), we may end up having \(G\) becoming negative. This will stop our solution being a classical solution but maybe it's okay in the generalised sense since \(\sqrt{\abs{G(z)}}\) is \(C^{1/2}\) or perhaps better if \(F\) does not meet the \(z\)-axis tangentially. So we just need to ask that if \(F(z_0) = 0\), then \(F'(z_0) \ne 0\) and \(F\) being \(C^{1,\alpha}\) gives what we need. Then we get \(\sqrt{G}\) is \(C^{1,\alpha/2}\).
+
+Just pretending that \(G \geq 0\) for the moment anyway we could then take any \(a_0 \in (0, a)\) with \(b_0 > a_0\)) and define
 \[
-\xi(r, t) = H^{-1} (\ln r^{\beta} + \lambda).
+H(z) = \int_{a_0}^z \frac{1}{\sqrt{\abs{G(u)}}} du
 \]
+which satisfies \(H'(z) = \frac{1}{\sqrt{\abs{G(u)}}}\) and
+\[
+H(0) = - \lim_{z\to 0} \int_0^{a_0} \frac{1}{\sqrt{\abs{G(u)}}} du
+\]
+
+Now I just need that this integral is \(\infty\). This should follow from the asymptotics of \(F\) and \(G\) I think. Near \(z = 0\) we have \(F = z + \bigo(z^{1 + \alpha})\) and \(G = z^2 + \bigo(z^{2 + \alpha})\) in which case \(\sqrt{\abs{G}} = z + \bigo(z^{1 + \alpha/2})\) so that \(1/\sqrt{\abs{G}}\) will integrate like \(1/z\) which goes to \(\infty\) as required.
+
+Then for the range that \(G > 0\), \(H\) is invertible since it has strictly positive derivative and we may define
+\[
+\xi(r) = H^{-1} (\ln r^{\beta} + \lambda).
+\]
+
+Actually, we can always take \(a_0 \in (0, a)\) near \(0\) so that \(G > 0\) on \((0, b_0)\). Moreover, the integrand defining \(H\) is non-negative. The only thing that could go wrong, stopping us from integrating all the way to \(a\) is if \(G \to 0\) so that \(\sqrt{\abs{G}} \to 0\) is not integrable for some \(b_0 < a_0\). If that doesn't happen we can integrate all the way to \(a\) and we expect the integral to be \(\infty\) as we approach \(a\) just as it is as we approach \(0\). Then we get \(H : (0, a) \to (-\infty, \infty)\) an increasing, hence invertible function.
+
+\textbf{Look at the behaviour of \(\xi\) as \(\lambda \to \pm \infty\) and \(\lambda \to 0\). This will be used for blow up.}
 
 \subsubsection*{Example: Harmonic map heat flow in \(\S^2\)}
 
@@ -760,9 +821,6 @@ Here \(F = \ell^2 uu' = \tfrac{\ell^2}{2} (u^2)'\) and so
 G = \frac{\ell^2}{\beta^2} u^2.
 \]
 \subsubsection*{Stationary solutions for arbitrary \(C\)}
-
-
-\textbf{I guess we also want to prescribe \(\psi(1)\) so work out what this does to \(\psi'(0)\).}
 \subsection{Barriers}
 
 The argument in this section is based on constructing a one-parameter family of stationary-solutions from the stationary solutions constructed in the last section.
