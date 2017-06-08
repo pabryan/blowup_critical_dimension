@@ -485,6 +485,7 @@ If \(p(n) \ne 0\) for all natural numbers, we may choose \(\psi_1\) freely and s
 More generally, we have the following:
 
 \begin{lemma}
+\label{lem:heuristic_asymptotics}
 Suppose \(n_0\) is a positive, integer root with \(p(n_0) = 0\). Then
 \[
 \psi(r) = \psi_0(r^{n_0})
@@ -568,13 +569,13 @@ With our heuristic motivation to hand, we move on to show that blow up, if it oc
 \label{lem:apriori_bounds}
 Let \(\psi\) be a solution of \eqref{eq:pde} with initial data \(\psi_0\) satisfying
 \[
-\|\psi_0\|_{C^{2,\alpha}([0, 1])} < \infty
+\|\psi_0\|_{C^{2,\alpha}([0, 1])} < \infty,
 \]
-If in addition,
+and
 \[
-\|\psi\|_{C^{0,\alpha}([0, 1] \times [0, \tau])} < \infty
+\|\psi\|_{L^{\infty} ([0, 1] \times [0, \tau])} < \infty
 \]
-and there exists a \(\rho \in (0, 1]\) and a \(\tau \in (0, T)\) such that
+If there exists a \(\rho \in (0, 1]\) and a \(\tau \in (0, T)\) such that
 \[
 \|\psi\|_{C^{2,\alpha}([0, \rho] \times [0, \tau])} < \infty,
 \]
