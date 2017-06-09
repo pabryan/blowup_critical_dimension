@@ -625,8 +625,6 @@ In the hypothesis of the theorem, we assume \(\psi\) has finite \(C^{0,\alpha}\)
 
 \subsection{Stationary solutions}
 
-\textbf{The solutions here are \(C^{1,\alpha}\) weak solutions. Everything should work out just fine, but at the moment I've written them as classic solutions, i.e. as \(C^2\) functions. Later I'll fix it up and for now the computations are formal.}
-
 In this section we study stationary solutions with suitable boundary data with a view to creating by sub- and super-solutions in the next section. Our stationary solutions satisfy
 \begin{equation}
 \label{eq:stationary}
@@ -644,11 +642,11 @@ v \\
 \frac{1}{r^2} F(u) - \frac{C}{r} v
 \end{pmatrix}.
 \]
-For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)\) for \(r>0\) since \(F\) is Lipschitz, but not uniformly in \(r\). The right hand side is also continuous with respect to \(r\) for \(r > 0\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem \emph{does not}guarantee the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) since the coefficient function \(1/r\), \(1/r^2\) while measureable, are not integrable. We will obtain solutions by explicitly solving the equation.
+For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)\) for \(r>0\) since \(F\) is Lipschitz, but not uniformly in \(r\). The right hand side is also continuous with respect to \(r\) for \(r > 0\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem \emph{does not} guarantee the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) since the coefficient functions \(1/r\), \(1/r^2\) while measureable, are not integrable. However, we can obtain solutions by explicitly solving the equation.
 
 On the other hand, if we can obtain a solution \(\xi_r\) on \([0,\rho_1)\) for some \(\rho_1\), then this solution may be extended uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. The solution so obtained is uniformly \(C^{1,\alpha}\) on any interval \([\rho_2, 1]\) where \(\rho_2 > 0\).
 
-Imposing the initial condition \(\psi(0) = 0\) gives a one-parameter family of solutions, parametrised by \(\psi'(0)\).
+Finally, note that imposing the initial condition \(\psi(0) = 0\) will give a one-parameter family of solutions, parametrised by \(\psi'(0)\).
 
 \subsubsection*{Stationary solutions for \(C=1\)}
 
@@ -740,7 +738,12 @@ Now if \(C_1 \ne 0\), then since \(\zeta(-\infty) = 0\) and \(G(0) = 0\), by con
 \[
 \frac{\abs{G(\zeta(\ln r^{\beta})) + C_1}}{r} dr \geq \frac{\abs{C_1}}{2} \frac{1}{r}
 \]
-which is not integrable. Therefore we conclude that \(C_1 = 0\).
+which is not integrable. Therefore we conclude that \(C_1 = 0\) and in fact,
+\begin{equation}
+\label{eq:G}
+G(z) = 2 \int_0^z F_{\beta} (s) ds = \beta^{-2} \int_0^z (u^2)' (s) ds = \beta^{-2} u^2 (z).
+\end{equation}
+In particular, \(G > 0\) on \((0,a)\) and \(G(0) = G(a) = 0\).
 
 Thus we must solve
 \[
@@ -748,56 +751,72 @@ Thus we must solve
 \]
 Notice that near \(z = 0\) we have \(F_{\beta} (z) = z + \bigo(z^{1+\gamma})\) so that
 \[
-G'(z) = 2F_{\beta}(z) \Rightarrow G(z) = z^2(1 + \bigo(z^{\gamma}))
+G'(z) = 2F_{\beta}(z) \Rightarrow G(z) = z^2(1 + \bigo(z^{2 + \gamma}))
 \]
 and so
 \[
-\sqrt{\abs{G(\zeta)}} = z \sqrt{1 + \bigo(z^{\gamma})} = z + \bigo(z^{\gamma/2})
+\sqrt{\abs{G(\zeta)}} = z \sqrt{1 + \bigo(z^{\gamma})} = z + \bigo(z^{1 + \gamma})
 \]
-is continuous (even differentiable) near \(z = 0\).
+is continuous (even differentiable) near \(z = 0\). In fact, explicitly,
+\[
+\frac{1}{\sqrt{\abs{G(z)}}} = \frac{\beta}{u(z)}
+\]
+is as regular as \(u\) is away from \(0, a\).
 
 Hence our solution satisfies
 \[
 H (\zeta(w)) = w + \lambda, \quad \text{where} \quad H'(Z) = \frac{1}{\sqrt{\abs{G(Z)}}}.
 \]
-for an arbitrary constant \(\lambda\).
+for an arbitrary constant \(\lambda\). Explicitly, choosing any \(a_0 \in (0, a)\) we have
+\begin{equation}
+\label{eq:H}
+H(z) = \beta \int_{a_0}^z \frac{1}{u(s)} ds.
+\end{equation}
+Varying \(a_0\) just has the effect of varying \(\lambda\).
 
-In terms of \(\xi\),
+Note that since \(u(z) = z + \bigo(z^{1 + \gamma})\) near \(z=0\) and near \(z=a\), we find that \(1/u\) is not summable near \(z = 0, a\) and hence
+\[
+H(0) = -\beta \int_0^{a_0} \frac{1}{u(s)} ds = - \infty, \quad H(a) = \beta \int_{a_0}^a \frac{1}{u(s)} ds = \infty.
+\]
+This is also why we cannot define \(H(z) = \beta \int_{0}^z \frac{1}{u(s)} ds\).
+
+Moreover, we have
+\[
+H'(z) = \frac{\beta}{u(z)} > 0, \quad z \in (0, a).
+\]
+Thus \(H\) is strictly increasing and hence a \(C^1\)-diffeomorphism of \((0, a)\) onto \(\R\) so that \(H^{-1}\) is defined and \(C^1\).
+
+In terms of \(\xi(r) = \xi_0(r^{\beta}) = \zeta(\ln r^{\beta})\), have
+\[
+\xi(r) = H^{-1} (\ln r^{\beta} + \lambda)
+\]
+and so \(0 < \xi(r) < a\) for all \(r \in (0, 1)\) and so our solutions automatically have \(L^{\infty}\) bounds independent of \(\lambda\).
+
+We may also use the implicit relation
+\[
+H (\xi(r)) = H (\xi_0(r^{\beta})) = \ln r^{\beta} + \lambda.
+\]
+
+Either way, we derive:
 \begin{align*}
-H (\xi(r)) &= H (\xi_0(r^{\beta})) = \ln r^{\beta} + \lambda \\
 \xi'(r) &= \frac{\beta}{r}  \sqrt{G(\xi(r))} \\
 \xi''(r) &= \frac{\beta}{r} \frac{G'(\xi(r)) \xi'(r)}{2 \sqrt{G(\xi(r))}} - \frac{\beta}{r^2} \sqrt{G(\xi(r))} \\
 &= \frac{1}{r^2} \left(F(\xi(r))- \beta \sqrt{G(\xi(r))}\right).
 \end{align*}
+from which we easily verify that we \(\xi\) is indeed a solution.
 
-\textbf{The question now is whether this all makes sense! Effectively, we need \(H\) to be defined for \(z \in (0, a)\) mapping \((0, a) \to \R\) with \(H(0) = -\infty\) and \(H'(0) = \infty\). This seems likely to be okay since presumably \(H\) increases up from \(-\infty\) at least for a while. Maybe we can be very explicit as follows:}
+To finish this section, let us examine how the derivatives of \(\xi\) depend on \(\lambda\) as this is, along with the comparison theorem is how we study blow up in general.
 
+We have
 \[
-G(z) = 2 \int_0^z F_{\beta}(u) du
-\]
-is the solution of \(G(0) = 0, G'(z) = 2 F_{\beta}(z)\) and is \(C^{2,\alpha}\).
-
-Now we have then \(G'(0) = 2 F_{\beta}(0) = 0\), and \(G''(0) = 2 F_{\beta}'(0) = 2\). So \(G > 0\) for a neighbourhood of \(z=0\) but not necessarily globaly. Ideally it would be globally positive.  So if we keep integrating past a zero \(F\), we may end up having \(G\) becoming negative. This will stop our solution being a classical solution but maybe it's okay in the generalised sense since \(\sqrt{\abs{G(z)}}\) is \(C^{1/2}\) or perhaps better if \(F\) does not meet the \(z\)-axis tangentially. So we just need to ask that if \(F(z_0) = 0\), then \(F'(z_0) \ne 0\) and \(F\) being \(C^{1,\alpha}\) gives what we need. Then we get \(\sqrt{G}\) is \(C^{1,\alpha/2}\).
-
-Just pretending that \(G \geq 0\) for the moment anyway we could then take any \(a_0 \in (0, a)\) with \(b_0 > a_0\)) and define
-\[
-H(z) = \int_{a_0}^z \frac{1}{\sqrt{\abs{G(u)}}} du
-\]
-which satisfies \(H'(z) = \frac{1}{\sqrt{\abs{G(u)}}}\) and
-\[
-H(0) = - \lim_{z\to 0} \int_0^{a_0} \frac{1}{\sqrt{\abs{G(u)}}} du
+\begin{split}
+\xi' &= \frac{\beta}{r}  \sqrt{G(\xi(r))} = \frac{\beta}{r}  \sqrt{G \circ H^{-1}(\ln r^{\beta} + \lambda)} \\
+&= \frac{\beta}{r} \left[H^{-1} (\ln r^{\beta} + \lambda)  + \bigo(H^{-1} (\ln r^{\beta} + \lambda))^{1 + \gamma}\right] \\
+&= 
+\end{split}
 \]
 
-Now I just need that this integral is \(\infty\). This should follow from the asymptotics of \(F\) and \(G\) I think. Near \(z = 0\) we have \(F = z + \bigo(z^{1 + \alpha})\) and \(G = z^2 + \bigo(z^{2 + \alpha})\) in which case \(\sqrt{\abs{G}} = z + \bigo(z^{1 + \alpha/2})\) so that \(1/\sqrt{\abs{G}}\) will integrate like \(1/z\) which goes to \(\infty\) as required.
-
-Then for the range that \(G > 0\), \(H\) is invertible since it has strictly positive derivative and we may define
-\[
-\xi(r) = H^{-1} (\ln r^{\beta} + \lambda).
-\]
-
-Actually, we can always take \(a_0 \in (0, a)\) near \(0\) so that \(G > 0\) on \((0, b_0)\). Moreover, the integrand defining \(H\) is non-negative. The only thing that could go wrong, stopping us from integrating all the way to \(a\) is if \(G \to 0\) so that \(\sqrt{\abs{G}} \to 0\) is not integrable for some \(b_0 < a_0\). If that doesn't happen we can integrate all the way to \(a\) and we expect the integral to be \(\infty\) as we approach \(a\) just as it is as we approach \(0\). Then we get \(H : (0, a) \to (-\infty, \infty)\) an increasing, hence invertible function.
-
-\textbf{Look at the behaviour of \(\xi\) as \(\lambda \to \pm \infty\) and \(\lambda \to 0\). This will be used for blow up.}
+\textbf{Not sure how to best expand this. Maybe work with the integral definition of \(H\) or the implicit form of the solution?}
 
 \subsubsection*{Example: Harmonic map heat flow in \(\S^2\)}
 
