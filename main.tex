@@ -874,4 +874,66 @@ G = \frac{\ell^2}{\beta^2} u^2.
 
 The argument in this section is based on constructing a one-parameter family of stationary-solutions from the stationary solutions constructed in the last section.
 
+\subsubsection{The case \(\|\psi\|_{\infty} < a\)}
+
+In this case, we can just use the stationary solution as a barrier. Recall that
+\[
+\xi_{\lambda} (r) = H^{-1} (\ln r^{\beta} + \lambda),
+\]
+with \(H : (0, a) \to (-\infty, \infty)\). So we automatically have \(0 < \xi < a\), as well as
+\[
+\lim_{r\to 0} H^{-1} (\ln r^{\beta} + \lambda) = 0, \quad \lim_{\lambda\to\infty} H^{-1}(\ln r^{\beta} + \lambda) = a \quad \text{(non uniformly in \(r\))}.
+\]
+
+\textbf{If \(\|\psi\|_{\infty} < a\), then we for any \(r_0 > 0\), from the monotonicity of \(H^{-1} (\ln r^{\beta} + \lambda)\) in \(r\), we can choose \(\lambda\) so that \(\psi(r, 0) < \xi_{\lambda}(r)\) for \(r \in [r_0, 1]\). I need to check the asymptotics as \(r\to 0\) to get \(\psi(r, 0) < \xi(r)\) for \(r \in (0, r_0)\).}
+
+\subsection{The case \(\|\psi\|_{\infty} < 2a\)}.
+
+In this case, we add together two stationary solutions \(\xi_{\lambda}\) and \(\xi_{\mu}\), allowing \(\lambda\) to depend on \(t\). That is,
+\[
+\xi(r) = \xi_{\lambda(t)} + \xi_{\mu}
+\]
+where \(\lambda\) will be chosen to ensure we get sub/super solutions as appropriate, and \(\mu > 0\) is a constant. The function \(\lambda(t)\) will have some constants \(A > 0, \lambda_0 > 0\), and we'll choose \(\mu, \lambda_0\) to get the initial inequality and \(A\) to obtain a sub/super solution.
+
+The key thing is to understand the non-linear term \(F(u)\). In particular the second order part. So let us write
+\[
+F(Z) = F_1 Z + F_2(Z)
+\]
+with \(F_1 = F'(0) \in \R\) a constant, and \(F_2(Z) = F(Z) - F_1 Z\) a \(C^{1,\alpha}\) function such that
+\[
+F_2'(0) = 0, \quad \lim_{r\to 0} \frac{1}{Z} F_2(Z) = 0, \quad \lim_{Z\to 0} \frac{\abs{F_2(Z)}}{Z^{1+\alpha}} < \infty.
+\]
+
+Then we define,
+\[
+L(\psi) = L_F(\psi) = \psi_{rr} + \frac{1}{r} \psi_r - \frac{F_1}{r^2} \psi.
+\]
+Our harmonic map heat flow equation is
+\[
+\partial_t \psi = L(\psi) - \frac{1}{r^2} F_2(\psi)
+\]
+and stationary solutions satisfy
+\[
+L(\psi) = \frac{1}{r^2} F(\psi).
+\]
+
+Our candiate barrier, \(\xi(r) = \xi_{\lambda(t)} + \xi_{\mu}\) satisfies
+\[
+\partial_t \xi = \partial_{\lambda} \xi_{\lambda} \partial_t \lambda
+\]
+and
+\[
+\begin{split}
+L(\psi) - \frac{1}{r^2} F(\psi) &= L(\xi_{\lambda} + \xi_{\mu}) - \frac{1}{r^2} F_2(\xi_{\lambda} + \xi_{\mu}) \\
+&= L(\xi_{\lambda}) + L(\xi_{\mu}) - \frac{1}{r^2} F_2(\xi_{\lambda} + \xi_{\mu}) \\
+&= \frac{1}{r^2}\left[F_2(\xi_{\lambda}) + F_2(\xi_{\mu}) - F_2(\xi_{\lambda} + \xi_{\mu})\right].
+\end{split}
+\]
+
+Thus we obtain a sub solution if and only if
+\[
+\partial_{\lambda} \xi_{\lambda} \partial_t \lambda \leq \frac{1}{r^2}\left[F_2(\xi_{\lambda}) + F_2(\xi_{\mu}) - F_2(\xi_{\lambda} + \xi_{\mu})\right]
+\]
+and a super solution if and only if we have \(\geq\) instead.
+
 \end{document}
