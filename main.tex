@@ -37,6 +37,7 @@ where \(C > 0\) is a real constant and \(F\) is a Lipschitz function that is odd
 Such problems arise in studying equivariant \emph{harmonic map heat flow} and equivariant \emph{Yang-Mills flow}.
 
 \subsection{Energy and Gradient Flow}
+\label{subsec:intro_energygradient}
 
 Let \(u\) solve
 \[
@@ -167,7 +168,7 @@ f (r, \theta, t) = (\psi(r, t), \ell\theta (\operatorname{mod} 2\pi)).
 \]
 for some smooth $\psi : (0, 1) \times [0, T) \to (0, a)$ with \(\psi(0, t) = 0\) for every \(t \in [0, T)\).
 
-We are interested in the phenomena of \emph{blow-up} of the \emph{harmonic map heat flow}, for which purpose it is sufficient to fix the boundary data, \(\psi(1, t) = \psi_1\) for a real constant \(\psi_1 > 0\). Of course the initial condition for \(f_0(r, \theta) = f(r, \theta, 0)\) is also equivariant so we take initial condition, \(\psi_0\) with \(\psi_0(0) = 0\) and \(\psi_0(1) = \psi_1\).
+For the purpose of studying blow-up it is sufficient to fix the boundary data, \(\psi(1, t) = \psi_1\) for a real constant \(\psi_1 > 0\). If the initial data, \(f_0(r, \theta) = f(r, \theta, 0)\) is equivariant, this is preserved along the flow and so we take initial condition, \(\psi_0\) with \(\psi_0(0) = 0\).
 
 The harmonic map heat flow with the stated boundary conditions then becomes
 \begin{equation}
@@ -204,16 +205,16 @@ Should be similar to the two-dimensional case but I don't know if a degree \(\el
 \]
 on the open, unit ball fits into the framework. In fact, we can interpret such equations as Harmonic maps into a warped product space with metric
 \[
-ds^2 = dr^2 + g^2(r) d\theta^2
+ds^2 = dr^2 + u^2(r) d\theta^2
 \]
-where \(g\) solves the ODE
+where \(u\) solves the ODE
 \[
 \begin{cases}
-gg' &= F(g) \\
-g(0) &= 0
+uu' &= F(u) \\
+u(0) &= 0
 \end{cases}
 \]
-which has a unique solution provided \(F(g)/g\) is Lipschitz.
+which has a unique solution as in section \ref{subsec:intro_energygradient}.
 
 \textbf{Write down the energy here.}
 
@@ -234,11 +235,11 @@ satisfy
 
 \subsubsection*{General Equivariant Harmonic Map Heat Flow}
 
-Let \(G\) be a Lie group and \(M, N\) homogeneous \(G\) spaces. Then look at warped product metrics
+Let \(G\) be a Lie group and \(M, N\) homogeneous \(G\)-spaces. Then look at warped product metrics
 \[
 dr^2 + u^2(r) g
 \]
-where \(g\) is a left/right/bi-invariant metric on \(M\). Likewise for \(N\). Then \(G\) equivariant harmonic map heat flow should reduce to an ODE similar to the spherical case.
+where \(g\) is a left/right/bi-invariant metric on \(M\). Likewise for \(N\). Then \(G\) equivariant harmonic map heat flow should reduce to an ODE similar to the spherical case. In particular, positive Ricci should give a nice class of examples, as would bounded Ricci (compare \cite{Zhou2017,2016arXiv161005234M}).
 
 \subsubsection*{General Equivariant Yang-Mills Flow}
 
@@ -305,7 +306,7 @@ By the assumptions \(F(0) = 0\), and \(F\) is odd, increasing on \((-\delta,\del
 0 \leq \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}}, \quad (r, t) \in [0, \rho] \times [0, \tau].
 \end{equation}
 
-Next, to handle \(r\) away from \(\rho\), we choose any
+Next, to handle \(r\) away from \(\rho\), we choose any \(\lambda\) such that
 \[
 \lambda > \frac{1}{\rho^2} \operatorname{Lip} (F) > 0
 \]
@@ -319,7 +320,9 @@ Now we may define
 \[
 h = e^{-\lambda t} \varphi.
 \]
-Note that \(\tau\) is given by assuming the theorem is false in \eqref{eq:false_claim} and \(\lambda\) depends on \(\tau\) through \(\rho\). We may now apply the usual contradiction argument as follows: The assumptions of the theorem give
+Note that \(\tau\) is already given by assuming the theorem is false in \eqref{eq:false_claim} and is independent of \(\lambda\) which is essential. A lower bound for the constant \(\lambda\) does depend on \(\tau\) through \(\rho\) but we are free to increase \(\lambda\).
+
+We may now apply the usual contradiction argument as follows: The assumptions of the theorem give
 \[
 h(0, t) \leq 0, \quad h(1, t) \leq 0 \quad \text{and} \quad h(r, 0) \leq 0
 \]
@@ -327,16 +330,17 @@ while claiming the conclusion of the theorem is false implies, by equation \eqre
 \[
 \sup \{h(r, t) : 0 \leq r \leq 1, 0 \leq t \leq \tau\} > 0.
 \]
-Let \((r_0, t_0) \in (0, 1) \times (0, \tau]\) realise the supremum. Computing, we see that \(h\) satisfies
-\[
+Let \((r_0, t_0) \in (0, 1) \times (0, \tau]\) realise the supremum. Then at \((r_0, t_0)\) we have
+\begin{equation}
+\label{eq:max_principle_inequality}
 \begin{split}
 \partial_t h &= - \lambda e^{-\lambda t} \varphi + e^{-\lambda t} \partial_t \varphi \\
 &\leq  -\lambda e^{-\lambda t} \varphi + e^{-\lambda t} \left[\psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi)\right] \\
 &\quad - e^{-\lambda t}\left[\overline{\xi}_{rr} + \frac{C}{r} \overline{\xi}_r - \frac{1}{r^2} F(\overline{\xi})\right] \\
 &= h_{rr} + \frac{C}{r} h_r - \left(\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}}\right) h.
 \end{split}
-\]
-At \((r_0, t_0)\), \(h(r_0, t_0) > 0\), and hence
+\end{equation}
+Moreover, \(h(r_0, t_0)\) equals the supremum which is assumed positive, hence by equation \eqref{eq:max_principle_inequality},
 \[
 \lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} \leq \frac{1}{h} \left(h_{rr} + \frac{C}{r} h_r - \partial_t h\right) \leq 0.
 \]
@@ -348,7 +352,7 @@ But this gives a contradiction since using equation \eqref{eq:near_positive} for
 
 \section{Blow up}
 
-Our equation is
+Recall, our differential equation is
 \[
 \partial_t \psi = \psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi)
 \]
@@ -360,11 +364,11 @@ The model case is if \(F\) is differentiable at \(z=0\), in which case the limit
 
 \subsection{Heuristic Analysis}
 
-Because the coefficients are singular at \(r=0\), finite time blow up of bounded solutions, if it occurs, must occur at the origin \(r = 0\) (see Lemma \ref{lem:apriori_bounds}). Heuristically then, to see when blow up occurs we need only consider the asymptotics near \(r = 0\). For the purpose of illustration then, it's sufficient to take \(\psi = r^{\beta}\) and \(F(z) = A z\) with \(A > 0\).
+Because the coefficients are singular at \(r=0\), finite time blow up of bounded solutions, if it occurs, must occur at the origin \(r = 0\) (see Lemma \ref{lem:apriori_bounds}). Heuristically then, to see when blow up occurs we need only consider the asymptotics near \(r = 0\). For the purpose of illustration, we linearise both the potential function\(F\) and the solution \(\psi\). That is, let \(\psi = r^{\beta}\) for some \(\beta\) and \(F(z) = A z\) with \(A > 0\). In the sections that follow we will show that the heuristic analysis models the general behaviour.
 
-With our choice of \(\psi\),
+Our choice of \(\psi\) is stationary:
 \[
-\partial_t \psi = 0
+\partial_t \psi = 0,
 \]
 and the spatial part is a second order, linear Euler equation:
 \[
@@ -410,6 +414,9 @@ We have
 \]
 Thus if \(0 < \beta_0 < 1\) we obtain sub-solutions \(r^{\beta}, \beta_0 \leq \beta < 1\) with \(C^1\) blow up at the origin. If \(\beta_0 > 1\), we obtain super-solutions \(r^{\beta}, \beta_0 \leq \beta < 1\) with no \(C^1\) blow up at the origin. Similarly \(0 < \beta_0 < 2\) gives sub-solutions with \(C^2\) blow up while \(2 < \beta_0\) gives super-solutions with no \(C^2\) blow up. It turns out the boundary cases \(\beta_0 = 1, 2\) may be perturbed by a time-dependent factor to induce blow up.
 
+\subsection{Formal Asymptotics}
+\label{subsec:asymptotics}
+
 Now we look at formal asymptotics near \(r = 0\). Let us suppose that \(F\) is analytic,
 \[
 F(z) = \sum_{n=1}^{\infty} F_n z^n
@@ -454,11 +461,11 @@ Substitution gives
 \end{split}
 \]
 
-If our \(F\) and \(C\) are such that \(C = F_1\) (for example when \(C = 1\) and \(F'(0) = 1\)), we may freely choose \(\psi_1\). Otherwise, \(\psi_1 = 0\). Either way, we then seek to recursively solve
+If \(C = F_1\) (for example, when \(C = 1\) and \(F'(0) = 1\)), we may freely choose \(\psi_1\). Otherwise, we must have \(\psi_1 = 0\). Either way, we then seek to recursively solve
 \[
 (n^2 + (C-1)n)\psi_n - a_n = 0
 \]
-for \(\psi_n\). Note that in \(a_n\), from the definitions of \(S_{n,k}\) and \(P_{n,k}\) (namely that \(\sum_{i=1}^n \pi_i = k\) and \(\sum_{i=1}^n i \psi_i = n\)) the appearance of \(\psi_n\) is to first order and only in \(S_{n,1} = F_1 \psi_n\). This is just another way of saying that among the degree \(n\) terms of \(F(\psi)\), there is precisely one term, \(F_1 \psi_n\) involving \(\psi_n\).
+for \(\psi_n\). Note that in the sum defining \(a_n\), from the definitions of \(S_{n,k}\) and \(P_{n,k}\) (namely that \(\sum_{i=1}^n \pi_i = k\) and \(\sum_{i=1}^n i \psi_i = n\)) the appearance of \(\psi_n\) is to first order and occurs only in the term \(S_{n,1} = F_1 \psi_n\). This is just another way of saying that among the degree \(n\) terms of \(F(\psi)\), there is precisely one term, \(F_1 \psi_n\) involving \(\psi_n\).
 
 Thus we have,
 \[
@@ -480,7 +487,10 @@ p(n) \psi_n = q_n (\psi_1, \dots, \psi_{n-1})
 \end{equation}
 where \(p\) is the characteristic polynomial from equation \eqref{eq:char_poly} and in the case \(n=1\), \(p\) reduces to \(p(1) = C - F_1\) so that the recurrence relation \eqref{eq:recurrence} holds for \(n=1\) by defining \(q_1 = 0\).
 
-If \(p(n) \ne 0\) for all natural numbers, we may choose \(\psi_1\) freely and solve for the remaining coefficients \(\psi_n\), \(n > 1\). In this situation, by choosing \(\psi = \lambda(t)\) appropriately and such that \(\lambda(t) \to \infty\) in finite time, we are able to construct a sub-solution with \(C^1\) blow up.
+If \(p(n) \ne 0\) for all natural numbers, we may choose \(\psi_1\) freely and the remaining coefficients are given recursively by
+\[
+\psi_n = \frac{q_n(\psi_1, \cdots, \psi_{n-1})}{p(n)}, \quad n > 1. 
+\]
 
 More generally, we have the following:
 
@@ -562,8 +572,9 @@ hence \(\beta_0 = \sqrt{A}\).
 For the degree \(\ell\)-harmonic map heat flow, \(\beta_0 = \ell\) while for the Yang-Mills flow, \(\beta_0 = 2\). Thus for Yang-Mills and higher degree harmonic map heat flow (\(\ell > 1\)), we have \(\beta_0 > 1\) and no \(C^1\) blow up occurs. However for, \(\ell \leq 2\) and Yang-Mills we do expect \(C^2\) blow up. For \(\ell > 2\), there is no \(C^2\) blow up.
 
 \subsection{Blow up at the origin}
+\label{subsec:origin_blowup}
 
-With our heuristic motivation to hand, we move on to show that blow up, if it occurs at all, must occur at the origin. This is a straight forward application of standard estimates \cite[Theorem 10.1]{Ladyzhenskaja:/1967} but we record the details in the following lemma for convenience.
+With our heuristic motivation to hand, we move on to show that blow up of bounded solutions, if it occurs at all, must occur at the origin. This is a straight forward application of standard estimates \cite[Theorem 10.1]{Ladyzhenskaja:/1967} but we record the details in the following lemma for convenience.
 
 \begin{lemma}
 \label{lem:apriori_bounds}
@@ -624,7 +635,7 @@ In the hypothesis of the theorem, we assume \(\psi\) has finite \(C^{0,\alpha}\)
 \end{proof}
 
 \subsection{Stationary solutions}
-
+\label{subsec:stationary}
 In this section we study stationary solutions with suitable boundary data with a view to creating by sub- and super-solutions in the next section. Our stationary solutions satisfy
 \begin{equation}
 \label{eq:stationary}
@@ -841,6 +852,7 @@ G = \frac{\ell^2}{\beta^2} u^2.
 \]
 \subsubsection*{Stationary solutions for arbitrary \(C\)}
 \subsection{Barriers}
+\label{subsec:barriers}
 
 The argument in this section is based on constructing a one-parameter family of stationary-solutions from the stationary solutions constructed in the last section.
 
