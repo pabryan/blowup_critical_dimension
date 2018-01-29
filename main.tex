@@ -34,10 +34,10 @@ We consider the phenomena of \emph{blow up} for solutions of the problem,
 \end{equation}
 where \(C > 0\) is a real constant and \(F\) is a Lipschitz function that is odd and increasing on some interval \((-\delta, \delta)\) around \(0\). Note that \(F(0) = 0\) since \(F\) is odd. A particular example is any \(C^2\), odd function \(F\) such that \(F'(0) > 0\).
 
-Such problems arise in studying equivariant \emph{harmonic map heat flow} and equivariant \emph{Yang-Mills flow}.
+Such problems arise in studying equivariant \emph{harmonic map heat flow} and equivariant \emph{Yang-Mills flow}. See section \ref{sec:harmonic_map_heat_flow} for details.
 
-\subsection{Energy and Gradient Flow}
-\label{subsec:intro_energygradient}
+\section{Harmonic Map Heat Flow in Warped Products}
+\label{sec:harmonic_map_heat_flow}
 
 Let \(u\) solve
 \[
@@ -60,11 +60,49 @@ Let
 \[
 a = \sup\{z > 0: u > 0 \text{ on } (0, z)\}
 \]
-where we allow \(a = \infty\). Then define the warped-product metric,
+where we allow \(a = \infty\). Then define the Riemmanian warped-product manifold \((M, g)\) by
+\begin{equation}
+\label{eq:warped_product}
+M = (0, a) \times \S^1, \quad g = dz^2 + u^2(z) d\theta^2.
+\end{equation}
+.
+
+\subsection{Harmonic Maps}
+\label{subsec:harmonic_maps}
+
+\textbf{TODO}
+
+\subsection{Equivariant Harmonic Maps}
+\label{subsec:equivariant}
+
+Let \((M, g)\) be defined as in equation \eqref{eq:warped_product} and let \((B, h)\) denote the unit \(2\)-dimensional ball with flat metric \(h = dr^2 + r^2 d\theta^2\) on \((0, 1) \times (0, 2\pi) \simeq B \backslash \{0\}\).
+
+\begin{defn}
+A map,
 \[
-g = dz^2 + u^2(z) d\theta^2
+\psi: (B, h) \to (M, g)
 \]
-on \(M = (0, a) \times \S^1\). Then an equivariant harmonic map \(\psi: (B, dr^2 + r^2 d\theta^2) \to (M, g)\) is harmonic if and only if equation \eqref{eq:pde} holds.
+is \emph{degree \(\ell\) equivariant} if for all \(r, \theta \in (0, 1) \times (0, 2\pi)\) we have 
+\[
+\psi(r, \theta) = (\psi_0(r), \ell \theta)
+\]
+with \(\psi_0 : (0, 1) \to (0, a)\). The map \(\psi\) is \(C^{k,\alpha}\) precisely when \(\psi_0\) is \(C^{k,\alpha}\).
+
+A map
+\[
+\psi : B \times [0, T) \to M
+\]
+is a \emph{one-parameter family of equivariant maps} if for each \(t \in [0, T)\), the map
+\[
+\psi_t = \psi(\cdot, t) : (B, h) \to (M, g)
+\]
+is an equivariant map.
+\end{defn}
+
+A simple, direct computation (see e.g. \cite{}) shows that \(\psi\) solves the harmonic map heat flow on \((B, h) \to (M, g)\) if and only if \(\psi\) satisfies equation \eqref{eq:pde}. In this context, equation \eqref{eq:pde} is known as the \emph{reduced equation}.
+
+\subsection{Energy and Gradient Flow}
+\label{subsec:intro_energygradient}
 
 \begin{defn}
 \label{defn:energy}
@@ -300,103 +338,9 @@ Degree \(\ell\) Harmonic map heat flow into \(\S^2\) & \(1\) & \(\tfrac{\ell^2}{
 Of particular note is the last three rows where \(C = 1\). In that case, the last column determines blow up which occurs if and only if \(F'(0) = 1\). The first two rows all have \(C > 1\) in which case blow up is dependent on \textbf{Find out what exactly!}.
 
 
-\section{Comparison Principle}
+\section{Linearisation and Static Solutions}
 
-Our argument is based on the following comparison principle:
-
-\begin{thm}[Comparison Principle]
-Let \(\psi\) satisfy equation \eqref{eq:pde} and let \(\overline{\xi}\) be a super-solution; that is
-\begin{equation}
-\label{eq:pde_super}
-\begin{cases}
-\partial_t \overline{\xi} &\geq \overline{\xi}_{rr} + \frac{C}{r} \overline{\xi}_r - \frac{1}{r^2} F(\overline{\xi}) \\
-\overline{\xi}(r, 0) &\geq \psi_0(r) \\
-\overline{\xi}(0, t) &= 0, \quad \overline{\xi}(1, t) \geq \psi_1, \quad t \in [0, T).
-\end{cases}
-\end{equation}
-Then \(\psi \leq \overline{\xi}\) for all \(t \in [0, T)\). If on the other hand, \(\underline{\xi}\) satisfies the conditions of equation \eqref{eq:pde_super}, but with all inequalities reversed, then \(\psi \geq \underline{\xi}\).
-\end{thm}
-
-The proof is basically a standard comparison principle, but with a slight adjustment to deal with the singular behaviour of the coefficients \(1/r\) and \(F(\psi(r))/r^2\) near \(r=0\). Note also that the only non-linearity occurs in the lowest order term \(F(\psi(r))/r^2\). These constraints account for the assumptions on \(F\) given in the introduction (see equations \eqref{eq:near_positive} and \eqref{eq:far_positive}).
-
-\begin{proof}
-We only prove the super-solution case, \(\overline{\xi}\). The sub-solution case \(\underline{\xi}\) is similar.
-
-Let
-\[
-\varphi = \psi - \overline{\xi}.
-\]
-Then the initial assumption is \(\varphi(r, 0) \leq 0\) and the claim of the theorem is that \(\varphi(r, t) \leq 0\) for all \(t \in [0, T)\). As usual we argue by contradiction: If the claim is false, then there is a \(\tau > 0\) such that
-\begin{equation}
-\label{eq:false_claim}
-\sup \{\varphi(r, t) : 0 \leq r \leq 1, 0 \leq t \leq \tau\} > 0.
-\end{equation}
-
-Before going through the contradiction argument, we first need to handle the singular coefficients at \(r = 0\). Since \(\psi(0, t) = \overline{\xi}(0, t) = 0\), by the regularity of \(\psi\) and \(\overline{\xi}\), there exists a \(\rho > 0\) such that
-\[
--\delta < \psi, \xi < \delta, \quad \text{for} \quad 0 \leq r \leq \rho, \quad 0 \leq t \leq \tau.
-\]
-By the assumptions \(F(0) = 0\), and \(F\) is odd, increasing on \((-\delta,\delta)\), we must have
-\begin{equation}
-\label{eq:near_positive}
-0 \leq \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}}, \quad (r, t) \in [0, \rho] \times [0, \tau].
-\end{equation}
-
-Next, to handle \(r\) away from \(\rho\), we choose any \(\lambda\) such that
-\[
-\lambda > \frac{1}{\rho^2} \operatorname{Lip} (F) > 0
-\]
-where \(\operatorname{Lip} (F)\) is the Lipschitz constant of \(F\). Then for  \(r \geq \rho\) we have
-\begin{equation}
-\label{eq:far_positive}
-\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} > \lambda - \frac{1}{r^2} \operatorname{Lip} (F) > 0
-\end{equation}
-
-Now we may define
-\[
-h = e^{-\lambda t} \varphi.
-\]
-Note that \(\tau\) is already given by assuming the theorem is false in \eqref{eq:false_claim} and is independent of \(\lambda\) which is essential. A lower bound for the constant \(\lambda\) does depend on \(\tau\) through \(\rho\) but we are free to increase \(\lambda\).
-
-We may now apply the usual contradiction argument as follows: The assumptions of the theorem give
-\[
-h(0, t) \leq 0, \quad h(1, t) \leq 0 \quad \text{and} \quad h(r, 0) \leq 0
-\]
-while claiming the conclusion of the theorem is false implies, by equation \eqref{eq:false_claim} that
-\[
-\sup \{h(r, t) : 0 \leq r \leq 1, 0 \leq t \leq \tau\} > 0.
-\]
-Let \((r_0, t_0) \in (0, 1) \times (0, \tau]\) realise the supremum. Then at \((r_0, t_0)\) we have
-\begin{equation}
-\label{eq:max_principle_inequality}
-\begin{split}
-\partial_t h &= - \lambda e^{-\lambda t} \varphi + e^{-\lambda t} \partial_t \varphi \\
-&\leq  -\lambda e^{-\lambda t} \varphi + e^{-\lambda t} \left[\psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi)\right] \\
-&\quad - e^{-\lambda t}\left[\overline{\xi}_{rr} + \frac{C}{r} \overline{\xi}_r - \frac{1}{r^2} F(\overline{\xi})\right] \\
-&= h_{rr} + \frac{C}{r} h_r - \left(\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}}\right) h.
-\end{split}
-\end{equation}
-Moreover, \(h(r_0, t_0)\) equals the supremum which is assumed positive, hence by equation \eqref{eq:max_principle_inequality},
-\[
-\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} \leq \frac{1}{h} \left(h_{rr} + \frac{C}{r} h_r - \partial_t h\right) \leq 0.
-\]
-But this gives a contradiction since using equation \eqref{eq:near_positive} for \(r_0 \leq \rho\), and equation \eqref{eq:far_positive} for \(r_0 \geq \rho\) gives
-\[
-\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} > 0.
-\]
-\end{proof}
-
-\section{Blow up}
-
-Recall, our differential equation is
-\[
-\partial_t \psi = \psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi)
-\]
-Here we show that for bounded solutions, the phenomena of blow depends only on \(C\) and \(\lim_{z\to 0} z^{-1} F(z)\). Since we assume \(F\) is Lipschitz, we have \(|z^{-1} F(z)|\) is bounded near \(0\) and we now make the further assumption that the limit exists in which case, since \(F(0) = 0\) and \(F\) is odd and increasing,
-\[
-A = \lim_{z\to 0} z^{-1} F(z) \geq 0.
-\]
-The model case is if \(F\) is differentiable at \(z=0\), in which case the limit is simply \(A = F'(0)\) and if \(F\) is say \(C^2\) near \(z=0\), then \(F(z) = Az + \mathcal{O} (z^2)\) as \(z \to 0\).
+\subsection{The linearisation}
 
 \subsection{Heuristic Analysis}
 
@@ -606,69 +550,6 @@ p(\beta) = \beta^2 - A
 hence \(\beta_0 = \sqrt{A}\).
 
 For the degree \(\ell\)-harmonic map heat flow, \(\beta_0 = \ell\) while for the Yang-Mills flow, \(\beta_0 = 2\). Thus for Yang-Mills and higher degree harmonic map heat flow (\(\ell > 1\)), we have \(\beta_0 > 1\) and no \(C^1\) blow up occurs. However for, \(\ell \leq 2\) and Yang-Mills we do expect \(C^2\) blow up. For \(\ell > 2\), there is no \(C^2\) blow up.
-
-\subsection{Blow up at the origin}
-\label{subsec:origin_blowup}
-
-With our heuristic motivation to hand, we move on to show that blow up of bounded solutions, if it occurs at all, must occur at the origin. This is a straight forward application of standard estimates \cite[Theorem 10.1]{Ladyzhenskaja:/1967} but we record the details in the following lemma for convenience.
-
-\begin{lemma}
-\label{lem:apriori_bounds}
-Let \(\psi\) be a solution of \eqref{eq:pde} with initial data \(\psi_0\) satisfying
-\[
-\|\psi_0\|_{C^{2,\alpha}([0, 1])} < \infty,
-\]
-and
-\[
-\|\psi\|_{L^{\infty} ([0, 1] \times [0, \tau])} < \infty
-\]
-If there exists a \(\rho \in (0, 1]\) and a \(\tau \in (0, T)\) such that
-\[
-\|\psi\|_{C^{2,\alpha}([0, \rho] \times [0, \tau])} < \infty,
-\]
-then
-\[
-\|\psi\|_{C^{2,\alpha}([0, 1] \times [0, \tau])} < \infty.
-\]
-In particular, if the maximal existence time \(T < \infty\), then
-\[
-\lim_{\tau\to T} \inf_{\rho \in (0, 1)} \{\|\psi\|_{C^2([0, \rho] \times [0, \tau])}\} = \infty.
-\]
-\end{lemma}
-
-\begin{proof}
-We need to show
-\[
-\|\psi\|_{C^{2,\alpha}([\rho, 1] \times [0, \tau])} < \infty,
-\]
-under the hypothesis
-\[
-\|\psi\|_{C^{2,\alpha}([0, \rho] \times [0, \tau])} < \infty.
-\]
-
-We use the notation of \cite[Theorem 10.1]{Ladyzhenskaja:/1967}. Define the linear operator
-\[
-\mathcal{L} \psi = \partial_t \psi - \psi_{rr} - \frac{C}{r} \psi_r
-\]
-and
-\[
-f(r, t) = -\frac{1}{r^2} F(\psi(r, t))
-\]
-so that
-\[
-\mathcal{L} \psi = f.
-\]
-
-Let \(\Omega = (0, 1)\), \(\Omega' = (\rho, 1)\), and \(\Omega'' = (\rho/2, 1)\), \(S = \{0, 1\}\), \(S' = S'' = \{1\}\). \cite[Theorem 10.1]{Ladyzhenskaja:/1967} gives constants \(c_1, c_2 > 0\) such that
-\[
-\begin{split}
-\|\psi\|_{C^{2,\alpha}([\rho, 1] \times [0, \tau])} &\leq c_1 \left(\|\tfrac{1}{r^2} F(\psi)\|_{C^{0,\alpha}([\rho/2, 1] \times [0, \tau])} + \|\psi_0\|_{C^{2,\alpha}([\rho/2, 1])} + \|\psi\|_{C^{2,\alpha}(\{1\} \times [0, \tau])} \right) \\
-&\quad + c_2 \|\psi\|_{C([\rho/2, 1] \times [0, \tau])}.
-\end{split}
-\]
-
-In the hypothesis of the theorem, we assume \(\psi\) has finite \(C^{0,\alpha}\) norm, hence the last term is finite. Since \(F\) is also Lipschitz, the first term \(r^{-2} F(\psi(r, t))\) has finite \(C^{0,\alpha}\) norm on \(r \in [\rho, 1], t \in [0, \tau]\). The second term is the initial data \(\psi_0\) which is assumed to have finite \(C^{2,\alpha}\) norm and finally the third term - the boundary term \(\psi|_{r=1}\) - is constant hence also has finite norm.
-\end{proof}
 
 \subsection{Stationary solutions}
 \label{subsec:stationary}
@@ -887,6 +768,168 @@ Here \(F = \ell^2 uu' = \tfrac{\ell^2}{2} (u^2)'\) and so
 G = \frac{\ell^2}{\beta^2} u^2.
 \]
 \subsubsection*{Stationary solutions for arbitrary \(C\)}
+
+\section{Blow up}
+
+Recall, our differential equation is
+\[
+\partial_t \psi = \psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi)
+\]
+Here we show that for bounded solutions, the phenomena of blow depends only on \(C\) and \(\lim_{z\to 0} z^{-1} F(z)\). Since we assume \(F\) is Lipschitz, we have \(|z^{-1} F(z)|\) is bounded near \(0\) and we now make the further assumption that the limit exists in which case, since \(F(0) = 0\) and \(F\) is odd and increasing,
+\[
+A = \lim_{z\to 0} z^{-1} F(z) \geq 0.
+\]
+The model case is if \(F\) is differentiable at \(z=0\), in which case the limit is simply \(A = F'(0)\) and if \(F\) is say \(C^2\) near \(z=0\), then \(F(z) = Az + \mathcal{O} (z^2)\) as \(z \to 0\).
+
+\subsection{Comparison Principle}
+
+Our argument is based on the following comparison principle:
+
+\begin{thm}[Comparison Principle]
+Let \(\psi\) satisfy equation \eqref{eq:pde} and let \(\overline{\xi}\) be a super-solution; that is
+\begin{equation}
+\label{eq:pde_super}
+\begin{cases}
+\partial_t \overline{\xi} &\geq \overline{\xi}_{rr} + \frac{C}{r} \overline{\xi}_r - \frac{1}{r^2} F(\overline{\xi}) \\
+\overline{\xi}(r, 0) &\geq \psi_0(r) \\
+\overline{\xi}(0, t) &= 0, \quad \overline{\xi}(1, t) \geq \psi_1, \quad t \in [0, T).
+\end{cases}
+\end{equation}
+Then \(\psi \leq \overline{\xi}\) for all \(t \in [0, T)\). If on the other hand, \(\underline{\xi}\) satisfies the conditions of equation \eqref{eq:pde_super}, but with all inequalities reversed, then \(\psi \geq \underline{\xi}\).
+\end{thm}
+
+The proof is basically a standard comparison principle, but with a slight adjustment to deal with the singular behaviour of the coefficients \(1/r\) and \(F(\psi(r))/r^2\) near \(r=0\). Note also that the only non-linearity occurs in the lowest order term \(F(\psi(r))/r^2\). These constraints account for the assumptions on \(F\) given in the introduction (see equations \eqref{eq:near_positive} and \eqref{eq:far_positive}).
+
+\begin{proof}
+We only prove the super-solution case, \(\overline{\xi}\). The sub-solution case \(\underline{\xi}\) is similar.
+
+Let
+\[
+\varphi = \psi - \overline{\xi}.
+\]
+Then the initial assumption is \(\varphi(r, 0) \leq 0\) and the claim of the theorem is that \(\varphi(r, t) \leq 0\) for all \(t \in [0, T)\). As usual we argue by contradiction: If the claim is false, then there is a \(\tau > 0\) such that
+\begin{equation}
+\label{eq:false_claim}
+\sup \{\varphi(r, t) : 0 \leq r \leq 1, 0 \leq t \leq \tau\} > 0.
+\end{equation}
+
+Before going through the contradiction argument, we first need to handle the singular coefficients at \(r = 0\). Since \(\psi(0, t) = \overline{\xi}(0, t) = 0\), by the regularity of \(\psi\) and \(\overline{\xi}\), there exists a \(\rho > 0\) such that
+\[
+-\delta < \psi, \xi < \delta, \quad \text{for} \quad 0 \leq r \leq \rho, \quad 0 \leq t \leq \tau.
+\]
+By the assumptions \(F(0) = 0\), and \(F\) is odd, increasing on \((-\delta,\delta)\), we must have
+\begin{equation}
+\label{eq:near_positive}
+0 \leq \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}}, \quad (r, t) \in [0, \rho] \times [0, \tau].
+\end{equation}
+
+Next, to handle \(r\) away from \(\rho\), we choose any \(\lambda\) such that
+\[
+\lambda > \frac{1}{\rho^2} \operatorname{Lip} (F) > 0
+\]
+where \(\operatorname{Lip} (F)\) is the Lipschitz constant of \(F\). Then for  \(r \geq \rho\) we have
+\begin{equation}
+\label{eq:far_positive}
+\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} > \lambda - \frac{1}{r^2} \operatorname{Lip} (F) > 0
+\end{equation}
+
+Now we may define
+\[
+h = e^{-\lambda t} \varphi.
+\]
+Note that \(\tau\) is already given by assuming the theorem is false in \eqref{eq:false_claim} and is independent of \(\lambda\) which is essential. A lower bound for the constant \(\lambda\) does depend on \(\tau\) through \(\rho\) but we are free to increase \(\lambda\).
+
+We may now apply the usual contradiction argument as follows: The assumptions of the theorem give
+\[
+h(0, t) \leq 0, \quad h(1, t) \leq 0 \quad \text{and} \quad h(r, 0) \leq 0
+\]
+while claiming the conclusion of the theorem is false implies, by equation \eqref{eq:false_claim} that
+\[
+\sup \{h(r, t) : 0 \leq r \leq 1, 0 \leq t \leq \tau\} > 0.
+\]
+Let \((r_0, t_0) \in (0, 1) \times (0, \tau]\) realise the supremum. Then at \((r_0, t_0)\) we have
+\begin{equation}
+\label{eq:max_principle_inequality}
+\begin{split}
+\partial_t h &= - \lambda e^{-\lambda t} \varphi + e^{-\lambda t} \partial_t \varphi \\
+&\leq  -\lambda e^{-\lambda t} \varphi + e^{-\lambda t} \left[\psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi)\right] \\
+&\quad - e^{-\lambda t}\left[\overline{\xi}_{rr} + \frac{C}{r} \overline{\xi}_r - \frac{1}{r^2} F(\overline{\xi})\right] \\
+&= h_{rr} + \frac{C}{r} h_r - \left(\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}}\right) h.
+\end{split}
+\end{equation}
+Moreover, \(h(r_0, t_0)\) equals the supremum which is assumed positive, hence by equation \eqref{eq:max_principle_inequality},
+\[
+\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} \leq \frac{1}{h} \left(h_{rr} + \frac{C}{r} h_r - \partial_t h\right) \leq 0.
+\]
+But this gives a contradiction since using equation \eqref{eq:near_positive} for \(r_0 \leq \rho\), and equation \eqref{eq:far_positive} for \(r_0 \geq \rho\) gives
+\[
+\lambda + \frac{1}{r^2} \frac{F(\psi) - F(\overline{\xi})}{\psi - \overline{\xi}} > 0.
+\]
+\end{proof}
+
+\subsection{Blow up at the origin}
+\label{subsec:origin_blowup}
+
+With our heuristic motivation to hand, we move on to show that blow up of bounded solutions, if it occurs at all, must occur at the origin. This is a straight forward application of standard estimates \cite[Theorem 10.1]{Ladyzhenskaja:/1967} but we record the details in the following lemma for convenience.
+
+\begin{lemma}
+\label{lem:apriori_bounds}
+Let \(\psi\) be a solution of \eqref{eq:pde} with initial data \(\psi_0\) satisfying
+\[
+\|\psi_0\|_{C^{2,\alpha}([0, 1])} < \infty,
+\]
+and
+\[
+\|\psi\|_{L^{\infty} ([0, 1] \times [0, \tau])} < \infty
+\]
+If there exists a \(\rho \in (0, 1]\) and a \(\tau \in (0, T)\) such that
+\[
+\|\psi\|_{C^{2,\alpha}([0, \rho] \times [0, \tau])} < \infty,
+\]
+then
+\[
+\|\psi\|_{C^{2,\alpha}([0, 1] \times [0, \tau])} < \infty.
+\]
+In particular, if the maximal existence time \(T < \infty\), then
+\[
+\lim_{\tau\to T} \inf_{\rho \in (0, 1)} \{\|\psi\|_{C^2([0, \rho] \times [0, \tau])}\} = \infty.
+\]
+\end{lemma}
+
+\begin{proof}
+We need to show
+\[
+\|\psi\|_{C^{2,\alpha}([\rho, 1] \times [0, \tau])} < \infty,
+\]
+under the hypothesis
+\[
+\|\psi\|_{C^{2,\alpha}([0, \rho] \times [0, \tau])} < \infty.
+\]
+
+We use the notation of \cite[Theorem 10.1]{Ladyzhenskaja:/1967}. Define the linear operator
+\[
+\mathcal{L} \psi = \partial_t \psi - \psi_{rr} - \frac{C}{r} \psi_r
+\]
+and
+\[
+f(r, t) = -\frac{1}{r^2} F(\psi(r, t))
+\]
+so that
+\[
+\mathcal{L} \psi = f.
+\]
+
+Let \(\Omega = (0, 1)\), \(\Omega' = (\rho, 1)\), and \(\Omega'' = (\rho/2, 1)\), \(S = \{0, 1\}\), \(S' = S'' = \{1\}\). \cite[Theorem 10.1]{Ladyzhenskaja:/1967} gives constants \(c_1, c_2 > 0\) such that
+\[
+\begin{split}
+\|\psi\|_{C^{2,\alpha}([\rho, 1] \times [0, \tau])} &\leq c_1 \left(\|\tfrac{1}{r^2} F(\psi)\|_{C^{0,\alpha}([\rho/2, 1] \times [0, \tau])} + \|\psi_0\|_{C^{2,\alpha}([\rho/2, 1])} + \|\psi\|_{C^{2,\alpha}(\{1\} \times [0, \tau])} \right) \\
+&\quad + c_2 \|\psi\|_{C([\rho/2, 1] \times [0, \tau])}.
+\end{split}
+\]
+
+In the hypothesis of the theorem, we assume \(\psi\) has finite \(C^{0,\alpha}\) norm, hence the last term is finite. Since \(F\) is also Lipschitz, the first term \(r^{-2} F(\psi(r, t))\) has finite \(C^{0,\alpha}\) norm on \(r \in [\rho, 1], t \in [0, \tau]\). The second term is the initial data \(\psi_0\) which is assumed to have finite \(C^{2,\alpha}\) norm and finally the third term - the boundary term \(\psi|_{r=1}\) - is constant hence also has finite norm.
+\end{proof}
+
 \subsection{Barriers}
 \label{subsec:barriers}
 
