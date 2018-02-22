@@ -67,7 +67,7 @@ Let \(u = \sin(\psi)\). Then degree one harmonic map heat flow gives \(F = \tfra
 The \(\SO(4)\) equivariant Yang-Mills flow on \(\R^4\) gives rise to \(C = 1\), \(F = 4 \psi(1 - \psi)(1 - \tfrac{1}{2}\psi)\). The higher dimensional (\(\SO(n)\) equivariant on \(\R^n\)) analogue is \(C = n-3\), \(F = 2(n-2) \psi(1-\psi)(1 - \tfrac{1}{2}\psi)\).
 \end{example}
 
-Here we are motivated by generalising some interesting properties of these two examples observed in \cite{MR2332425}. These observations are that in either example, the critical dimension (\(n=2\) for harmonic maps, \(n=4\) for Yang-Mills) in which the problems are conformally invariant gives \(C = 1\) and finite time blow up for the harmonic map heat flows (first proven in \cite{MR1180392}) and no finite time blow up for the Yang-Mills flow (first proven in \cite{MR1600272}). The curious point is that for Yang-Mills flow, the metric \(g\) has a conical singularity but no blow up, whereas for the harmonic map heat flow, the metric is smooth and does blow up. Evidently, it is not the conical singularity that determines blow up. The answer given is that the coeffecient \(\ell^2 = 1\) for harmonic map heat flow and \(\ell^2 = 4\) for Yang-Mills flow determines blow up.
+Here we are motivated by generalising some interesting properties of these two examples observed in \cite{MR2332425}. These observations are that in either example, the critical dimension (\(n=2\) for harmonic maps, \(n=4\) for Yang-Mills) in which the problems are conformally invariant gives \(C = 1\) and finite time blow up for the harmonic map heat flows (first proven in \cite{MR1180392}) and no finite time blow up for the Yang-Mills flow (first proven in \cite{MR1600272}). The curious point is that for Yang-Mills flow, the metric \(g\) has a conical singularity but no blow up, whereas for the harmonic map heat flow, the metric is smooth and we do have blow up. Evidently, it is not the conical singularity that determines blow up. The answer given is that the coefficient \(\ell^2 = 1\) for harmonic map heat flow, and \(\ell^2 = 4\) for Yang-Mills flow determines blow up.
 
 For us this translates to letting \(\ell^2 = F'(0)\). In other words, blow up is determined by the \emph{linearisation of \(F\) about \(\psi \equiv 0\)}. Let us define,
 \[
@@ -102,9 +102,10 @@ Notice that since \(F'(0) > 0\), we have
 \]
 and hence one root is positive while the other is negative. Solutions of \(L(\psi) = 0\) are of the form \(\psi(r) = r^{\beta^{\pm}}\) where \(\beta^{\pm}\) are the roots of the characteristic equation \eqref{eq:char_eqn}. The negative root is of no interest since \(r^{\beta_-}\) blows up at \(r = 0\). For the positive root, \(r^{\beta_+}\) equals \(0\) at \(r = 0\) and has finite first derivative precisely when \(r^{\beta_+} \geq 1\).
 
-We may now state the main theorem.
+This behaviour carries over to the flow \eqref{eq:pde} as described by our main theorem.
 
 \begin{thm}
+\label{thm:main}
 Let \(\psi\) be a finite energy solution of the harmonic map heat flow equation \eqref{eq:pde}. Then \(\psi\) has \(C^1\) blow up in finite time if and only if \(\beta_+ \in (0, 1]\).
 \end{thm}
 
@@ -115,6 +116,10 @@ p(\beta) = \beta^2 - F'(0)
 \]
 with roots \(\beta_{\pm} = \pm \sqrt{F'(0)}\). Degree one harmonic map heat flow has \(\beta_+ = 1\) and blow up occurs. More generally, degree \(\ell\) harmonic map heat flow has \(\beta_+ = \ell\) which does not blow up for \(\ell \geq 2\) and finally, Yang-Mills has \(\beta_+ = 2\) once more without blow up.
 \end{rem}
+
+The method of proof as has been used by many authors \cite{MR2332425,MR1180392} proceeds by suitable construction of sub and super solutions either forcing or preventing blow up. These are obtained from one-parameter families of stationary solutions \(\xi = \xi_{\lambda}\) satisfying \(L(\xi) = -\tfrac{1}{r^2} \bar{F} (\xi)\) and \(\xi(0) = 0\). Since \(L\) is second order, this leaves the free parameter \(\lambda\) specifying \(\xi'(0)\). By allowing this parameter to depend on \(t\) in just the right way, we obtain the desired sub and super solutions, \(\xi_{\lambda(t)} (r)\).
+
+The reason the linearised operator \(L\) determines blow up is because of standard local, parabolic estimates that show blow up, if it occurs, must occur at the pole \(r = 0\) (see Lemma \ref{lem:apriori_bounds}) coupled with the assumptions on \(F\) ensuring that \(\bar{F} = \mathcal{O}(\psi^{1+\alpha})\). Thus the linearisation \(F'(0)\) dominates as \(\psi \to 0\) which connects with the local estimates through boundary condition \(\psi(0) = 0\). Of course, there are technicalities encountered (as seen for instance in the \(L_{\infty}\) bounds of the main theorem \ref{thm:main}) and these will be expanded upon below.
 
 \section{Energy and Gradient Flow}
 \label{subsec:intro_energygradient}
