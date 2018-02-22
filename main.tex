@@ -332,7 +332,53 @@ Here \(F = \ell^2 uu' = \tfrac{\ell^2}{2} (u^2)'\) and so
 \[
 G = \ell^2 u^2.
 \]
+
 \subsubsection*{Stationary solutions for arbitrary \(C\)}
+
+In this case, we don't have the same integrability structure as with \(C = 1\). However, we can still solve (somewhat less explicitly) by factoring \(L\) as the composition of two first order differential operators. That is we define
+\[
+L_+ = \partial_r - \frac{\beta^+ - 1}{r}, \quad L_- = \partial_r - \frac{\beta^-}{r}
+\]
+giving
+\[
+L = L_+ \circ L_-.
+\]
+This follows since \(\beta^{\pm}\) are the roots of the characteristic equation,
+\[
+\beta^2 + (C - 1) \beta - F'(0) = 0
+\]
+and hence
+\[
+\beta^+ + \beta^- = C-1, \quad \beta^+ \beta^- = F'(0)
+\]
+and since in the composition \(L+ \circ L_-\), there is an additional term from \(L_+\) acting on the \(1/r\) coefficient in \(L_-\).
+
+
+\begin{rem}
+Alternatively, we could define
+\[
+L_+ = \partial_r - \frac{\beta^+}{r}, \quad L_- = \partial_r - \frac{\beta^- - 1}{r}
+\]
+in which case,
+\[
+L = L_- \circ L_+.
+\]
+It makes no difference which we choose, and so we prefer the first choice, \(L = L_+ \circ L_-\).
+\end{rem}
+
+Then our stationary solution satisfies
+\[
+L_+ \circ L_- \xi = \frac{1}{r^2} F(\xi)
+\]
+so that
+\[
+\xi = L_-^{-1} \circ L_+^{-1} (\frac{1}{r^2} F(\xi)).
+\]
+Note that \(L_{\pm}\) being first order, linear differential operators have non-unique left inverses, determined up to arbitrary constants. The condition \(\xi(0) = 0\) determines one constant, while the other is determined by \(\psi'(0)\) which provides us with the free parameter \(\lambda = \psi'(0)\).
+
+\textbf{Write it down explicitly and determine how the free parameters occur}.
+
+\textbf{Work out asymptotics and free parameter dependence which is very important for the construction of barriers}.
 
 \section{Blow up}
 
