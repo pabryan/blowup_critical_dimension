@@ -173,10 +173,10 @@ for some \(\beta > 0\).
 \section{Stationary solutions}
 \label{sec:stationary}
 
-In this section we study stationary solutions with suitable boundary data with a view to creating by sub- and super-solutions in the next section. Our stationary solutions satisfy
+In this section we study stationary solutions with suitable boundary data with a view to creating sub and super solutions in the next section. Our stationary solutions satisfy
 \begin{equation}
 \label{eq:stationary}
-\xi_{rr} + \frac{1}{r} \xi_r - \frac{1}{r^2} F(\xi)  = 0.
+L(\xi) = \xi_{rr} + \frac{C}{r} \xi_r - \frac{F'(0)}{r^2} \xi = \frac{1}{r^2} \bar{F}(\xi).
 \end{equation}
 Writing \(u = \xi, v = \xi_r\) this is equivalent to the system
 \[
@@ -187,86 +187,31 @@ v'
 =
 \begin{pmatrix}
 v \\
-\frac{1}{r^2} F(u) - \frac{C}{r} v
+\frac{1}{r^2} \bar{F}(u) - \frac{C}{r} v - \frac{F'(0)}{r} u
 \end{pmatrix}.
 \]
-For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)\) for \(r>0\) since \(F\) is Lipschitz, but not uniformly in \(r\). The right hand side is also continuous with respect to \(r\) for \(r > 0\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem \emph{does not} guarantee the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) since the coefficient functions \(1/r\), \(1/r^2\) while measureable, are not integrable. However, we can obtain solutions by explicitly solving the equation.
+For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)\) since \(F\) is Lipschitz, but it is not uniformly Lipschitz in \(r\). The right hand side is also continuous with respect to \(r\) for \(r > 0\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem \emph{does not} guarantee the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) since the coefficient functions \(1/r\), \(1/r^2\) while measureable, are not integrable. However, below we obtain solutions by explicitly solving the equation.
 
-On the other hand, if we can obtain a solution \(\xi_r\) on \([0,\rho_1)\) for some \(\rho_1\), then this solution may be extended uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. The solution so obtained is uniformly \(C^{1,\alpha}\) on any interval \([\rho_2, 1]\) where \(\rho_2 > 0\).
+On the other hand, if we can obtain a solution \(\xi\) on \([0,\rho_1)\) for some \(\rho_1 > 0\), then this solution may be extended uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. The solution so obtained is uniformly \(C^{1,\alpha}\) on any interval \([\rho_2, 1]\) where \(\rho_2 > 0\) but not generally up to all of \([0, 1]\).
 
 Finally, note that imposing the initial condition \(\psi(0) = 0\) will give a one-parameter family of solutions, parametrised by \(\psi'(0)\).
 
 \subsubsection*{Stationary solutions for \(C=1\)}
 
-Let us first consider the case \(C = 1\) which is satisfied in critical dimension. Throughout this section we assume slightly more regularity than Lipschitz, namely that \(F\) is \(C^{1,\gamma}\). We make the ansatz,
-\[
-\xi(r) = \xi_0(r^{\beta})
-\]
-for some \(C^{1,\alpha}\) function \(\xi_0\) with \(\xi_0(0) = 0\) and a real number \(\beta > 0\).
-
-Then
-\[
-\begin{split}
-\xi_{rr} + \frac{1}{r} \xi_r - \frac{1}{r^2} F(\xi) &= \beta^2 r^{2(\beta-1)} \xi_0'' + \beta (\beta - 1) r^{\beta-2} \xi_0' + \beta \xi_0' r^{\beta-2} - \frac{1}{r^2} F(\xi_0) \\
-&= \beta^2 r^{-2} \left[(r^{\beta})^2 \xi_0'' + r^{\beta} \xi_0' + - \beta^{-2}F(\xi_0)\right].
-\end{split}
-\]
-
-Writing \(y = r^{\beta}\) for the argument to \(\xi_0\), we see that \(\xi\) is a stationary solution satisfying \(\xi(0) = 0\) if and only if
-\begin{equation}
-\label{eq:stationary_ansatz}
-\begin{cases}
-y^2 \xi_0'' + y \xi_0' - \beta^{-2} F(\xi_0) &= 0 \\
-\xi_0(0) &= 0.
-\end{cases}
-\end{equation}
-
-The equation for \(\xi_0\) is effectively the same equation we started with, and we expect to solve it for any \(\beta > 0\). Thus we aim to normalise \(\xi_0\) to obtain a canonical form. Motivated by the heuristic asymptotics in Lemma \ref{lem:heuristic_asymptotics}, the form we seek satisfies \(\xi_0'(0) = \lambda \ne 0\), in which case since \(\xi_0\) is \(C^{1,\alpha}\) we have
-\[
-\xi_0(r) = \lambda y + \mathcal{O}(y^{1+\alpha}).
-\]
-Before solving equation \eqref{eq:stationary_ansatz}, let us observe that with our normalisation, as in Lemma \ref{lem:heuristic_asymptotics} we must have \(\beta = F'(0)\): we have
-\[
-\xi_0' = \lambda + \mathcal{O} (y^{\alpha})
-\]
-and
-\[
-\xi_0'' = \mathcal{O} (y^{\alpha-1}).
-\]
-Likewise,
-\[
-F(z) = F'(0) z + \mathcal{O}(z^{1+\gamma}).
-\]
-Substitution into equation \eqref{eq:stationary_ansatz} produces,
-\[
-\begin{split}
-0 &= y^2 \mathcal{O}(y^{\alpha-1}) + y \left(\lambda + \mathcal{O}(y^{1+\alpha})\right) - \beta^{-2} F(\lambda y + \mathcal{O} (y^{1 + \alpha})) \\
-&= \lambda(1 - \beta^{-2} F'(0)) y + \mathcal{O}(y^{1+\alpha})
-\end{split}
-\]
-and hence \(1 = \beta^{-2} F'(0)\). In other words the function,
-\[
-F_{\beta}(z) = \beta^{-2} F(z)
-\]
-satisfies
-\[
-F_{\beta} (0) = 0, \quad F_{\beta}'(0) = 1.
-\]
-
-So from now on we work with such an \(F_{\beta}\). We can solve equation \eqref{eq:stationary_ansatz} explicitly (in terms of \(F\)) by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi_0(e^w)\), whence our problem becomes
+Let us first consider the case \(C = 1\) which is satisfied in critical dimension. It will be convenient to work with \(F\) for the moment rather than the linearisation. We can solve equation \eqref{eq:stationary} explicitly (in terms of \(F\)) by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi(e^w)\), whence our problem becomes
 \[
 \begin{cases}
-\zeta'' &= e^{2w} \xi_0'' + e^w \xi_0' = F_{\beta} (\zeta) \\
+\zeta'' &= e^{2w} \xi'' + e^w \xi' = F (\zeta) \\
 \zeta(-\infty) &= 0.
 \end{cases}
 \]
 Multiplying by \(\zeta'\) this becomes
 \[
-[(\zeta')^2]' = 2 F_{\beta} (\zeta) \zeta'.
+[(\zeta')^2]' = 2 F (\zeta) \zeta'.
 \]
 Integrating gives
 \[
-(\zeta')^2 = G(\zeta) + C_1, \quad \text{where} \quad G'(Z) = 2 F_{\beta}(Z).
+(\zeta')^2 = G(\zeta) + C_1, \quad \text{where} \quad G'(Z) = 2 F(Z).
 \]
 By adjusting \(C_1\) if necessary, we may assume that \(G(0) = 0\).
 
@@ -276,20 +221,20 @@ Referring to definition \ref{defn:energy} and remark \ref{rem:finite_energy}, in
 \]
 For the gradient term, substituting
 \[
-\psi(r) = \zeta(\ln r^{\beta})
+\psi(r) = \zeta(\ln r)
 \]
 with \((\zeta')^2 = G(\zeta) + C_1\) we get
 \[
-\frac{1}{2} \int_0^1 \psi_r^2 r dr  = \frac{\beta^2}{2} \int_0^1 \frac{G(\zeta(\ln r^{\beta})) + C_1}{r} dr < \infty.
+\frac{1}{2} \int_0^1 \psi_r^2 r dr  = \frac{1}{2} \int_0^1 \frac{G(\zeta(\ln r^)) + C_1}{r} dr < \infty.
 \]
-Now if \(C_1 \ne 0\), then since \(\zeta(-\infty) = 0\) and \(G(0) = 0\), by continuity there is an interval \([0, \rho]\) on which \(\abs{G(\zeta(\ln r^{\beta}))} < \abs{C_1}/2\) and consequently
+Now if \(C_1 \ne 0\), then since \(\zeta(-\infty) = 0\) and \(G(0) = 0\), by continuity there is an interval \([0, \rho]\) on which \(\abs{G(\zeta(\ln r))} < \abs{C_1}/2\) and consequently
 \[
-\frac{\abs{G(\zeta(\ln r^{\beta})) + C_1}}{r} dr \geq \frac{\abs{C_1}}{2} \frac{1}{r}
+\frac{\abs{G(\zeta(\ln r)) + C_1}}{r} dr \geq \frac{\abs{C_1}}{2} \frac{1}{r}
 \]
 which is not integrable. Therefore we conclude that \(C_1 = 0\) and in fact,
 \begin{equation}
 \label{eq:G}
-G(z) = 2 \int_0^z F_{\beta} (s) ds = \beta^{-2} \int_0^z (u^2)' (s) ds = \beta^{-2} u^2 (z).
+G(z) = 2 \int_0^z F (s) ds = \int_0^z (u^2)' (s) ds = u^2 (z).
 \end{equation}
 In particular, \(G > 0\) on \((0,a)\) and \(G(0) = G(a) = 0\).
 
@@ -297,9 +242,9 @@ Thus we must solve
 \[
 \frac{\zeta'}{\sqrt{\abs{G(\zeta)}}} = 1
 \]
-Notice that near \(z = 0\) we have \(F_{\beta} (z) = z + \bigo(z^{1+\gamma})\) so that
+Notice that near \(z = 0\) we have \(F (z) = z + \bigo(z^{1+\gamma})\) so that
 \[
-G'(z) = 2F_{\beta}(z) \Rightarrow G(z) = z^2(1 + \bigo(z^{2 + \gamma}))
+G'(z) = 2F(z) \Rightarrow G(z) = z^2(1 + \bigo(z^{2 + \gamma}))
 \]
 and so
 \[
@@ -307,7 +252,7 @@ and so
 \]
 is continuous (even differentiable) near \(z = 0\). In fact, explicitly,
 \[
-\frac{1}{\sqrt{\abs{G(z)}}} = \frac{\beta}{u(z)}
+\frac{1}{\sqrt{\abs{G(z)}}} = \frac{1}{u(z)}
 \]
 is as regular as \(u\) is away from \(0, a\).
 
@@ -318,38 +263,38 @@ H (\zeta(w)) = w + \lambda, \quad \text{where} \quad H'(Z) = \frac{1}{\sqrt{\abs
 for an arbitrary constant \(\lambda\). Explicitly, choosing any \(a_0 \in (0, a)\) we have
 \begin{equation}
 \label{eq:H}
-H(z) = \beta \int_{a_0}^z \frac{1}{u(s)} ds.
+H(z) = \int_{a_0}^z \frac{1}{u(s)} ds.
 \end{equation}
 Varying \(a_0\) just has the effect of varying \(\lambda\).
 
 Note that since \(u(z) = z + \bigo(z^{1 + \gamma})\) near \(z=0\) and near \(z=a\), we find that \(1/u\) is not summable near \(z = 0, a\) and hence
 \[
-H(0) = -\beta \int_0^{a_0} \frac{1}{u(s)} ds = - \infty, \quad H(a) = \beta \int_{a_0}^a \frac{1}{u(s)} ds = \infty.
+H(0) = - \int_0^{a_0} \frac{1}{u(s)} ds = - \infty, \quad H(a) = \int_{a_0}^a \frac{1}{u(s)} ds = \infty.
 \]
-This is also why we cannot define \(H(z) = \beta \int_{0}^z \frac{1}{u(s)} ds\).
+This is also why we cannot define \(H(z) = \int_{0}^z \frac{1}{u(s)} ds\).
 
 Moreover, we have
 \[
-H'(z) = \frac{\beta}{u(z)} > 0, \quad z \in (0, a).
+H'(z) = \frac{1}{u(z)} > 0, \quad z \in (0, a).
 \]
 Thus \(H\) is strictly increasing and hence a \(C^1\)-diffeomorphism of \((0, a)\) onto \(\R\) so that \(H^{-1}\) is defined and \(C^1\).
 
-In terms of \(\xi(r) = \xi_0(r^{\beta}) = \zeta(\ln r^{\beta})\), have
+In terms of \(\xi(r) = \xi(r) = \zeta(\ln r)\), have
 \[
-\xi(r) = H^{-1} (\ln r^{\beta} + \lambda)
+\xi(r) = H^{-1} (\ln r + \lambda)
 \]
 and so \(0 < \xi(r) < a\) for all \(r \in (0, 1)\) and so our solutions automatically have \(L^{\infty}\) bounds independent of \(\lambda\).
 
 We may also use the implicit relation
 \[
-H (\xi(r)) = H (\xi_0(r^{\beta})) = \ln r^{\beta} + \lambda.
+H (\xi(r)) = H (\xi_0(r)) = \ln r + \lambda.
 \]
 
 Either way, we derive:
 \begin{align*}
-\xi'(r) &= \frac{\beta}{r}  \sqrt{G(\xi(r))} \\
-\xi''(r) &= \frac{\beta}{r} \frac{G'(\xi(r)) \xi'(r)}{2 \sqrt{G(\xi(r))}} - \frac{\beta}{r^2} \sqrt{G(\xi(r))} \\
-&= \frac{1}{r^2} \left(F(\xi(r))- \beta \sqrt{G(\xi(r))}\right).
+\xi'(r) &= \frac{1}{r}  \sqrt{G(\xi(r))} \\
+\xi''(r) &= \frac{1}{r} \frac{G'(\xi(r)) \xi'(r)}{2 \sqrt{G(\xi(r))}} - \frac{1}{r^2} \sqrt{G(\xi(r))} \\
+&= \frac{1}{r^2} \left(F(\xi(r))- \sqrt{G(\xi(r))}\right).
 \end{align*}
 from which we easily verify that we \(\xi\) is indeed a solution.
 
@@ -358,8 +303,8 @@ To finish this section, let us examine how the derivatives of \(\xi\) depend on 
 We have
 \[
 \begin{split}
-\xi' &= \frac{\beta}{r}  \sqrt{G(\xi(r))} = \frac{\beta}{r}  \sqrt{G \circ H^{-1}(\ln r^{\beta} + \lambda)} \\
-&= \frac{\beta}{r} \left[H^{-1} (\ln r^{\beta} + \lambda)  + \bigo(H^{-1} (\ln r^{\beta} + \lambda))^{1 + \gamma}\right] \\
+\xi' &= \frac{1}{r}  \sqrt{G(\xi(r))} = \frac{1}{r}  \sqrt{G \circ H^{-1}(\ln r + \lambda)} \\
+&= \frac{1}{r} \left[H^{-1} (\ln r + \lambda)  + \bigo(H^{-1} (\ln r + \lambda))^{1 + \gamma}\right] \\
 &= 
 \end{split}
 \]
@@ -374,7 +319,7 @@ F(Z) = \frac{\ell^2}{2} \sin(2Z)
 \]
 so that
 \[
-G(Z) = \frac{\ell^2}{\beta^2} \sin^2(Z)
+G(Z) = \ell^2 \sin^2(Z)
 \]
 and
 \[
@@ -385,7 +330,7 @@ H(Z) = \frac{1}{2} \ln \left(\frac{\cos(Z) - 1}{\cos(Z) + 1}\right)
 
 Here \(F = \ell^2 uu' = \tfrac{\ell^2}{2} (u^2)'\) and so
 \[
-G = \frac{\ell^2}{\beta^2} u^2.
+G = \ell^2 u^2.
 \]
 \subsubsection*{Stationary solutions for arbitrary \(C\)}
 
