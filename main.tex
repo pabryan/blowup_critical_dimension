@@ -32,76 +32,91 @@ We consider the phenomena of \emph{blow up} for solutions of the problem,
 \psi(0, t) &= 0, \quad \psi(1, t) = \psi_1, \quad t \in [0, T)
 \end{cases}
 \end{equation}
-where \(C > 0\) is a real constant and \(F\) is a Lipschitz function that is odd and increasing on some interval \((-\delta, \delta)\) around \(0\). Note that \(F(0) = 0\) since \(F\) is odd. A particular example is any \(C^2\), odd function \(F\) such that \(F'(0) > 0\).
+where \(C > 0\) is a real constant and \(F\) is a positive, odd \(C^{1,\alpha}\) function on \((-a, a)\) for some \(a \in (0, \infty]\) that is increasing on an interval \((-\delta, \delta)\) around \(0\). Note that \(F(0) = 0\) and \(F'(0) > 0\).
 
-Such problems arise in studying equivariant \emph{harmonic map heat flow} and equivariant \emph{Yang-Mills flow}. See section \ref{sec:harmonic_map_heat_flow} for details.
-
-\section{Harmonic Map Heat Flow in Warped Products}
-\label{sec:harmonic_map_heat_flow}
-
-Let \(u\) solve
+Such problems arise in studying equivariant \emph{harmonic map heat flow} and equivariant \emph{Yang-Mills flow}. Let \(u\) solve
 \[
 \begin{cases}
 \frac{1}{2} (u^2)' &= F(u) \\
 u(0) &= 0.
 \end{cases}
 \]
-Note that \(F(\psi) = u(\psi) u'(\psi)\). Explicitly we have
+so that \(F(\psi) = u(\psi) u'(\psi)\) and
 \[
-u(z) = \sqrt{\abs{\int_0^z F(w) dw}}
+u(z) = \sqrt{\abs{\int_0^z F(w) dw}}.
 \]
-and the condition that \(F(0) = 0\) and \(F\) is Lipschitz increasing near \(0\) should give some regularity of \(u\) near \(z = 0\). For example if \(F\) is \(C^{1,\alpha}\) then
-\[
-\int_0^z F(w) dw = \int_0^z F'(0) w + \bigo(w^{1+\alpha}) dw = z^2\left(\frac{1}{2} F'(0) + \bigo(z^{\alpha})\right)
-\]
-so that after taking the square root, we get \(u\) is at least \(C^{1,\alpha/2}\).
+The conditions \(F > 0\), \(F(0) = 0\), \(F \in C^{1\,\alpha}\) and \(F'(0) > 0\) ensure that \(u\) is at least \(C^{1,\alpha/2}\).
 
-Let
-\[
-a = \sup\{z > 0: u > 0 \text{ on } (0, z)\}
-\]
-where we allow \(a = \infty\). Then define the Riemmanian warped-product manifold \((M, g)\) by
+Define the Riemmanian warped-product manifold \((M, g)\) by
 \begin{equation}
 \label{eq:warped_product}
 M = (0, a) \times \S^1, \quad g = dz^2 + u^2(z) d\theta^2.
 \end{equation}
-.
 
-\subsection{Harmonic Maps}
-\label{subsec:harmonic_maps}
+Going the other way, given \(u\) defining \(g\) we recover \(F(\psi) = u(\psi) u'(\psi)\). Either way, equation \eqref{eq:pde}  with \(C = 1\) is precisely the \emph{degree one, equivariant harmonic map heat flow} of maps \(\Psi: (B^2, \delta) \to (M, g)\) where \(\delta\) is the flat metric. Here degree one, equivariant means that \(\Psi\) is of the form, \(\Psi(re^{i\theta}) = (\psi(r), \theta)\). Higher degree maps, i.e. those of the form \(\Psi(re^{i\theta}) = (\psi(r), \ell \theta)\) may also be treated - they simply result in \(F \mapsto \ell^2 F\) and here we absorb the \(\ell^2\) factor into \(F\).
 
-\textbf{TODO}
+Let us also remark that if \(F'(0) = 1\), the metric \(g\) extends to a \(C^{1,\alpha/2}\) metric on the open disc \(D(a)\) of radius \(a\) with \(r = 0\) corresponding to the centre of the disc. Similarly for \(F'(a) = -1\) (for \(a < \infty\)). If both conditions hold, the metric extends to a metric on \(\S^2\). If either condition fails, then we still obtain a metric on \(\S^2\) but with a conical singularity at the point(s) corresponding to \(r=0, a\).
 
-\subsection{Equivariant Harmonic Maps}
-\label{subsec:equivariant}
+Here are two motivating examples described in \cite{MR2332425}.
 
-Let \((M, g)\) be defined as in equation \eqref{eq:warped_product} and let \((B, h)\) denote the unit \(2\)-dimensional ball with flat metric \(h = dr^2 + r^2 d\theta^2\) on \((0, 1) \times (0, 2\pi) \simeq B \backslash \{0\}\).
+\begin{example}
+Let \(u = \sin(\psi)\). Then degree one harmonic map heat flow gives \(F = \tfrac{1}{2} \sin(2\psi)\) and \((M, g)\) is the round two-sphere. Degree \(\ell\) harmonic map heat flow gives \(F = \tfrac{\ell^2}{2} \sin(2\psi)\).Higher dimensional, equivariant harmonic maps \(B^n \to \S^n\) with equivariant \(SO(n-1)\) symmetries gives rise to \(C = n-1\), \(F = \tfrac{n-1}{2} \sin(2\psi)\).
+\end{example}
 
-\begin{defn}
-A map,
+\begin{example}
+The \(SO(4)\) equivariant Yang-Mills flow on \(\R^4\) gives rise to \(C = 1\), \(F = 4 \psi(1 - \psi)(1 - \tfrac{1}{2}\psi)\). The higher dimensional (\(SO(n)\) equivariant on \(\R^n\)) analogue is \(C = n-3\), \(F = 2(n-2) \psi(1-\psi)(1 - \tfrac{1}{2}\psi)\).
+\end{example}
+
+Here we are motivated by generalising some interesting properties of these two examples observed in \cite{MR2332425}. These observations are that in either example, the critical dimension (\(n=2\) for harmonic maps, \(n=4\) for Yang-Mills) in which the problems are conformally invariant gives \(C = 1\) and finite time blow up for the harmonic map heat flows (first proven in \cite{MR1180392}) and no finite time blow up for the Yang-Mills flow (first proven in \cite{MR1600272}). The curious point is that for Yang-Mills flow, the metric \(g\) has a conical singularity but no blow up, whereas for the harmonic map heat flow, the metric is smooth and does blow up. Evidently, it is not the conical singularity that determines blow up. The answer given is that the coeffecient \(\ell^2 = 1\) for harmonic map heat flow and \(\ell^2 = 4\) for Yang-Mills flow determines blow up.
+
+For us this translates to letting \(\ell^2 = F'(0)\). In other words, blow up is determined by the \emph{linearisation of \(F\) about \(\psi \equiv 0\)}. Let us define,
 \[
-\psi: (B, h) \to (M, g)
+\bar{F} (\psi) = F(\psi) - F'(0) \psi
 \]
-is \emph{degree \(\ell\) equivariant} if for all \(r, \theta \in (0, 1) \times (0, 2\pi)\) we have 
+and the linear operator,
+\begin{equation}
+\label{eq:L}
+L(\psi) = \psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F'(0) \psi
+\end{equation}
+so that the harmonic map heat flow, equation \eqref{eq:pde} becomes
 \[
-\psi(r, \theta) = (\psi_0(r), \ell \theta)
+\partial_t \psi = L(\psi) - \frac{1}{r^2} \bar{F}(\psi).
 \]
-with \(\psi_0 : (0, 1) \to (0, a)\). The map \(\psi\) is \(C^{k,\alpha}\) precisely when \(\psi_0\) is \(C^{k,\alpha}\).
 
-A map
+The operator \(L\) is an Euler operator with \emph{characteristic equation}
+\begin{equation}
+\label{eq:char_eqn}
+p(\beta) = \beta^2 + (C-1) \beta - F'(0) = 0.
+\end{equation}
+The discriminant is
 \[
-\psi : B \times [0, T) \to M
+\Delta = (C-1)^2 + 4 F'(0) > 0,
 \]
-is a \emph{one-parameter family of equivariant maps} if for each \(t \in [0, T)\), the map
+so we always have real, distinct roots
 \[
-\psi_t = \psi(\cdot, t) : (B, h) \to (M, g)
+\frac{1 - C}{2} \pm \frac{1}{2} \sqrt{(C-1)^2 + 4 F'(0)}.
 \]
-is an equivariant map.
-\end{defn}
+Notice that since \(F'(0) > 0\), we have
+\[
+\frac{1}{2} \sqrt{(C-1)^2 + 4 F'(0)} > \left|\frac{1-C}{2}\right|
+\]
+and hence one root is positive while the other is negative. Solutions of \(L(\psi) = 0\) are of the form \(\psi(r) = r^{\beta^{\pm}}\) where \(\beta^{\pm}\) are the roots of the characteristic equation \eqref{eq:char_eqn}. The negative root is of no interest since \(r^{\beta_-}\) blows up at \(r = 0\). For the positive root, \(r^{\beta_+}\) equals \(0\) at \(r = 0\) and has finite first derivative precisely when \(r^{\beta_+} \geq 1\).
 
-A simple, direct computation (see e.g. \cite{}) shows that \(\psi\) solves the harmonic map heat flow on \((B, h) \to (M, g)\) if and only if \(\psi\) satisfies equation \eqref{eq:pde}. In this context, equation \eqref{eq:pde} is known as the \emph{reduced equation}.
+We may now state the main theorem.
 
-\subsection{Energy and Gradient Flow}
+\begin{thm}
+Let \(\psi\) be a finite energy solution of the harmonic map heat flow equation \eqref{eq:pde}. Then \(\psi\) has \(C^1\) blow up in finite time if and only if \(\beta_+ \in (0, 1]\).
+\end{thm}
+
+\begin{rem}
+We recover the results of \cite{MR2332425} by observing that when \(C = 1\), the characteristic equation becomes
+\[
+p(\beta) = \beta^2 - F'(0)
+\]
+with roots \(\beta_{\pm} = \pm \sqrt{F'(0)}\). Degree one harmonic map heat flow has \(\beta_+ = 1\) and blow up occurs. More generally, degree \(\ell\) harmonic map heat flow has \(\beta_+ = \ell\) which does not blow up for \(\ell \geq 2\) and finally, Yang-Mills has \(\beta_+ = 2\) once more without blow up.
+\end{rem}
+
+\section{Energy and Gradient Flow}
 \label{subsec:intro_energygradient}
 
 \begin{defn}
@@ -144,205 +159,7 @@ So as \(r\to 0\), \(\psi_r\) must not blow up faster than \(1/r\) and (if say, \
 for some \(\beta > 0\).
 \end{rem}
 
-\subsection{Examples}
-
-\subsubsection*{Harmonic maps into the round sphere.}
-
-The round metric on the sphere \(\S^n\), expressed in polar coordinates \(\S^n \backslash \{\pm p\} \simeq (0, \pi) \times \S^{n-1}\) may be written
-\[
-ds^2 = dz^2 + \sin^2(z) d\phi^2
-\]
-for \(z \in (0, \pi)\) and where \(d\phi^2\) is the round metric on \(\S^{n-1}\). The Lie group \(O(n)\) acts on the \(\S^{n-1}\) factor producing a corresponding \(O(n)\)-equivariant harmonic map heat flow,
-\[
-\partial_t \psi = \psi_{rr} + \frac{n-1}{r} \psi_r - \frac{n-1}{r^2} \frac{1}{2} \sin (2\psi).
-\]
-The so-called \emph{critical dimension} here is \(n=2\) for which the harmonic map heat flow is conformally invariant. In this case,
-\[
-\partial_t \psi = \psi_{rr} + \frac{1}{r} \psi_r - \frac{1}{r^2} \frac{1}{2} \sin (2\psi).
-\]
-
-\subsubsection*{\(SO(n)\)-equivariant Yang-Mills flow in \(\R^n\).}
-
-\(SO(n)\) equivariant Yang-Mills flow on \(\R^n\) reduces to
-\[
-\partial_t \psi = \psi_{rr} + \frac{n-3}{r} \psi_r - \frac{2(n-2)}{r^2} \psi(1 - \psi)(1 - \tfrac{1}{2} \psi).
-\]
-
-Here the critical dimension is \(n=4\) for which the Yang-Mills flow is conformally invariant. In this case,
-\[
-\partial_t \psi = \psi_{rr} + \frac{1}{r} \psi_r - \frac{1}{r^2} 4 \psi(1 - \psi)(1 - \tfrac{1}{2} \psi).
-\]
-
-\subsubsection*{Degree \(\ell\) harmonic maps into two-dimensional warped products}
-
-Both the above situations fit into a broader framework. Consider a warped product metric of the form,
-\[
-ds^2 = dz^2 + u(z)^2 d\phi^2
-\]
-on $M = \{(z,\phi) \in (0, a) \times (0, 2\pi)\}$ and with \(u > 0\) on \((0, a)\). The metric extends smoothly to an open disc of radius $a > 0$ in $\R^2$ provided
-\[
-\begin{cases}
-u(0) &= 0 \\
-u'(0) &= 1 \\
-u(-z) &= - u(z).
-\end{cases}
-\]
-If in addition,
-\[
-\begin{cases}
-u(a) &= 0 \\
-u'(a) &= -1 \\
-\end{cases}
-\]
-the the metric extends smoothly to $\S^2$. If $u'(a) \ne -1$, then we still obtain a metric on $\S^2$ but with a conical singularity at $a$.
-
-We consider maps
-\[
-f : B \times [0, T) \to (\S^2, ds^2)
-\]
-where $B \subset \R^2$ is the unit ball equipped with the flat metric. Let us write $(r, \theta)$ for polar coordinates on $\R^2$ identifying $B \backslash \{0\}$ with $((0, 1) \times (0, 2\pi), dr^2 + r^2 d\theta^2)$. For a non-zero natural number \(\ell \in \N\), we say $f$ is \emph{degree $\ell$-equivariant} if
-\[
-f (r, \theta, t) = (\psi(r, t), \ell\theta (\operatorname{mod} 2\pi)).
-\]
-for some smooth $\psi : (0, 1) \times [0, T) \to (0, a)$ with \(\psi(0, t) = 0\) for every \(t \in [0, T)\).
-
-For the purpose of studying blow-up it is sufficient to fix the boundary data, \(\psi(1, t) = \psi_1\) for a real constant \(\psi_1 > 0\). If the initial data, \(f_0(r, \theta) = f(r, \theta, 0)\) is equivariant, this is preserved along the flow and so we take initial condition, \(\psi_0\) with \(\psi_0(0) = 0\).
-
-The harmonic map heat flow with the stated boundary conditions then becomes
-\begin{equation}
-\label{eq:harmonic_map_heat_flow}
-\begin{cases}
-\partial_t \psi &= \psi_{rr} + \frac{1}{r} \psi_r - \frac{\ell^2}{r^2} F(\psi) \\
-\psi(r, 0) &= \psi_0(r) \\
-\psi(0, t) &= 0, \quad \psi(1, t) = \psi_1, \quad t \in [0, T)
-\end{cases}
-\end{equation}
-where \(F(z) = u(z)u'(z)\).
-
-Note that the assumptions on \(u\) in order that we obtain a warped product metric imply that
-\[
-F(0) = 0, \quad F'(0) = 1,
-\]
-and if the metric extends to a smooth metric on \(\S^2\),
-\[
-F(a) = 0, \quad F'(a) = 1.
-\]
-In the presence of a conical singularity, \(F'(a) = (u'(a))^2 \ne 1\).
-
-\subsubsection*{Degree \(\ell\) harmonic maps into warped products}
-
-\textbf{todo}
-
-Should be similar to the two-dimensional case but I don't know if a degree \(\ell\) map \(\S^{n-1} \to \S^{n-1}\) produces a factor like \(\ell^2\) as in the two-dimensional case.
-
-\subsubsection*{Heat flow with non-linear reaction}
-
-\(O(n)\) invariant solutions to equations of the form
-\[
-\partial_t u = \Delta u + F(u)
-\]
-on the open, unit ball fits into the framework. In fact, we can interpret such equations as Harmonic maps into a warped product space with metric
-\[
-ds^2 = dr^2 + u^2(r) d\theta^2
-\]
-where \(u\) solves the ODE
-\[
-\begin{cases}
-uu' &= F(u) \\
-u(0) &= 0
-\end{cases}
-\]
-which has a unique solution as in section \ref{subsec:intro_energygradient}.
-
-\textbf{Write down the energy here.}
-
-\textbf{One can probably add a gradient term here too.}
-
-In particular, radial solutions \(u(x, t) = \psi(|x|, t)\) of
-\[
-\partial_t u = \Delta u - A u^p, \quad p = 1, p \geq 2
-\]
-satisfy
-\[
-\partial_t \psi = \psi_{rr} + \frac{n-1}{r} \psi_r - \frac{1}{r^2} A u^p.
-\]
-
-\textbf{Check how the conformal factor in the Yamabe problem fits here. It seems more non-linear. Does one just mess about with \(v = u^{(n+2)/(n-2)}\) to push the non-linearity into lower order terms? Does that make the gradient term non-linear though?}
-
-\textbf{Really we want \(\Delta u + u^p\), or in other words \(A<0\) so \(F = A u^p\) is decreasing in this case. Probably it's okay, but might need to take that into account. Perhaps best to look at equations with \(+ \frac{1}{r} F(\psi)\) and assume \(F\) is odd and either increasing or decreasing. Should work out?}
-
-\subsubsection*{Maps into Lorenztian Warped Products}
-
-If we have maps into a Lorenztian warped product, we should obtain a similar situation to the heat flow with non-linear reaction. Namely the function \(F\) has the opposite sign. This should include heat flow with non-linear reaction as a special case?
-
-\textbf{In this case, the roots of the Euler characteristic equation need not be real, or if real, need not break up into one positive and one negative root. One might hope to apply a similar analysis, but now the real part of the root should play the same role as the root (called \(\beta\) below). That is, if the real part is less than \(1\), we get blow and bigger than \(1\) has no blow up just as described below.}
-
-\subsubsection*{General Equivariant Harmonic Map Heat Flow}
-
-Let \(G\) be a Lie group and \(M, N\) homogeneous \(G\)-spaces. Then look at warped product metrics
-\[
-dr^2 + u^2(r) g
-\]
-where \(g\) is a left/right/bi-invariant metric on \(M\). Likewise for \(N\). Then \(G\) equivariant harmonic map heat flow should reduce to an ODE similar to the spherical case. In particular, positive Ricci should give a nice class of examples, as would bounded Ricci (compare \cite{Zhou2017,2016arXiv161005234M}).
-
-\subsubsection*{General Equivariant Yang-Mills Flow}
-
-Again \(G\)-equivariance on a warped-product should reduce to an ODE.
-
-\subsubsection*{Wave Maps}
-
-These are
-\[
-u_{tt} = \Delta u
-\]
-which leads to
-\[
-\psi_{tt} = \psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi)
-\]
-and similar blow up phenomena occurs. These arise as analogs of harmonic maps from a Lorentzian space into a Riemannian space. Or it can be thought of as the wave equation version of the harmonic map heat flow.
-
-\textbf{Many references here!}
-
-\subsubsection*{\schrodinger{} Maps}
-
-These are
-\[
-\partial_t u = u \wedge \Delta u
-\]
-for maps into \(\S^2\).
-
-It would be interesting to see what happens with \(\S^6\) using the ``cross-product'' coming from the imaginary Octonions:
-\[
-X \wedge Y = \operatorname{Im} [X, Y]
-\]
-where the commutator is by the Octonion multiplication.
-
-What is the equivariant ODE in this case?
-
-\subsubsection*{Relationships among the examples}
-
-The examples of harmonic maps into spheres and Yang-Mills flow are particular cases of \(F\) in \eqref{eq:harmonic_map_heat_flow}. It's worth pointing out that in the critical dimenstion, the coeefficient of \(\psi_r\) is \(1\). For the problem \eqref{eq:pde} we allow the more general situation where \(C \ne 1\) and so our study is applicible in higher dimensions. It also turns out that the value of \(F'(0)\) is crticial to the study of finite time blow up. We summarise these examples in the following table (absorbing the \(\ell^2\) into \(F\)):
-
-\begin{center}
-\begin{tabular}{ l | c | c | c}
-Flow & C & \(F(z)\) & \(F'(0)\) \\
-\hline
-Harmonic map heat flow into \(\S^n\) & \(n-1\) & \(\tfrac{n-1}{2} \sin(2z)\) & n-1 \\
-Yang-Mills flow on \(\R^n\) & \(n-3\) & \(2(n-2) z(1 - z)(1 - \tfrac{1}{2} z)\) & 2(n-2) \\
-Critical dimension Harmonic map heat flow into \(\S^2\) & \(1\) & \(\tfrac{1}{2} \sin(2z)\) & 1 \\
-Critical Yang-Mills flow on \(\R^4\) & \(1\) & \(4 z(1 - z)(1 - \tfrac{1}{2} z)\) & 4 \\
-Degree \(\ell\) Harmonic map heat flow into \(\S^2\) & \(1\) & \(\tfrac{\ell^2}{2} \sin(2z)\) & \(\ell^2\)
-\end{tabular}
-\end{center}
-
-Of particular note is the last three rows where \(C = 1\). In that case, the last column determines blow up which occurs if and only if \(F'(0) = 1\). The first two rows all have \(C > 1\) in which case blow up is dependent on \textbf{Find out what exactly!}.
-
-
-\section{Linearisation and Static Solutions}
-
-\subsection{The linearisation}
-
-\subsection{Heuristic Analysis}
+\section{Heuristic Analysis}
 
 Because the coefficients are singular at \(r=0\), finite time blow up of bounded solutions, if it occurs, must occur at the origin \(r = 0\) (see Lemma \ref{lem:apriori_bounds}). Heuristically then, to see when blow up occurs we need only consider the asymptotics near \(r = 0\). For the purpose of illustration, we linearise both the potential function\(F\) and the solution \(\psi\). That is, let \(\psi = r^{\beta}\) for some \(\beta\) and \(F(z) = A z\) with \(A > 0\). In the sections that follow we will show that the heuristic analysis models the general behaviour.
 
@@ -551,8 +368,9 @@ hence \(\beta_0 = \sqrt{A}\).
 
 For the degree \(\ell\)-harmonic map heat flow, \(\beta_0 = \ell\) while for the Yang-Mills flow, \(\beta_0 = 2\). Thus for Yang-Mills and higher degree harmonic map heat flow (\(\ell > 1\)), we have \(\beta_0 > 1\) and no \(C^1\) blow up occurs. However for, \(\ell \leq 2\) and Yang-Mills we do expect \(C^2\) blow up. For \(\ell > 2\), there is no \(C^2\) blow up.
 
-\subsection{Stationary solutions}
-\label{subsec:stationary}
+\section{Stationary solutions}
+\label{sec:stationary}
+
 In this section we study stationary solutions with suitable boundary data with a view to creating by sub- and super-solutions in the next section. Our stationary solutions satisfy
 \begin{equation}
 \label{eq:stationary}
