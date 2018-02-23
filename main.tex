@@ -187,18 +187,18 @@ v'
 =
 \begin{pmatrix}
 v \\
-\frac{1}{r^2} \bar{F}(u) - \frac{C}{r} v - \frac{F'(0)}{r} u
+\frac{1}{r^2} F(u) - \frac{C}{r} v
 \end{pmatrix}.
 \]
 For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)\) since \(F\) is Lipschitz, but it is not uniformly Lipschitz in \(r\). The right hand side is also continuous with respect to \(r\) for \(r > 0\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem \emph{does not} guarantee the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) since the coefficient functions \(1/r\), \(1/r^2\) while measureable, are not integrable. However, below we obtain solutions by explicitly solving the equation.
 
 On the other hand, if we can obtain a solution \(\xi\) on \([0,\rho_1)\) for some \(\rho_1 > 0\), then this solution may be extended uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. The solution so obtained is uniformly \(C^{1,\alpha}\) on any interval \([\rho_2, 1]\) where \(\rho_2 > 0\) but not generally up to all of \([0, 1]\).
 
-Finally, note that requiring finite energy solutions and imposing the initial condition \(\psi(0) = 0\) will give a one-parameter family of solutions, parametrised by \(\psi'(0)\).
+Finally, note that requiring finite energy solutions and imposing the initial condition \(\psi(0) = 0\) will provide us with a one-parameter family of solutions, parametrised by \(\psi'(0)\) with which to construct sub and super solutions for the blow up argument later.
 
 \subsubsection*{Stationary solutions for \(C=1\)}
 
-Let us first consider the case \(C = 1\) which is satisfied in critical dimension. It will be convenient to work with \(F\) for the moment rather than the linearisation. We can solve equation \eqref{eq:stationary} explicitly (in terms of \(F\)) by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi(e^w)\), whence our problem becomes
+Let us first consider the case \(C = 1\) which is satisfied in critical dimension. It will be convenient to work with \(F\) rather than the linearisation. We can solve equation \eqref{eq:stationary} explicitly (in terms of \(F\)) by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi(e^w)\), whence our problem becomes
 \[
 \begin{cases}
 \zeta'' &= e^{2w} \xi'' + e^w \xi' = F (\zeta) \\
@@ -242,13 +242,13 @@ Thus we must solve
 \[
 \frac{\zeta'}{\sqrt{\abs{G(\zeta)}}} = 1
 \]
-Notice that near \(z = 0\) we have \(F (z) = z + \bigo(z^{1+\gamma})\) so that
+Notice that near \(z = 0\) we have \(F (z) = F'(0) z + \bigo(z^{1+\alpha})\) so that
 \[
-G'(z) = 2F(z) \Rightarrow G(z) = z^2(1 + \bigo(z^{2 + \gamma}))
+G'(z) = 2F(z) \Rightarrow G(z) = z^2(F'(0) + \bigo(z^{2 + \alpha}))
 \]
 and so
 \[
-\sqrt{\abs{G(\zeta)}} = z \sqrt{1 + \bigo(z^{\gamma})} = z + \bigo(z^{1 + \gamma})
+\sqrt{\abs{G(\zeta)}} = z \sqrt{F'(0) + \bigo(z^{\alpha})} = \sqrt{F'(0)} z + \bigo(z^{1 + \alpha})
 \]
 is continuous (even differentiable) near \(z = 0\). In fact, explicitly,
 \[
@@ -267,7 +267,7 @@ H(z) = \int_{a_0}^z \frac{1}{u(s)} ds.
 \end{equation}
 Varying \(a_0\) just has the effect of varying \(\lambda\).
 
-Note that since \(u(z) = z + \bigo(z^{1 + \gamma})\) near \(z=0\) and near \(z=a\), we find that \(1/u\) is not summable near \(z = 0, a\) and hence
+Note that since \(u(z) = \sqrt{F'(0)} z + \bigo(z^{1 + \alpha})\) near \(z=0\) and near \(z=a\), we find that \(1/u\) is not summable near \(z = 0, a\) and hence
 \[
 H(0) = - \int_0^{a_0} \frac{1}{u(s)} ds = - \infty, \quad H(a) = \int_{a_0}^a \frac{1}{u(s)} ds = \infty.
 \]
@@ -283,11 +283,9 @@ In terms of \(\xi(r) = \xi(r) = \zeta(\ln r)\), have
 \[
 \xi(r) = H^{-1} (\ln r + \lambda)
 \]
-and so \(0 < \xi(r) < a\) for all \(r \in (0, 1)\) and so our solutions automatically have \(L^{\infty}\) bounds independent of \(\lambda\).
-
-We may also use the implicit relation
+and so \(0 < \xi(r) < a\) for all \(r \in (0, 1)\) and so our solutions automatically have \(L^{\infty}\) bounds independent of \(\lambda\). We may also use the implicit relation
 \[
-H (\xi(r)) = H (\xi_0(r)) = \ln r + \lambda.
+H (\xi(r)) =  \ln r + \lambda.
 \]
 
 Either way, we derive:
