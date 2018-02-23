@@ -194,7 +194,7 @@ For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)
 
 On the other hand, if we can obtain a solution \(\xi\) on \([0,\rho_1)\) for some \(\rho_1 > 0\), then this solution may be extended uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. The solution so obtained is uniformly \(C^{1,\alpha}\) on any interval \([\rho_2, 1]\) where \(\rho_2 > 0\) but not generally up to all of \([0, 1]\).
 
-Finally, note that imposing the initial condition \(\psi(0) = 0\) will give a one-parameter family of solutions, parametrised by \(\psi'(0)\).
+Finally, note that requiring finite energy solutions and imposing the initial condition \(\psi(0) = 0\) will give a one-parameter family of solutions, parametrised by \(\psi'(0)\).
 
 \subsubsection*{Stationary solutions for \(C=1\)}
 
@@ -309,7 +309,7 @@ We have
 \end{split}
 \]
 
-\textbf{Not sure how to best expand this. Maybe work with the integral definition of \(H\) or the implicit form of the solution?}
+{\color{red}Not sure how to best expand this. Maybe work with the integral definition of \(H\) or the implicit form of the solution?}
 
 \subsubsection*{Example: Harmonic map heat flow in \(\S^2\)}
 
@@ -390,11 +390,19 @@ Formally then, we obtain the representation formula,
 \]
 Note that in the case \(\bar{F} = 0\) we have \(G = 0\) and as expected, we recover the general solution to the linearised equation \(L(\xi) = 0\).
 
-\textbf{We now need a contraction mapping to assert the existence of an inverse}.
+\begin{rem}
+In the case, \(C = 1\), the characteristic equation is \(p(\beta) = \beta^2 - F'(0) = (\beta - \sqrt{F'(0)})(\beta + \sqrt{F'(0)})\), hence \(\beta_+ = -\beta_- = \sqrt{F'(0)}\) and
+\[
+L_+ = \partial_r - \frac{\beta_+ - 1}{r}, \quad L_- = \partial_r + \frac{\beta_+}{r}.
+\]
+It is this difference of squares structure allows for the substitution \(r = e^w\) in the \(C=1\) case described above. Nevertheless, following the discussion there, the reader will observe that integrating to obtain \(\zeta'\) and then integrating again to obtain \(\zeta\) is nothing but factoring \(L\) as the composition of first order operators. It's just that for \(C = 1\), it can be done quite directly after changing variables whereas for the general case, we proceeded slightly less directly. Needless to say, this factoring for \(C = 1\) was the motivation for the general case.
+\end{rem}
 
-\textbf{We also need to determine how the solutions vary with respect to the free parameters which is needed for barrier construction}.
+{\color{red} We now need a contraction mapping to assert the existence of an inverse}.
 
-\textbf{Work out asymptotics as \(r\to 0\) which is important for barrier construction}.
+{\color{red}We also need to determine how the solutions vary with respect to the free parameters which is needed for barrier construction}.
+
+{\color{red}Work out asymptotics as \(r\to 0\) which is important for barrier construction}.
 
 \section{Blow up}
 
@@ -573,7 +581,7 @@ with \(H : (0, a) \to (-\infty, \infty)\). So we automatically have \(0 < \xi < 
 \lim_{r\to 0} H^{-1} (\ln r^{\beta} + \lambda) = 0, \quad \lim_{\lambda\to\infty} H^{-1}(\ln r^{\beta} + \lambda) = a \quad \text{(non uniformly in \(r\))}.
 \]
 
-\textbf{If \(\|\psi\|_{\infty} < a\), then we for any \(r_0 > 0\), from the monotonicity of \(H^{-1} (\ln r^{\beta} + \lambda)\) in \(r\), we can choose \(\lambda\) so that \(\psi(r, 0) < \xi_{\lambda}(r)\) for \(r \in [r_0, 1]\). I need to check the asymptotics as \(r\to 0\) to get \(\psi(r, 0) < \xi(r)\) for \(r \in (0, r_0)\).}
+{\color{red}If \(\|\psi\|_{\infty} < a\), then we for any \(r_0 > 0\), from the monotonicity of \(H^{-1} (\ln r^{\beta} + \lambda)\) in \(r\), we can choose \(\lambda\) so that \(\psi(r, 0) < \xi_{\lambda}(r)\) for \(r \in [r_0, 1]\). I need to check the asymptotics as \(r\to 0\) to get \(\psi(r, 0) < \xi(r)\) for \(r \in (0, r_0)\).}
 
 \subsection{The case \(\|\psi\|_{\infty} < 2a\)}.
 
