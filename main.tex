@@ -213,9 +213,7 @@ Integrating gives
 \[
 (\zeta')^2 = G(\zeta) + C_1, \quad \text{where} \quad G'(Z) = 2 F(Z).
 \]
-By adjusting \(C_1\) if necessary, we may assume that \(G(0) = 0\).
-
-Referring to definition \ref{defn:energy} and remark \ref{rem:finite_energy}, in order to obtain finite energy solution we require that
+By adjusting \(C_1\) if necessary, we may assume that \(G(0) = 0\). Then, referring to definition \ref{defn:energy} and remark \ref{rem:finite_energy}, in order to a obtain finite energy solution we require that
 \[
 \frac{1}{2} \int_0^1 \left(\psi_r^2 + \frac{1}{r^2} u^2(\psi)\right) r dr < \infty.
 \]
@@ -244,7 +242,7 @@ Thus we must solve
 \]
 Notice that near \(z = 0\) we have \(F (z) = F'(0) z + \bigo(z^{1+\alpha})\) so that
 \[
-G'(z) = 2F(z) \Rightarrow G(z) = z^2(F'(0) + \bigo(z^{2 + \alpha}))
+G'(z) = 2F(z) \Rightarrow G(z) = z^2F'(0) + \bigo(z^{2 + \alpha})
 \]
 and so
 \[
@@ -256,24 +254,22 @@ is continuous (even differentiable) near \(z = 0\). In fact, explicitly,
 \]
 is as regular as \(u\) is away from \(0, a\).
 
-Hence our solution satisfies
+Now our solution satisfies
 \[
-H (\zeta(w)) = w + \lambda, \quad \text{where} \quad H'(Z) = \frac{1}{\sqrt{\abs{G(Z)}}}.
+H (\zeta(w)) = w + \mu, \quad \text{where} \quad H'(Z) = \frac{1}{\sqrt{\abs{G(Z)}}}.
 \]
-for an arbitrary constant \(\lambda\). Explicitly, choosing any \(a_0 \in (0, a)\) we have
+for an arbitrary constant \(\mu\). Explicitly, choosing any \(a_0 \in (0, a)\) we have
 \begin{equation}
 \label{eq:H}
 H(z) = \int_{a_0}^z \frac{1}{u(s)} ds.
 \end{equation}
-Varying \(a_0\) just has the effect of varying \(\lambda\).
+Varying \(a_0\) just has the effect of varying \(\mu\).
 
 Note that since \(u(z) = \sqrt{F'(0)} z + \bigo(z^{1 + \alpha})\) near \(z=0\) and near \(z=a\), we find that \(1/u\) is not summable near \(z = 0, a\) and hence
 \[
 H(0) = - \int_0^{a_0} \frac{1}{u(s)} ds = - \infty, \quad H(a) = \int_{a_0}^a \frac{1}{u(s)} ds = \infty.
 \]
-This is also why we cannot define \(H(z) = \int_{0}^z \frac{1}{u(s)} ds\).
-
-Moreover, we have
+This is also why we cannot define \(H(z) = \int_{0}^z \frac{1}{u(s)} ds\). More importantly, we have
 \[
 H'(z) = \frac{1}{u(z)} > 0, \quad z \in (0, a).
 \]
@@ -281,11 +277,11 @@ Thus \(H\) is strictly increasing and hence a \(C^1\)-diffeomorphism of \((0, a)
 
 In terms of \(\xi(r) = \xi(r) = \zeta(\ln r)\), have
 \[
-\xi(r) = H^{-1} (\ln r + \lambda)
+\xi(r) = H^{-1} (\ln r + \mu) = H^{-1} (\ln \lambda r)
 \]
-and so \(0 < \xi(r) < a\) for all \(r \in (0, 1)\) and so our solutions automatically have \(L^{\infty}\) bounds independent of \(\lambda\). We may also use the implicit relation
+where \(\lambda = e^{\mu}\). So \(0 < \xi(r) < a\) for all \(r \in (0, 1)\) and so our solutions automatically have \(L^{\infty}\) bounds independent of \(\mu\). We may also use the implicit relation
 \[
-H (\xi(r)) =  \ln r + \lambda.
+H (\xi(r)) =  \ln \lambda r.
 \]
 
 Either way, we derive:
@@ -301,8 +297,8 @@ To finish this section, let us examine how the derivatives of \(\xi\) depend on 
 We have
 \[
 \begin{split}
-\xi' &= \frac{1}{r}  \sqrt{G(\xi(r))} = \frac{1}{r}  \sqrt{G \circ H^{-1}(\ln r + \lambda)} \\
-&= \frac{1}{r} \left[H^{-1} (\ln r + \lambda)  + \bigo(H^{-1} (\ln r + \lambda))^{1 + \gamma}\right] \\
+\xi' &= \frac{1}{r}  \sqrt{G(\xi(r))} = \frac{1}{r}  \sqrt{G \circ H^{-1}(\ln \lambda r)} \\
+&= \frac{1}{r} \left[H^{-1} (\ln \lambda r)  + \bigo(H^{-1} (\ln \lambda r))^{1 + \gamma}\right] \\
 &= 
 \end{split}
 \]
