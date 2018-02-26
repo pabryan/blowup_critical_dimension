@@ -583,7 +583,9 @@ with \(H : (0, a) \to (-\infty, \infty)\). So we automatically have \(0 < \xi < 
 
 {\color{red}If \(\|\psi\|_{\infty} < a\), then we for any \(r_0 > 0\), from the monotonicity of \(H^{-1} (\ln r^{\beta} + \lambda)\) in \(r\), we can choose \(\lambda\) so that \(\psi(r, 0) < \xi_{\lambda}(r)\) for \(r \in [r_0, 1]\). I need to check the asymptotics as \(r\to 0\) to get \(\psi(r, 0) < \xi(r)\) for \(r \in (0, r_0)\).}
 
-\subsection{The case \(\|\psi\|_{\infty} < 2a\)}.
+{\color{red}The barrier should be a sub-solution that blows up for \(0 < F'(0) \leq 1\)  and a super solution that does not blow up for \(1 < F'(0)\).}
+
+\subsubsection{The case \(\|\psi\|_{\infty} < 2a\)}.
 
 In this case, we add together two stationary solutions \(\xi_{\lambda}\) and \(\xi_{\mu}\), allowing \(\lambda\) to depend on \(t\). That is,
 \[
@@ -591,26 +593,22 @@ In this case, we add together two stationary solutions \(\xi_{\lambda}\) and \(\
 \]
 where \(\lambda\) will be chosen to ensure we get sub/super solutions as appropriate, and \(\mu > 0\) is a constant. The function \(\lambda(t)\) will have some constants \(A > 0, \lambda_0 > 0\), and we'll choose \(\mu, \lambda_0\) to get the initial inequality and \(A\) to obtain a sub/super solution.
 
-The key thing is to understand the non-linear term \(F(u)\). In particular the second order part. So let us write
+The key thing is to understand the non-linear term \(F(u)\). In particular the second order part. Recall we have
 \[
-F(Z) = F_1 Z + F_2(Z)
+F(Z) = F'(0) Z + \bar{F}(Z)
 \]
-with \(F_1 = F'(0) \in \R\) a constant, and \(F_2(Z) = F(Z) - F_1 Z\) a \(C^{1,\alpha}\) function such that
+where
 \[
-F_2'(0) = 0, \quad \lim_{r\to 0} \frac{1}{Z} F_2(Z) = 0, \quad \lim_{Z\to 0} \frac{\abs{F_2(Z)}}{Z^{1+\alpha}} < \infty.
+\bar{F}'(0) = 0, \quad \lim_{r\to 0} \frac{1}{Z} \bar{F}(Z) = 0, \quad \lim_{Z\to 0} \frac{\abs{\bar{F}(Z)}}{Z^{1+\alpha}} < \infty.
 \]
 
-Then we define,
-\[
-L(\psi) = L_F(\psi) = \psi_{rr} + \frac{1}{r} \psi_r - \frac{F_1}{r^2} \psi.
-\]
 Our harmonic map heat flow equation is
 \[
-\partial_t \psi = L(\psi) - \frac{1}{r^2} F_2(\psi)
+\partial_t \psi = L(\psi) - \frac{1}{r^2} \bar{F}(\psi)
 \]
 and stationary solutions satisfy
 \[
-L(\psi) = \frac{1}{r^2} F(\psi).
+L(\psi) = \frac{1}{r^2} \bar{F}(\psi).
 \]
 
 Our candiate barrier, \(\xi(r) = \xi_{\lambda(t)} + \xi_{\mu}\) satisfies
@@ -620,9 +618,9 @@ Our candiate barrier, \(\xi(r) = \xi_{\lambda(t)} + \xi_{\mu}\) satisfies
 and
 \[
 \begin{split}
-L(\psi) - \frac{1}{r^2} F(\psi) &= L(\xi_{\lambda} + \xi_{\mu}) - \frac{1}{r^2} F_2(\xi_{\lambda} + \xi_{\mu}) \\
-&= L(\xi_{\lambda}) + L(\xi_{\mu}) - \frac{1}{r^2} F_2(\xi_{\lambda} + \xi_{\mu}) \\
-&= \frac{1}{r^2}\left[F_2(\xi_{\lambda}) + F_2(\xi_{\mu}) - F_2(\xi_{\lambda} + \xi_{\mu})\right].
+L(\psi) - \frac{1}{r^2} F(\psi) &= L(\xi_{\lambda} + \xi_{\mu}) - \frac{1}{r^2} \bar{F}(\xi_{\lambda} + \xi_{\mu}) \\
+&= L(\xi_{\lambda}) + L(\xi_{\mu}) - \frac{1}{r^2} \bar{F}(\xi_{\lambda} + \xi_{\mu}) \\
+&= \frac{1}{r^2}\left[\bar{F}(\xi_{\lambda}) + \bar{F}(\xi_{\mu}) - \bar{F}(\xi_{\lambda} + \xi_{\mu})\right].
 \end{split}
 \]
 
@@ -631,5 +629,8 @@ Thus we obtain a sub solution if and only if
 \partial_{\lambda} \xi_{\lambda} \partial_t \lambda \leq \frac{1}{r^2}\left[F_2(\xi_{\lambda}) + F_2(\xi_{\mu}) - F_2(\xi_{\lambda} + \xi_{\mu})\right]
 \]
 and a super solution if and only if we have \(\geq\) instead.
+
+{\color{red}Again, the barrier should be a sub-solution that blows up for \(0 < F'(0) \leq 1\)  and a super solution that does not blow up for \(1 < F'(0)\).}
+
 
 \end{document}
