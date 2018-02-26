@@ -585,6 +585,12 @@ with \(H : (0, a) \to (-\infty, \infty)\). So we automatically have \(0 < \xi < 
 
 {\color{red}The barrier should be a sub-solution that blows up for \(0 < F'(0) \leq 1\)  and a super solution that does not blow up for \(1 < F'(0)\).}
 
+{\color{red} The remaining argument then goes as follows:}
+
+If \(\psi(r, t) \leq \xi(r, t)\) for all \(t \in [0, T]\) and \(\xi'(0, t) \leq M < \infty\), then since \(\psi(0, t) = \xi(0, t) = 0\), we must have \(\psi'(0, t) \leq M\) also. The regularity of \(\psi'\) allows us to apply Lemma \ref{lem:apriori_bounds} to conclude no blow up.
+
+On the other hand, if \(\psi(r, t) \geq \xi(r, t)\) and \(\xi'(0, t) \to \infty\) as \(t \to T\), then \(\psi'(0, t) \to \infty\) also.
+
 \subsubsection{The case \(\|\psi\|_{\infty} < 2a\)}.
 
 In this case, we add together two stationary solutions \(\xi_{\lambda}\) and \(\xi_{\mu}\), allowing \(\lambda\) to depend on \(t\). That is,
