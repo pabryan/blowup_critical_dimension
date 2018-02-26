@@ -377,7 +377,7 @@ Letting
 \[
 G(\varphi) = r^{\beta_-} \int \left[\rho^{\beta_+ - \beta_- - 1} \int \left(\tau^{-(\beta_+ + 1)} \bar{F}(\varphi) \right)d\tau\right] d\rho
 \]
-and absorbing \(\tfrac{1}{\beta_+ - \beta_1}\) into \(C_+\), we have
+and absorbing \(\tfrac{1}{\beta_+ - \beta_-}\) (recall \(\beta_+ \ne \beta_-\)) into \(C_+\), we have
 \[
 (\Id - G) (\xi) = C_+ r^{\beta_+} + C_- r^{\beta_-}.
 \]
@@ -386,14 +386,20 @@ Formally then, we obtain the representation formula,
 \[
 \xi = (\Id - G)^{-1} \left(C_+ r^{\beta_+} + C_- r^{\beta_-}\right).
 \]
-Note that in the case \(\bar{F} = 0\) we have \(G = 0\) and as expected, we recover the general solution to the linearised equation \(L(\xi) = 0\).
+Note that in the case \(\bar{F} = 0\) we have \(G = 0\) and as expected, we recover the general solution, \(\xi = C_+ r{\beta_+} + C_- r^{\beta_-}\) to the linearised equation \(L(\xi) = 0\).
 
 \begin{rem}
 In the case, \(C = 1\), the characteristic equation is \(p(\beta) = \beta^2 - F'(0) = (\beta - \sqrt{F'(0)})(\beta + \sqrt{F'(0)})\), hence \(\beta_+ = -\beta_- = \sqrt{F'(0)}\) and
 \[
 L_+ = \partial_r - \frac{\beta_+ - 1}{r}, \quad L_- = \partial_r + \frac{\beta_+}{r}.
 \]
-It is this difference of squares structure allows for the substitution \(r = e^w\) in the \(C=1\) case described above. Nevertheless, following the discussion there, the reader will observe that integrating to obtain \(\zeta'\) and then integrating again to obtain \(\zeta\) is nothing but factoring \(L\) as the composition of first order operators. It's just that for \(C = 1\), it can be done quite directly after changing variables whereas for the general case, we proceeded slightly less directly. Needless to say, this factoring for \(C = 1\) was the motivation for the general case.
+It seems this difference of squares structure is what allows for the substitution \(r = e^w\) in the \(C=1\) case described above. Following the discussion there, the reader will observe that integrating to obtain \(\zeta'\) and then integrating again to obtain \(\zeta\) is nothing but factoring \(L\) as the composition of first order operators. It's just that for \(C = 1\), it can be done quite directly after changing variables whereas for the general case, we proceeded slightly less directly. Needless to say, this factoring for \(C = 1\) was the motivation for the general case.
+
+For the sake of completeness, when \(C \ne 1\), the substitution, \(r = (1-C)^{1/(1-C)} w^{1/(1-C)}\) leads to
+\[
+\zeta'' = \frac{1}{(1-C)^2 w^2} F(\zeta)
+\]
+which is not so easy to integrate directly, not to mention the complications arising when \(C < 1\) in the coefficient \((1 - C)^{1/(1 - C)}\).
 \end{rem}
 
 {\color{red} We now need a contraction mapping to assert the existence of an inverse}.
