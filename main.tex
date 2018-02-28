@@ -141,24 +141,24 @@ where \(\|\cdot\|\) and \(\nabla\) are suitably interpreted. Thus our equation \
 \label{defn:energy}
 The energy, \(\E(\psi)\) of a map \(\psi: [0, 1] \to \R\) is defined to be
 \[
-\E(\psi) = \frac{1}{2} \int_0^1 \left(\psi_r^2 + \frac{1}{r^2} u^2(\psi)\right) r dr.
+\E(\psi) = \frac{1}{2} \int_0^1 \left(\psi_r^2 + \frac{1}{r^2} u^2(\psi)\right) r^C dr.
 \]
 \end{defn}
 
 \begin{lemma}
-The equation \eqref{eq:pde} is the negative \(L^2\) gradient flow with respect to the weighted measure \(r dr\) for the energy \(\E\) defined in Definition \ref{defn:energy}.
+The equation \eqref{eq:pde} is the negative \(L^2\) gradient flow with respect to the weighted measure \(r^C dr\) for the energy \(\E\) defined in Definition \ref{defn:energy}.
 \end{lemma}
 
 \begin{proof}
-Let \(\psi(r, t)\) be a compactly supported smooth one-parameter family of smooth maps \(r \mapsto \psi(r, t)\). Here to say \(\psi\) is compactly supported means that the variation vector \(v = \partial_t|_{t=0} \psi\) is compactly supported in \((0, 1)\). That is, \(\operatorname{support} v = [a, b]\) with \(0 < a < b < a\).
+Let \(\psi(r, t)\) be a compactly supported smooth one-parameter family of smooth maps \(r \mapsto \psi(r, t)\).
 
 Then we compute
 \[
 \begin{split}
-\partial_t \E(\psi) &= \partial_t \frac{1}{2} \int_0^1  \left(\psi_r^2 + \frac{1}{r^2} u^2(\psi)\right) r dr \\
-&= \int_0^1  \left(\psi_r \psi_{rt} + \frac{1}{r^2} u(\psi)u'(\psi)\right) r dr \\
-&= \int_0^1 \left((\psi_r \psi_t r)_r - \psi_{rr} \psi_t r - \frac{1}{r} \psi_r \psi_t r + \frac{1}{r^2} F(\psi) \psi_t\right) dr \\
-&= - \int_0^1 \left(\psi_{rr} + \frac{1}{r} \psi_r - \frac{1}{r^2} F(\psi)\right) \psi_t r dr.
+\partial_t \E(\psi) &= \partial_t \frac{1}{2} \int_0^1  \left(\psi_r^2 + \frac{1}{r^2} u^2(\psi)\right) r^C dr \\
+&= \int_0^1  \left(\psi_r \psi_{rt} + \frac{1}{r^2} u(\psi)u'(\psi) \psi_t \right) r^C dr \\
+&= \int_0^1 \left((\psi_r \psi_t r^C)_r - \psi_{rr} \psi_t r^C - C r^{C-1} \psi_r \psi_t + \frac{1}{r^2} F(\psi) \psi_t r^C\right) dr \\
+&= - \int_0^1 \left(\psi_{rr} + \frac{C}{r} \psi_r - \frac{1}{r^2} F(\psi)\right) \psi_t r^C dr.
 \end{split}
 \]
 \end{proof}
@@ -168,13 +168,25 @@ Then we compute
 
 Finite energy functions \(\psi\) must satisfy
 \[
-\int_0^1 \psi_r^2 r dr < \infty \text{ and } \int_0^1 \frac{u^2(\psi(r))}{r} dr < \infty
+\int_0^1 \psi_r^2 r^C dr < \infty \text{ and } \int_0^1 u^2(\psi(r)) r^{C-2} dr < \infty
 \]
-So as \(r\to 0\), \(\psi_r\) must not blow up faster than \(1/r\) and (if say, \(u\) is \(C^{1,\alpha}\)) \(\abs{\psi}\) must not only be bounded, but must also be bounded above by \(r^{\beta}\) for some \(\beta > 0\). Both conditions are thus simultaneously satisfied or not satisfied at all. That is, finite energy solutions must satisfy
+First, as \(r\to 0\), \(\psi_r\) must not blow up faster than \(1/r\). Next noting that the assumptions on \(F\) imply \(F(z) = F'(0) z + \bigo(z^{1+\alpha})\) and hence
 \[
-\lim_{r \to 0} \abs{\frac{\psi(r)}{r^{\beta}}} < \infty
+u^2(z) = \int F(z) dz = \frac{F'(0))}{2} z^2 + \bigo(z^{2+\alpha}).
 \]
-for some \(\beta > 0\).
+Thus finite energy solutions satisfy for any \(\rho \in (0, 1)\),
+\[
+\int_0^{\rho} \psi(r)^2 r^{C-2} dr < \infty
+\]
+and hence
+\[
+\psi(r) = \bigo\left(r^{1 + \tfrac{1-C}{2}}\right)
+\]
+as \(r \to 0\). In particular, for \(C = 1\).
+\[
+\psi(r) = \bigo(r)
+\]
+as \(r \to 0\).
 \end{rem}
 
 \section{Stationary solutions}
