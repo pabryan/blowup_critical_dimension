@@ -32,7 +32,7 @@ We consider the phenomena of \emph{blow up} for solutions of the problem,
 \psi(0, t) &= 0, \quad \psi(1, t) = \psi_1, \quad t \in [0, T)
 \end{cases}
 \end{equation}
-where \(C > 0\) is a real constant and \(F\) is a positive, odd \(C^{1,\alpha}\) function on \((-a, a)\) for some \(a \in (0, \infty]\) that is increasing on an interval \((-\delta, \delta)\) around \(0\). Note that \(F(0) = 0\) and \(F'(0) > 0\).
+where \(C > 0\) is a real constant and \(F\) is an odd \(C^{1,\alpha}\) function on \((-a, a)\) for some \(a \in (0, \infty]\) that is increasing on an interval \((-\delta, \delta)\) around \(0\). Note that \(F(0) = 0\) and \(F'(0) > 0\). When \(a < \infty\) we also assume that \(F(a) = 0\), \(F(z) = A z +  \bigo(z^{1+\alpha})\) as \(z \to a\) and \(\int_0^a F(z) dz = 0\).
 
 Such problems arise in studying equivariant \emph{harmonic map heat flow} and equivariant \emph{Yang-Mills flow}. Let \(u\) solve
 \[
@@ -54,6 +54,8 @@ M = (0, a) \times \S^1, \quad g = dz^2 + u^2(z) d\theta^2.
 \end{equation}
 
 Going the other way, given \(u\) defining \(g\) we recover \(F(\psi) = u(\psi) u'(\psi)\). Either way, equation \eqref{eq:pde}  with \(C = 1\) is precisely the \emph{degree one, equivariant harmonic map heat flow} of maps \(\Psi: (B^2, \delta) \to (M, g)\) where \(\delta\) is the flat metric. Here degree one, equivariant means that \(\Psi\) is of the form, \(\Psi(re^{i\theta}) = (\psi(r), \theta)\). Higher degree maps, i.e. those of the form \(\Psi(re^{i\theta}) = (\psi(r), \ell \theta)\) may also be treated - they simply result in \(F \mapsto \ell^2 F\) and here we absorb the \(\ell^2\) factor into \(F\).
+
+One can also formulate the higher dimensional analogue, with \(g = dz^2 + u^2 g_{\S^{n-1}}\) where \(g_{\S^{n-1}}\) is the round metric on \(\S^{n-1}\). In this case, \(C = n-1\).
 
 Let us also remark that if \(F'(0) = 1\), the metric \(g\) extends to a \(C^{1,\alpha/2}\) metric on the open disc \(D(a)\) of radius \(a\) with \(r = 0\) corresponding to the centre of the disc. Similarly for \(F'(a) = -1\) (for \(a < \infty\)). If both conditions hold, the metric extends to a metric on \(\S^2\). If either condition fails, then we still obtain a metric on \(\S^2\) but with a conical singularity at the point(s) corresponding to \(r=0, a\).
 
@@ -102,12 +104,17 @@ Notice that since \(F'(0) > 0\), we have
 \]
 and hence one root is positive while the other is negative. Solutions of \(L(\psi) = 0\) are of the form \(\psi(r) = r^{\beta^{\pm}}\) where \(\beta^{\pm}\) are the roots of the characteristic equation \eqref{eq:char_eqn}. The negative root is of no interest since \(r^{\beta_-}\) blows up at \(r = 0\). For the positive root, \(r^{\beta_+}\) equals \(0\) at \(r = 0\) and has finite first derivative precisely when \(r^{\beta_+} \geq 1\).
 
-This behaviour carries over to the flow \eqref{eq:pde} as described by our main theorem.
+This behaviour carries over to the flow \eqref{eq:pde} as described by main theorems.
 
-\begin{thm}
-\label{thm:main}
-Let \(\psi\) be a finite energy solution of the harmonic map heat flow equation \eqref{eq:pde}. Then \(\psi\) has \(C^1\) blow up in finite time if and only if \(\beta_+ \in (0, 1]\).
-\end{thm}
+\begin{mainthm}[Finite time blow up for \(C = 1\)]
+\label{thm:mainC1}
+Let \(\psi\) be a finite energy solution of the harmonic map heat flow equation \eqref{eq:pde} with \(C = 1\). Then \(\psi\) has \(C^1\) blow up in finite time if \(\beta_+ = 1\). If \(\beta_+ > 1\), the boundary condition satisfies \(\psi_1 \in (0, 2a)\) and the initial condition satisfies \(\psi_0(r) = \bigo(r^{\beta_+})\) as \(r\to 0\), then finite time blow up does not occur.
+\end{mainthm}
+
+\begin{mainthm}[Finite time blow up for general \(C\)]
+\label{thm:mainC}
+Let \(\psi\) be a finite energy solution of the harmonic map heat flow equation \eqref{eq:pde} with arbitrary \(C\). {\color{red}Then blow up seems to be determined by \(\beta_+\) and \(\beta_-\) and perhaps also \(\bar{F}\)}.
+\end{mainthm}
 
 \begin{rem}
 We recover the results of \cite{MR2332425} by observing that when \(C = 1\), the characteristic equation becomes
@@ -119,7 +126,7 @@ with roots \(\beta_{\pm} = \pm \sqrt{F'(0)}\). Degree one harmonic map heat flow
 
 The method of proof - as used by many authors \cite{MR2332425,MR1180392} - proceeds by suitable construction of sub and super solutions either forcing or preventing blow up. These are obtained from one-parameter families of stationary solutions \(\xi = \xi_{\lambda}\) satisfying \(L(\xi) = -\tfrac{1}{r^2} \bar{F} (\xi)\) and \(\xi(0) = 0\). Since \(L\) is second order, this leaves the free parameter \(\lambda\) specifying \(\xi'(0)\). By allowing this parameter to depend on \(t\) in just the right way, we obtain the desired sub and super solutions, \(\xi_{\lambda(t)} (r)\). Blow up then occurs (or not) according to the variation of \(\xi\) with respect to \(\lambda\) and whether \(\lambda\) blows up in finite time or not.
 
-The reason the linearised operator \(L\) determines blow up is because of standard local, parabolic estimates that show blow up, if it occurs, must occur at the pole \(r = 0\) (see Lemma \ref{lem:apriori_bounds}) coupled with the assumptions on \(F\) ensuring that \(\bar{F} = \mathcal{O}(\psi^{1+\alpha})\). Thus the linearisation \(F'(0)\) dominates as \(\psi \to 0\) which connects with the local estimates through boundary condition \(\psi(0) = 0\). Of course, there are technicalities encountered (as seen for instance in the \(L_{\infty}\) bounds of the main theorem \ref{thm:main}) and these will be expanded upon below.
+The reason the linearised operator \(L\) determines blow up is because of standard local, parabolic estimates that show blow up, if it occurs, must occur at the pole \(r = 0\) (see Lemma \ref{lem:apriori_bounds}) coupled with the assumptions on \(F\) ensuring that \(\bar{F} = \mathcal{O}(\psi^{1+\alpha})\). Thus the linearisation \(F'(0)\) dominates as \(\psi \to 0\) which connects with the local estimates through boundary condition \(\psi(0) = 0\). Of course, there are technicalities encountered (as seen for instance in the boundary conditions and asymptotics assumed in \cref{thm:mainC1}) and these will be expanded upon below.
 
 \section{Energy and Gradient Flow}
 \label{subsec:intro_energygradient}
@@ -296,11 +303,7 @@ To finish this section, let us examine how the derivatives of \(\xi\) depend on 
 
 We have
 \[
-\begin{split}
-\xi' &= \frac{1}{r}  \sqrt{G(\xi(r))} = \frac{1}{r}  \sqrt{G \circ H^{-1}(\ln \lambda r)} \\
-&= \frac{1}{r} \left[H^{-1} (\ln \lambda r)  + \bigo(H^{-1} (\ln \lambda r))^{1 + \gamma}\right] \\
-&= 
-\end{split}
+\xi' = \frac{1}{r}  \sqrt{G(\xi(r))} = \frac{1}{r}  \sqrt{G \circ H^{-1}(\ln \lambda r)}.
 \]
 
 {\color{red}Not sure how to best expand this. Maybe work with the integral definition of \(H\) or the implicit form of the solution?}
@@ -317,8 +320,18 @@ G(Z) = \ell^2 \sin^2(Z)
 \]
 and
 \[
-H(Z) = \frac{1}{2} \ln \left(\frac{\cos(Z) - 1}{\cos(Z) + 1}\right)
+H(Z) = -\frac{1}{2\ell} \ln \left(\frac{1+\cos(Z)}{1-\cos(Z)}\right) = \frac{1}{\ell}\ln \left(\tan(Z/2)\right)
 \]
+with inverse
+\[
+H^{-1}(W) = \arccos\left(\frac{e^{-2\ell W} - 1}{e^{-2\ell W} + 1}\right) = 2 \arctan(e^{\ell W})
+\]
+Thus solution is
+\[
+\xi(r) = H^{-1} (\ln \lambda r) = \arccos\left(\frac{(\lambda r)^{-2\ell} - 1}{(\lambda r)^{-2\ell} + 1}\right) = 2\arctan((\lambda r)^{\ell}).
+\]
+
+Up to relabeling \(\lambda^{-\ell} \mapsto \lambda\) this is the function used in \cite{MR1180392} and \cite{MR2332425}.
 
 \subsubsection*{Example: Harmonic map heat flow in warped products}
 
