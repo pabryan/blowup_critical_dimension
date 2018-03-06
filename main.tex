@@ -215,7 +215,7 @@ On the other hand, if we can obtain a solution \(\xi\) on \([0,\rho_1)\) for som
 
 Finally, note that requiring finite energy solutions and imposing the initial condition \(\psi(0) = 0\) will provide us with a one-parameter family of solutions, parametrised by \(\psi'(0)\) with which to construct sub and super solutions for the blow up argument later.
 
-\subsubsection*{Stationary solutions for \(C=1\)}
+\subsection{Stationary solutions for \(C=1\)}
 
 Let us first consider the case \(C = 1\) which is satisfied in critical dimension. It will be convenient to work directly with \(F\) rather than the linearisation.
 
@@ -386,7 +386,7 @@ since \(w \to -\infty \Rightarrow z \to 0\). Therefore,
 as \(r \to 0\) and hence \(\xi(r) = \bigo(r)\) as \(r \to 0\).
 \end{proof}
 
-\subsubsection*{Example: Harmonic map heat flow in \(\S^2\)}
+\begin{example}[Harmonic map heat flow in \(\S^2\)]
 
 Here we have
 \[
@@ -410,15 +410,9 @@ Thus solution is
 \]
 
 Up to relabeling \(\lambda^{-\ell} \mapsto \lambda\) this is the function used in \cite{MR1180392} and \cite{MR2332425}.
+\end{example}
 
-\subsubsection*{Example: Harmonic map heat flow in warped products}
-
-Here \(F = \ell^2 uu' = \tfrac{\ell^2}{2} (u^2)'\) and so
-\[
-G = \ell^2 u^2.
-\]
-
-\subsubsection*{Stationary solutions for arbitrary \(C\)}
+\subsection{Stationary solutions for arbitrary \(C\)}
 
 In this case, we don't have the same integrability structure as with \(C = 1\). However, we can still solve (somewhat less explicitly) by factoring \(L\) as the composition of two first order differential operators. That is we define
 \begin{align*}
@@ -656,12 +650,29 @@ Let \(\Omega = (0, 1)\), \(\Omega' = (\rho, 1)\), and \(\Omega'' = (\rho/2, 1)\)
 In the hypothesis of the theorem, we assume \(\psi\) has finite \(C^{0,\alpha}\) norm, hence the last term is finite. Since \(F\) is also Lipschitz, the first term \(r^{-2} F(\psi(r, t))\) has finite \(C^{0,\alpha}\) norm on \(r \in [\rho, 1], t \in [0, \tau]\). The second term is the initial data \(\psi_0\) which is assumed to have finite \(C^{2,\alpha}\) norm and finally the third term - the boundary term \(\psi|_{r=1}\) - is constant hence also has finite norm.
 \end{proof}
 
-\subsection{Barriers}
+\subsection{Conditions for blow up}
+
+The following lemma, simply combines what we have obtained so far into a criteria for blow up depending on the existence of suitable barriers.
+
+\begin{lemma}
+Let \(\psi\) solve the equivariant harmonic map heat flow, equation \eqref{eq:pde} on \([0, 1] \times [0, T)\). Then  we have the following:
+
+\begin{enumerate}
+\item If there exists a sub-solution \(\xi\) to equation \eqref{eq:pde} such that \(\xi(r, t=0) \leq \psi(r, t=0)\) and \(\xi'(0, t) \to \infty\) as \(t \to T\), then \(\psi'(0, t) \to \infty\) as \(t \to T\). Likewise, if \(\psi(r, t = 0) \leq \xi(r, t=0)\) for a super-solution with \(\xi'(0, t) \to -\infty\) as \(t \to T\), then \(\psi'(0, t) \to \infty\) as \(t \to T\).
+\item If there exists a super-solution \(\xi\) to equation \eqref{eq:pde} such that \(-\xi(r, t=0) \leq \psi(r, t=0) \leq \xi(r, t-0)\) with \(\abs{\xi'(0, t)} \leq M < \infty\) for \(t \in [0, T)\) and some \(M > 0\) then there exists an \(N\) with \(0 < N < \infty\) such that \(\|\psi(\cdot, t)\|_{C^1} < N\) for all \(t \in [0, T)\).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+\section{Barriers}
 \label{subsec:barriers}
 
-The argument in this section is based on constructing a one-parameter family of stationary-solutions from the stationary solutions constructed in the last section.
+The argument in this section is based on constructing barriers from stationary solutions that either force or prevent blow up depending on the roots of the characteristic equation.
 
-\subsubsection{The case \(\|\psi\|_{\infty} < a\)}
+\subsection{The case \(\|\psi\|_{\infty} < a\)}
 
 In this case, we can just use the stationary solution as a barrier. Recall that
 \[
@@ -682,7 +693,7 @@ If \(\psi(r, t) \leq \xi(r, t)\) for all \(t \in [0, T]\) and \(\xi'(0, t) \leq 
 
 On the other hand, if \(\psi(r, t) \geq \xi(r, t)\) and \(\xi'(0, t) \to \infty\) as \(t \to T\), then \(\psi'(0, t) \to \infty\) also.
 
-\subsubsection{The case \(\|\psi\|_{\infty} < 2a\)}.
+\subsection{The case \(\|\psi\|_{\infty} < 2a\)}.
 
 In this case, we add together two stationary solutions \(\xi_{\lambda}\) and \(\xi_{\mu}\), allowing \(\lambda\) to depend on \(t\). That is,
 \[
