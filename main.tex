@@ -211,13 +211,26 @@ v \\
 \]
 For each fixed \(r > 0\), the right hand side is a Lipschitz function of \((u,v)\) since \(F\) is Lipschitz, but it is not uniformly Lipschitz in \(r\). The right hand side is also continuous with respect to \(r\) for \(r > 0\) but only measureable for \(r \in [0, 1]\). The Cartheodary theorem \emph{does not} guarantee the existence of an absolutely continuous solution \((u, v)\) on \([0, \rho_1)\) for some  \(\rho_1 > 0\) since the coefficient functions \(1/r\), \(1/r^2\) while measureable, are not integrable. However, below we obtain solutions by explicitly solving the equation.
 
-On the other hand, if we can obtain a solution \(\xi\) on \([0,\rho_1)\) for some \(\rho_1 > 0\), then this solution may be extended uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. The solution so obtained is uniformly \(C^{1,\alpha}\) on any interval \([\rho_2, 1]\) where \(\rho_2 > 0\) but not generally up to all of \([0, 1]\).
+On the other hand, if we can obtain a solution \(\xi\) on \([0,\rho_1)\) for some \(\rho_1 > 0\), then this solution may be extended uniquely to \(r \in [0, 1]\) by choosing any \(\rho_2 \in (0, \rho_1)\) and solving the uniformly elliptic problem \eqref{eq:stationary} subject to the boundary conditions \(\psi(\rho_2) = \xi(\rho_2)\), \(\psi(1) = \psi_1\) on \([\rho_1, 1]\). Recall \(\psi_1\) is any real number occurring as the boundary data at \(r=1\) in \eqref{eq:pde}. The solution so obtained is uniformly \(C^{2,\alpha}\) on any interval \([\rho_2, 1]\) where \(\rho_2 > 0\) but not generally up to all of \([0, 1]\).
 
 Finally, note that requiring finite energy solutions and imposing the initial condition \(\psi(0) = 0\) will provide us with a one-parameter family of solutions, parametrised by \(\psi'(0)\) with which to construct sub and super solutions for the blow up argument later.
 
 \subsubsection*{Stationary solutions for \(C=1\)}
 
-Let us first consider the case \(C = 1\) which is satisfied in critical dimension. It will be convenient to work with \(F\) rather than the linearisation. We can solve equation \eqref{eq:stationary} explicitly (in terms of \(F\)) by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi(e^w)\), whence our problem becomes
+Let us first consider the case \(C = 1\) which is satisfied in critical dimension. It will be convenient to work directly with \(F\) rather than the linearisation.
+
+\begin{lemma}
+\label{lem:stationaryC1}
+For each \(\lambda > 0 \) there exists a \emph{strictly monotone} stationary solution \(\xi_{\lambda}\) (solving \eqref{eq:stationary}) with the following properties:
+\begin{enumerate}
+\item \(\xi_{\lambda} (r) = \sqrt{F'(0)} \lambda r^{\sqrt{F'(0)}} + \bigo(r^{\sqrt{F'(0)} + \epsilon}) \text{ as } r \to 0\) and for some \(\epsilon > 0\), \label{itm:stationaryC1_asymptotic}
+\item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to 0} \xi_{\lambda} (r) = 0\), \label{itm:stationaryC1_lambda_0}
+\item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to \infty} \xi_{\lambda} (r) = \infty\). \label{itm:stationaryC1_lambda_infty}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We can solve equation \eqref{eq:stationary} explicitly (in terms of \(F\)) by changing variables, \(y = e^w\) and letting \(\zeta(w) = \xi(e^w)\), whence our problem becomes
 \[
 \begin{cases}
 \zeta'' &= e^{2w} \xi'' + e^w \xi' = F (\zeta) \\
@@ -294,11 +307,12 @@ H'(z) = \frac{1}{u(z)} > 0, \quad z \in (0, a).
 \]
 Thus \(H\) is strictly increasing and hence a \(C^1\)-diffeomorphism of \((0, a)\) onto \(\R\) so that \(H^{-1}\) is defined and \(C^1\).
 
-In terms of \(\xi(r) = \xi(r) = \zeta(\ln r)\), have
-\[
+In terms of \(\xi(r) = \xi(r) = \zeta(\ln r)\), we have the representation formula
+\begin{equation}
+\label{eq:stationaryC1}
 \xi(r) = H^{-1} (\ln r + \mu) = H^{-1} (\ln \lambda r)
-\]
-where \(\lambda = e^{\mu}\). So \(0 < \xi(r) < a\) for all \(r \in (0, 1)\) and so our solutions automatically have \(L^{\infty}\) bounds independent of \(\mu\). We may also use the implicit relation
+\end{equation}
+where \(\lambda = e^{\mu}\). Thus since \(H^{-1}\) maps \(\R\) into \((0, a)\) we have \(0 < \xi(r) < a\) for all \(r \in (0, 1)\) and so our solutions automatically have \(L^{\infty}\) bounds independent of \(\lambda\). We may also use the implicit relation
 \[
 H (\xi(r)) =  \ln \lambda r.
 \]
@@ -309,16 +323,66 @@ Either way, we derive:
 \xi''(r) &= \frac{1}{r} \frac{G'(\xi(r)) \xi'(r)}{2 \sqrt{G(\xi(r))}} - \frac{1}{r^2} \sqrt{G(\xi(r))} \\
 &= \frac{1}{r^2} \left(F(\xi(r))- \sqrt{G(\xi(r))}\right).
 \end{align*}
-from which we easily verify that we \(\xi\) is indeed a solution.
+from which we easily verify that \(\xi\) is indeed a solution to equation \eqref{eq:stationary}.
 
-To finish this section, let us examine how the derivatives of \(\xi\) depend on \(\lambda\) as this is, along with the comparison theorem is how we study blow up in general.
+Now we just verify the properties asserted in the statement of the lemma. First, we already observed that \(H^{-1}\) is strictly monotone increasing with \(H^{-1}(-\infty) = 0\) and \(H^{-1}(\infty) = a\). Thus since \(\ln \lambda r\) is also strictly monotone increasing we get that \(\xi = H^{-1} (\ln \lambda r)\) is strictly monotone increasing. We also obtain the last two properties:
 
-We have
+Property (\ref{itm:stationaryC1_lambda_0}) follows since for any \(r > 0\),
 \[
-\xi' = \frac{1}{r}  \sqrt{G(\xi(r))} = \frac{1}{r}  \sqrt{G \circ H^{-1}(\ln \lambda r)}.
+\lim_{\lambda \to 0} H^{-1}(\ln \lambda r) = H^{-1}(-\infty) = 0.
+\]
+Property (\ref{itm:stationaryC1_lambda_infty}) follows since for any \(r > 0\),
+\[
+\lim_{\lambda \to \infty} H^{-1}(\ln \lambda r) = H^{-1}(\infty) = a.
 \]
 
-{\color{red}Not sure how to best expand this. Maybe work with the integral definition of \(H\) or the implicit form of the solution?}
+Finally, to verify property (\ref{itm:stationaryC1_asymptotic}), first observe that replacing \(F\) by
+\[
+\tilde{F} = \frac{1}{F'(0)} F
+\]
+we have \(\tilde{F}'(0) = 1\). Let us also write \(\tilde{H}^{-1}\) for the corresponding \(H\) in which case
+\[
+\tilde{\xi}(s) = \tilde{H}^{-1} (\ln \lambda s)
+\]
+satisfies
+\[
+\tilde{\xi}_{ss} + \frac{1}{s} \tilde{\xi}_s = \frac{1}{s^2} \tilde{F}(\tilde{\xi}).
+\]
+Then in fact \(\xi(r) = \tilde{\xi}(r^{\sqrt{F'(0)}})\) since letting \(s = r^{\sqrt{F'(0)}}\) and \(\ell = \sqrt{F'(0)}\), we have
+\[
+\begin{split}
+\xi_{rr} + \frac{1}{r} \xi_r &= \ell^2 r^{2(\ell - 1)} \tilde{\xi}_{ss} + \ell (\ell - 1) r^{\ell - 2} \tilde{\xi}_s + \frac{1}{r} \ell r^{\ell - 1} \tilde{\xi}_s \\
+&= \ell^2 r^{-2} \left((r^{\ell})^2\tilde{\xi}_{ss} + r^{\ell} \tilde{\xi}_s\right) = \ell^2 r^{-2} \left(s^2 \tilde{\xi}_{ss} + s \tilde{\xi}_s\right) \\
+&= \frac{1}{r^2} F'(0) \tilde{F}(\tilde{\xi}(r^{\ell})) = \frac{1}{r^2} F(\xi).
+\end{split}
+\]
+
+Thus in fact it suffices to show
+\[
+\xi_{\lambda} (r) = \lambda r + \bigo(r^{1 + \epsilon}) \text{ as } r \to 0
+\]
+under the assumption \(F'(0) = 1\) (and also relabelling \(\lambda \mapsto \lambda^{1/\sqrt{F'(0)}}\) which doesn't affect the other required properties).
+
+To this end, note that
+\[
+H(z) = \int \frac{1}{\sqrt{|G(s)|}} ds = \int \frac{ds}{s + \bigo(s^{1+\alpha})} = \int \frac{1}{s}(1 + \bigo(s^{\alpha})) ds = \ln z + \bigo(z^{\alpha}).
+\]
+Then we have, letting \(z = H^{-1}(w)\),
+\[
+\begin{split}
+\abs{H^{-1}(w) - e^w} &= \abs{z - e^{H(z)}} = \abs{z - e^{\ln z + \bigo(z^{\alpha})}} \\
+&= \abs{z - e^{\bigo(z^{\alpha})} z} = \abs{(1 - e^{\bigo(z^{\alpha})})z} \\
+&\leq A z^{\alpha+1}
+\end{split}
+\]
+for some \(A > 0\) and \(z \in [0, \epsilon]\) for some \(\epsilon > 0\).
+
+Therefore,
+\[
+\abs{\xi(r) - \lambda r} = \abs{H^{-1} (\ln \lambda r) - e^{\ln \lambda r}} \leq A r^{\alpha + 1}
+\]
+and hence \(\xi(r) = \bigo(r)\) as \(r \to 0\) as required.
+\end{proof}
 
 \subsubsection*{Example: Harmonic map heat flow in \(\S^2\)}
 
