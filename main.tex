@@ -372,16 +372,18 @@ Then we have, letting \(z = H^{-1}(w)\),
 \begin{split}
 \abs{H^{-1}(w) - e^w} &= \abs{z - e^{H(z)}} = \abs{z - e^{\ln z + \bigo(z^{\alpha})}} \\
 &= \abs{z - e^{\bigo(z^{\alpha})} z} = \abs{(1 - e^{\bigo(z^{\alpha})})z} \\
-&\leq A z^{\alpha+1}
+&\leq A z^{\alpha+1}.
 \end{split}
 \]
-for some \(A > 0\) and \(z \in [0, \epsilon]\) for some \(\epsilon > 0\).
-
-Therefore,
+for some \(A > 0\) and \(z \in [0, \epsilon]\) for some \(\epsilon > 0\). Thus
 \[
-\abs{\xi(r) - \lambda r} = \abs{H^{-1} (\ln \lambda r) - e^{\ln \lambda r}} \leq A r^{\alpha + 1}
+\abs{H^{-1}(w) - e^w} \to 0 \text{ as } w \to -\infty
 \]
-and hence \(\xi(r) = \bigo(r)\) as \(r \to 0\) as required.
+since \(w \to -\infty \Rightarrow z \to 0\). Therefore,
+\[
+\abs{\xi(r) - \lambda r} = \abs{H^{-1} (\ln \lambda r) - e^{\ln \lambda r}} \to 0
+\]
+as \(r \to 0\) and hence \(\xi(r) = \bigo(r)\) as \(r \to 0\).
 \end{proof}
 
 \subsubsection*{Example: Harmonic map heat flow in \(\S^2\)}
