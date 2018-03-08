@@ -506,6 +506,7 @@ The model case is if \(F\) is differentiable at \(z=0\), in which case the limit
 Our argument is based on the following comparison principle:
 
 \begin{thm}[Comparison Principle]
+\label{thm:comparison}
 Let \(\psi\) satisfy equation \eqref{eq:pde} and let \(\overline{\xi}\) be a super-solution; that is
 \begin{equation}
 \label{eq:pde_super}
@@ -658,14 +659,34 @@ The following lemma, simply combines what we have obtained so far into a criteri
 Let \(\psi\) solve the equivariant harmonic map heat flow, equation \eqref{eq:pde} on \([0, 1] \times [0, T)\). Then  we have the following:
 
 \begin{enumerate}
-\item If there exists a sub-solution \(\xi\) to equation \eqref{eq:pde} such that \(\xi(r, t=0) \leq \psi(r, t=0)\) and \(\xi'(0, t) \to \infty\) as \(t \to T\), then \(\psi'(0, t) \to \infty\) as \(t \to T\). Likewise, if \(\psi(r, t = 0) \leq \xi(r, t=0)\) for a super-solution with \(\xi'(0, t) \to -\infty\) as \(t \to T\), then \(\psi'(0, t) \to \infty\) as \(t \to T\).
-\item If there exists a super-solution \(\xi\) to equation \eqref{eq:pde} such that \(-\xi(r, t=0) \leq \psi(r, t=0) \leq \xi(r, t-0)\) with \(\abs{\xi'(0, t)} \leq M < \infty\) for \(t \in [0, T)\) and some \(M > 0\) then there exists an \(N\) with \(0 < N < \infty\) such that \(\|\psi(\cdot, t)\|_{C^1} < N\) for all \(t \in [0, T)\).
+\item If there exists a sub-solution \(\xi\) to equation \eqref{eq:pde} such that \(\xi(r, t=0) \leq \psi(r, t=0)\) and \(\xi'(0, t) \to \infty\) as \(t \to T\), then \(\psi'(0, t) \to \infty\) as \(t \to T\). Likewise, if \(\psi(r, t = 0) \leq \xi(r, t=0)\) for a super-solution with \(\xi'(0, t) \to -\infty\) as \(t \to T\), then \(\psi'(0, t) \to \infty\) as \(t \to T\). \label{itm:blowup}
+\item If there exists a super-solution \(\xi\) to equation \eqref{eq:pde} such that \(-\xi(r, t=0) \leq \psi(r, t=0) \leq \xi(r, t-0)\) with \(\abs{\xi} \leq M_1\) and \(\abs{\xi'(0, t)} \leq M_2 < \infty\) for \(t \in [0, T)\) and some \(M_1, M_2 > 0\) then there exists an \(N\) with \(0 < N < \infty\) such that \(\|\psi(\cdot, t)\|_{C^{1,\alpha}} \leq N\) for all \(t \in [0, T)\). \label{itm:noblowup}
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
+Proof of \ref{itm:blowup}:
 
+We just prove the sub-solution and blow up to \(\infty\) case, the super-solution and blow up to \(-\infty\) being identical and in fact following by replacing \(\xi\) with \(-\xi\).
+
+By the comparison principle \Cref{thm:comparison}, \(\psi(r, t) \geq \xi(r, t)\) for all \(r \in [0, 1]\) and \(t \in [0, T)\). Since \(\psi(0, t) = \xi(0, t)\) we then must have \(\psi'(0, t) \geq \xi'(0, t) \to \infty\) as \(t \to T\).
+
+Proof of \ref{itm:noblowup}:
+
+Just as with the previous case the comparison principle \Cref{thm:comparison} gives \(-\xi(r, t) \leq \psi(r, t) \leq \xi(r, t)\) for all \(r \in [0, 1]\) and \(t \in [0, T)\) and hence \(\abs{\psi(r, t)} \leq M_1\) and \(-M_2 \leq -\xi'(0, t) \leq \psi'(0, t) \leq \xi'(0, t) \leq M_1\). Thus for any \(\tau \in [0, T)\) we have a \(\rho_0 > 0\) with
+\[
+\|\psi(\cdot, t)\|_{C^{1,\alpha}([0, \rho_0])} \leq 2M_2.
+\]
+for all \(t \in [0, \tau]\). Then \Cref{lem:apriori_bounds} ensures that
+\[
+\|\psi(\cdot, t)\|_{C^{1,\alpha}([0, 1])} < N
+\]
+for all \(t \in [0, \tau]\) with \(N\) depending only on the local \(C^1\) bound \(M_2\), the initial data and the \(C^0\) bound \(M_1\).
 \end{proof}
+
+\begin{rem}
+In the case \ref{itm:noblowup}, if \(T < \infty\), then we have uniform \(C^{1,\alpha}\) bounds on \([0, T)\) and thus the solution extends past \(T\). In particular, if \(\xi\) is defined on all \([0, \infty)\) with the same assumptions as in the lemma, then no finite time blow up can occur.
+\end{rem}
 
 \section{Barriers}
 \label{subsec:barriers}
