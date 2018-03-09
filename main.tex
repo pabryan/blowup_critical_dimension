@@ -414,7 +414,20 @@ Up to relabeling \(\lambda^{-\ell} \mapsto \lambda\) this is the function used i
 
 \subsection{Stationary solutions for arbitrary \(C\)}
 
-In this case, we don't have the same integrability structure as with \(C = 1\). However, we can still solve (somewhat less explicitly) by factoring \(L\) as the composition of two first order differential operators. That is we define
+In this case, we don't have the same integrability structure as with \(C = 1\). However, we can still solve (somewhat less explicitly) by factoring \(L\) as the composition of two first order differential operators.
+
+\begin{lemma}
+\label{lem:stationaryC}
+For each \(\lambda > 0 \) there exists a \emph{strictly monotone} stationary solution \(\xi_{\lambda}\) (solving \eqref{eq:stationary}) with the following properties:
+\begin{enumerate}
+\item \(\xi_{\lambda} (r) = \sqrt{F'(0)} \lambda r^{\beta_+} + \bigo(r^{\beta + \epsilon}) \text{ as } r \to 0\) and for some \(\epsilon > 0\) and where \(\beta_+\) is the positive root of the characteristic equation, \label{itm:stationaryC_asymptotic}
+\item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to 0} \xi_{\lambda} (r) = 0\), \label{itm:stationaryC_lambda_0}
+\item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to \infty} \xi_{\lambda} (r) = \infty\). \label{itm:stationaryC_lambda_infty}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+We define
 \begin{align*}
 L_+ &= \partial_r - \frac{\beta^+ - 1}{r} = r^{\beta_+ - 1} \partial_r (r^{-(\beta_+ - 1)} \cdot) , \\
 L_- &= \partial_r - \frac{\beta^-}{r} = r^{\beta_-} \partial_r (r^{-\beta_-} \cdot).
@@ -488,6 +501,7 @@ which is not so easy to integrate directly, not to mention the complications ari
 {\color{red}We also need to determine how the solutions vary with respect to the free parameters which is needed for barrier construction}.
 
 {\color{red}Work out asymptotics as \(r\to 0\) which is important for barrier construction}.
+\end{proof}
 
 \section{Blow up}
 
@@ -653,11 +667,12 @@ Let \(\Omega = (0, 1)\), \(\Omega' = (\rho, 1)\), and \(\Omega'' = (\rho/2, 1)\)
 In the hypothesis of the theorem, we assume \(\psi\) has finite \(C^{0,\alpha}\) norm, hence the last term is finite. Since \(F\) is also Lipschitz, the first term \(r^{-2} F(\psi(r, t))\) has finite \(C^{0,\alpha}\) norm on \(r \in [\rho, 1], t \in [0, \tau]\). The second term is the initial data \(\psi_0\) which is assumed to have finite \(C^{2,\alpha}\) norm and finally the third term - the boundary term \(\psi|_{r=1}\) - is constant hence also has finite norm.
 \end{proof}
 
-\subsection{Conditions for blow up}
+\subsection{Criteria for blow up}
 
 The following lemma, simply combines what we have obtained so far into a criteria for blow up depending on the existence of suitable barriers.
 
-\begin{lemma}
+\begin{lemma}[Blow up criteria]
+\label{lem:blowup_criteria}
 Let \(\psi\) solve the equivariant harmonic map heat flow, equation \eqref{eq:pde} on \([0, 1] \times [0, T)\). Then  we have the following:
 
 \begin{enumerate}
@@ -693,28 +708,11 @@ In the case \ref{itm:noblowup}, if \(T < \infty\), then we have uniform \(C^{1,\
 \section{Barriers}
 \label{subsec:barriers}
 
-The argument in this section is based on constructing barriers from stationary solutions that either force or prevent blow up depending on the roots of the characteristic equation.
+Now we may construct barriers from the stationary solutions given in \Cref{lem:stationaryC1,lem:stationaryC} to which we apply the blow up criteria \Cref{lem:blowup_criteria} to characterise whether blow up occurs or not.
 
-\subsection{The case \(\|\psi\|_{\infty} < a\)}
+\subsection{The case \(\|\psi\|_{\infty} < a, C=1, \sqrt{F'(0)} > 1, \psi_0 = \bigo(r^{\sqrt{F'(0)}})\)}
 
-In this case, we can just use the stationary solution as a barrier. Recall that
-\[
-\xi_{\lambda} (r) = H^{-1} (\ln r^{\beta} + \lambda),
-\]
-with \(H : (0, a) \to (-\infty, \infty)\). So we automatically have \(0 < \xi < a\), as well as
-\[
-\lim_{r\to 0} H^{-1} (\ln r^{\beta} + \lambda) = 0, \quad \lim_{\lambda\to\infty} H^{-1}(\ln r^{\beta} + \lambda) = a \quad \text{(non uniformly in \(r\))}.
-\]
-
-{\color{red}If \(\|\psi\|_{\infty} < a\), then we for any \(r_0 > 0\), from the monotonicity of \(H^{-1} (\ln r^{\beta} + \lambda)\) in \(r\), we can choose \(\lambda\) so that \(\psi(r, 0) < \xi_{\lambda}(r)\) for \(r \in [r_0, 1]\). I need to check the asymptotics as \(r\to 0\) to get \(\psi(r, 0) < \xi(r)\) for \(r \in (0, r_0)\).}
-
-{\color{red}The barrier should be a sub-solution that blows up for \(0 < F'(0) \leq 1\)  and a super solution that does not blow up for \(1 < F'(0)\).}
-
-{\color{red} The remaining argument then goes as follows:}
-
-If \(\psi(r, t) \leq \xi(r, t)\) for all \(t \in [0, T]\) and \(\xi'(0, t) \leq M < \infty\), then since \(\psi(0, t) = \xi(0, t) = 0\), we must have \(\psi'(0, t) \leq M\) also. The regularity of \(\psi'\) allows us to apply Lemma \ref{lem:apriori_bounds} to conclude no blow up.
-
-On the other hand, if \(\psi(r, t) \geq \xi(r, t)\) and \(\xi'(0, t) \to \infty\) as \(t \to T\), then \(\psi'(0, t) \to \infty\) also.
+This is the simplest case, and we can just use the stationary solution from \Cref{lem:stationaryC1} as a barrier. Recall that \(\xi_{\lambda} (r) = \sqrt{F'(0)} \lambda r^{\beta_+} + \bigo(r^{\beta + \epsilon})\) and \(\lim_{\lambda \to \infty} \xi_{\lambda} (r) = \infty\). Thus we may choose \(\lambda\) large enough such that \(\xi_{\lambda}(r) \geq \psi_0(r)\). Then since \(\xi\) is a stationary solution, it is in particular a super solution hence \Cref{lem:blowup_criteria} applies to rule out finite time blow up. 
 
 \subsection{The case \(\|\psi\|_{\infty} < 2a\)}.
 
