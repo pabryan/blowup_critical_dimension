@@ -226,7 +226,7 @@ Let us first consider the case \(C = 1\) which is satisfied in critical dimensio
 \label{lem:stationaryC1}
 For each \(\lambda > 0 \) there exists a \emph{strictly monotone} stationary solution \(\xi_{\lambda}\) (solving \eqref{eq:stationary}) with the following properties:
 \begin{enumerate}
-\item \(\xi_{\lambda} (r) = \sqrt{F'(0)} \lambda r^{\sqrt{F'(0)}} + \bigo(r^{\sqrt{F'(0)} + \epsilon}) \text{ as } r \to 0\) and for some \(\epsilon > 0\), \label{itm:stationaryC1_asymptotic}
+\item \(\xi_{\lambda} (r) = \lambda r^{\sqrt{F'(0)}} + \bigo(r^{(1+\alpha) \sqrt{F'(0)}}) \text{ as } r \to 0\) and for some \(\epsilon > 0\), \label{itm:stationaryC1_asymptotic}
 \item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to 0} \xi_{\lambda} (r) = 0\), \label{itm:stationaryC1_lambda_0}
 \item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to \infty} \xi_{\lambda} (r) = \infty\). \label{itm:stationaryC1_lambda_infty}
 \end{enumerate}
@@ -371,22 +371,38 @@ To this end, note that
 H(z) = \int \frac{1}{\sqrt{|G(s)|}} ds = \int \frac{ds}{s + \bigo(s^{1+\alpha})} = \int \frac{1}{s}(1 + \bigo(s^{\alpha})) ds = \ln z + \bigo(z^{\alpha}).
 \]
 Then we have, letting \(z = H^{-1}(w)\),
-\[
+\begin{equation}
+\label{eq:w_asymptotics}
 \begin{split}
 \abs{H^{-1}(w) - e^w} &= \abs{z - e^{H(z)}} = \abs{z - e^{\ln z + \bigo(z^{\alpha})}} \\
 &= \abs{z - e^{\bigo(z^{\alpha})} z} = \abs{(1 - e^{\bigo(z^{\alpha})})z} \\
-&\leq A z^{\alpha+1}.
+&\leq A z^{1+\alpha} \\
+&= A (H^{-1}(w))^{1+\alpha}
 \end{split}
-\]
-for some \(A > 0\) and \(z \in [0, \epsilon]\) for some \(\epsilon > 0\). Thus
+\end{equation}
+for some \(A > 0\) and \(z \in [0, \epsilon]\) for some \(\epsilon > 0\), or equivalently for \(w \in (-\infty, M)\) for some \(M\). In particular
 \[
 \abs{H^{-1}(w) - e^w} \to 0 \text{ as } w \to -\infty
 \]
-since \(w \to -\infty \Rightarrow z \to 0\). Therefore,
+since \(w \to -\infty \Rightarrow z \to 0\) so that there exists a \(W \in \R\) such that
 \[
-\abs{\xi(r) - \lambda r} = \abs{H^{-1} (\ln \lambda r) - e^{\ln \lambda r}} \to 0
+H^{-1}(w) \leq 2 e^w
 \]
-as \(r \to 0\) and hence \(\xi(r) = \bigo(r)\) as \(r \to 0\).
+for \(w \in (-\infty, W)\). Substituting this into equation \eqref{eq:w_asymptotics} gives
+\[
+\abs{H^{-1}(w) - e^w} \leq 2^{1+\alpha} A e^{(1+\alpha)w}
+\]
+for \(w \in (-\infty, W)\).
+
+Therefore with \(w = \ln \lambda r\) we obtain
+\[
+\begin{split}
+\abs{\xi(r) - \lambda r} &= \abs{H^{-1} (\ln \lambda r) - e^{\ln \lambda r}} \\
+&\leq 2^{1+\alpha} A e^{(1+\alpha)\ln \lambda r} \\
+&= 2^{1+\alpha} A \lambda^{1+\alpha} r^{1+\alpha}
+\end{split}
+\]
+provided \(r \in [0, H^{-1}(W))\) as required.
 \end{proof}
 
 \begin{example}[Harmonic map heat flow in \(\S^2\)]
