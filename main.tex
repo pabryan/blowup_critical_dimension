@@ -380,29 +380,46 @@ Then we have, letting \(z = H^{-1}(w)\),
 &= A (H^{-1}(w))^{1+\alpha}
 \end{split}
 \end{equation}
-for some \(A > 0\) and \(z \in [0, \epsilon)\) for some \(\epsilon > 0\), or equivalently for \(w \in (-\infty, M)\) for some \(M\). In particular
-\[
-\abs{H^{-1}(w) - e^w} \to 0 \text{ as } w \to -\infty
-\]
-since \(w \to -\infty \Rightarrow z \to 0\) so that there exists a \(W \in \R\) such that
-\[
-H^{-1}(w) \leq 2 e^w
-\]
-for \(w \in (-\infty, W)\). Substituting this into equation \eqref{eq:w_asymptotics} gives
-\[
-\abs{H^{-1}(w) - e^w} \leq 2^{1+\alpha} A e^{(1+\alpha)w}
-\]
-for \(w \in (-\infty, W)\).
-
-Therefore with \(w = \ln \lambda r\) we obtain
+for some \(A > 0\) and \(z \in [0, \epsilon)\) for some \(\epsilon > 0\), or equivalently for \(w \in (-\infty, M)\) for some \(M\). Now we iterate (noting that \(H^{-1}(w) > 0\)),
 \[
 \begin{split}
-\abs{\xi(r) - \lambda r} &= \abs{H^{-1} (\ln \lambda r) - e^{\ln \lambda r}} \\
-&\leq 2^{1+\alpha} A e^{(1+\alpha)\ln \lambda r} \\
-&= 2^{1+\alpha} A \lambda^{1+\alpha} r^{1+\alpha}
+\abs{H^{-1}(w) - e^w} &\leq A(H^{-1}(w))^{1+\alpha} \leq A (e^w + \abs{H^{-1}(w)-e^w})^{1+\alpha} \leq A(e^w + A(H^{-1}(w))^{1+\alpha})^{1+\alpha} \\
+&\leq A\left[e^w + A\left(e^w + A(H^{-1}(w))^{1+\alpha}\right)^{1+\alpha}\right]^{1+\alpha}
 \end{split}
 \]
-provided \(r \in [0, H^{-1}(W))\) as required.
+To ease notation, let us write for each fixed \(w\),
+\[
+h = h_{e^w, 1+\alpha, A} (v) = A(e^w + A v^{1+\alpha})^{1+\alpha}
+\]
+so that we may restate the inequality as
+\[
+\begin{split}
+\abs{H^{-1}(w) - e^w} &\leq h(H^{-1}(w)) \\
+&\leq h(h(H^{-1}(w))) \\
+&\leq h^{\circ k} (H^{-1}(w))
+\end{split}
+\]
+with the latter inequality following by induction and where \(h^{\circ k} = \underbrace{h \circ \cdots \circ h}_{k \text{ times}}\). Therefore,
+\[
+\abs{H^{-1}(w) - e^w} \leq \limsup_{k\to\infty} h^{\circ k} (H^{-1}(w))
+\]
+for all \(w \in (-\infty, W(\epsilon))\).
+
+{\color{red}Now what we want is:} for any \(u,v > 0\) (or even just sufficiently small perhaps) and \(p > 0\),
+\[
+\limsup_{k\to\infty} h_{u, p, A}^{\circ k} (v) \leq B u^p
+\]
+where \(h_{u, p, A} = A(u + A v^p)^p\). For then we obtain
+\[
+\abs{H^{-1}(w) - e^w} \leq \limsup_{k\to\infty} h_{e^w, 1+\alpha, A} ^{\circ k} (H^{-1}(w)) \leq B e^{(1+\alpha) w}.
+\]
+With \(w = \ln \lambda r\) we obtain that given any \(\epsilon > 0\), provided \(r \in [0, e^{W(\epsilon)}/\lambda)\), we have
+\[
+\begin{split}
+\abs{\xi(r) - \lambda r} &= \abs{H^{-1} (\ln \lambda r) - e^{\ln \lambda r}} \leq B e^{(1+\alpha) \ln \lambda r} = B\lambda^{1+\alpha} r^{1+\alpha}
+\end{split}
+\]
+as required.
 \end{proof}
 
 \begin{example}[Harmonic map heat flow in \(\S^2\)]
