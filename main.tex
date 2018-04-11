@@ -226,7 +226,7 @@ Let us first consider the case \(C = 1\) which is satisfied in critical dimensio
 \label{lem:stationaryC1}
 For each \(\lambda > 0 \) there exists a \emph{strictly monotone} stationary solution \(\xi_{\lambda}\) (solving \eqref{eq:stationary}) with the following properties:
 \begin{enumerate}
-\item \(\xi_{\lambda} (r) = \lambda r^{\sqrt{F'(0)}} + \bigo(r^{(1+\alpha) \sqrt{F'(0)}}) \text{ as } r \to 0\) and for some \(\epsilon > 0\), \label{itm:stationaryC1_asymptotic}
+\item \(\xi_{\lambda} (r) = \lambda r^{\sqrt{F'(0)}} + \bigo(r^{(1+\bar{\alpha}) \sqrt{F'(0)}}) \text{ as } r \to 0\) for every \(\bar{\alpha} \in (0, \alpha)\), \label{itm:stationaryC1_asymptotic}
 \item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to 0} \xi_{\lambda} (r) = 0\), \label{itm:stationaryC1_lambda_0}
 \item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to \infty} \xi_{\lambda} (r) = \infty\). \label{itm:stationaryC1_lambda_infty}
 \end{enumerate}
@@ -368,9 +368,35 @@ under the assumption \(F'(0) = 1\) (and also relabelling \(\lambda \mapsto \lamb
 
 To this end, note that
 \[
-H(z) = \int \frac{1}{\sqrt{|G(s)|}} ds = \int \frac{ds}{s + \bigo(s^{1+\alpha})} = \int \frac{1}{s}(1 + \bigo(s^{\alpha})) ds = \ln z + \bigo(z^{\alpha}).
+H(z) = \int \frac{1}{\sqrt{|G(s)|}} ds = \int \frac{ds}{s + \bigo(s^{1+\alpha})} = \int \frac{1}{s}(1 + \bigo(s^{\alpha})) ds = \ln z + \bigo(z^{\alpha})
 \]
-Then we have, letting \(z = H^{-1}(w)\),
+so that for any \(\epsilon > 0\), there is a \(\delta \in (0, 1)\) such that for \(0 < z < \delta\),
+\begin{equation}
+\label{eq:H_first_order_ln}
+H(z) \geq (1 + \epsilon) \ln z
+\end{equation}
+for otherwise there exists a sequence \((z_n)\) with \(0 < z_n < 1/n\) such that
+\[
+H(z_n) - \ln z_n < \epsilon \ln z_n \to -\infty
+\]
+as \(n \to \infty\). But this contradicts \(H(z) = \ln z + \bigo(z^{\alpha})\) which implies that there is a \(B > 0\), such that for \(n\) sufficiently large,
+\[
+\abs{H(z_n) - \ln z_n} \leq B z_n^{\alpha} \to 0
+\]
+as \(n \to \infty\). Note that the restriction \(\delta < 1\) is just to ensure that \(\ln z < 0\) so we don't need to bother with absolute values in equation \eqref{eq:H_first_order_ln}.
+
+Then since \(H^{-1}(-\infty) = 0\) and \(H^{-1}\) is monotonically increasing, for \(w \in (-\infty, H(\delta))\) we have \(H^{-1}(w) \in (0, \delta)\) and hence equation \eqref{eq:H_first_order_ln} implies
+\[
+w = H(H^{-1} (w)) = \geq (1 + \epsilon) \ln H^{-1}(w).
+\]
+Taking the exponential,
+\begin{equation}
+\label{eq:Hinv_first_order_exp}
+e^w \geq H^{-1}(w)^{1+\epsilon}
+\end{equation}
+for \(w \in (-\infty, H(\delta))\).
+
+On the other hand, again since \(H(z) = \ln z + \bigo(z^{\alpha})\),
 \begin{equation}
 \label{eq:w_asymptotics}
 \begin{split}
@@ -380,43 +406,23 @@ Then we have, letting \(z = H^{-1}(w)\),
 &= A (H^{-1}(w))^{1+\alpha}
 \end{split}
 \end{equation}
-for some \(A > 0\) and \(z \in [0, \epsilon)\) for some \(\epsilon > 0\), or equivalently for \(w \in (-\infty, M)\) for some \(M\). Now we iterate (noting that \(H^{-1}(w) > 0\)),
-\[
-\begin{split}
-\abs{H^{-1}(w) - e^w} &\leq A(H^{-1}(w))^{1+\alpha} \leq A (e^w + \abs{H^{-1}(w)-e^w})^{1+\alpha} \leq A(e^w + A(H^{-1}(w))^{1+\alpha})^{1+\alpha} \\
-&\leq A\left[e^w + A\left(e^w + A(H^{-1}(w))^{1+\alpha}\right)^{1+\alpha}\right]^{1+\alpha}
-\end{split}
-\]
-To ease notation, let us write for each fixed \(w\),
-\[
-h = h_{e^w, 1+\alpha, A} (v) = A(e^w + A v^{1+\alpha})^{1+\alpha}
-\]
-so that we may restate the inequality as
-\[
-\begin{split}
-\abs{H^{-1}(w) - e^w} &\leq h(H^{-1}(w)) \\
-&\leq h(h(H^{-1}(w))) \\
-&\leq h^{\circ k} (H^{-1}(w))
-\end{split}
-\]
-with the latter inequality following by induction and where \(h^{\circ k} = \underbrace{h \circ \cdots \circ h}_{k \text{ times}}\). Therefore,
-\[
-\abs{H^{-1}(w) - e^w} \leq \limsup_{k\to\infty} h^{\circ k} (H^{-1}(w))
-\]
-for all \(w \in (-\infty, W(\epsilon))\).
+for some \(A > 0\) and \(z \in [0, \eta)\) for some \(\eta > 0\), or equivalently for \(w \in (-\infty, H(\eta))\).
 
-{\color{red}Now what we want is:} for any \(u,v > 0\) (or even just sufficiently small perhaps) and \(p > 0\),
+Combining equations \eqref{eq:Hinv_first_order_exp} and \eqref{eq:w_asymptotics} we find that for \(w \in (-\infty, M_{\epsilon})\) where \(M_{\epsilon} = \min\{H(\delta(\epsilon)), H(\eta)\})\), we have
+\begin{equation}
+\label{eq:Hinv_first_order_exp_estimate}
+\abs{H^{-1}(w) - e^w} \leq A (e^w)^{(1+\alpha)/(1+\epsilon)}.
+\end{equation}
+This is true, in particular for all \(\epsilon \in (0, \alpha)\). Setting
 \[
-\limsup_{k\to\infty} h_{u, p, A}^{\circ k} (v) \leq B u^p
+\bar{\alpha} = \frac{\alpha - \epsilon}{1 + \epsilon}
 \]
-where \(h_{u, p, A} = A(u + A v^p)^p\). For then we obtain
-\[
-\abs{H^{-1}(w) - e^w} \leq \limsup_{k\to\infty} h_{e^w, 1+\alpha, A} ^{\circ k} (H^{-1}(w)) \leq B e^{(1+\alpha) w}.
-\]
-With \(w = \ln \lambda r\) we obtain that given any \(\epsilon > 0\), provided \(r \in [0, e^{W(\epsilon)}/\lambda)\), we have
+we have \(\bar{\alpha}\) ranges over all values in \((0, \alpha)\) as \(\epsilon\) ranges over \((0, \alpha)\) and \(1 + \bar{\alpha} = \tfrac{1+\alpha}{1+\epsilon}\).
+
+To finish, let \(w = \ln \lambda r\) in equation \eqref{eq:Hinv_first_order_exp_estimate} to obtain that for \(r \in (0, e^{M_{\epsilon}}/\lambda)\),
 \[
 \begin{split}
-\abs{\xi(r) - \lambda r} &= \abs{H^{-1} (\ln \lambda r) - e^{\ln \lambda r}} \leq B e^{(1+\alpha) \ln \lambda r} = B\lambda^{1+\alpha} r^{1+\alpha}
+\abs{\xi(r) - \lambda r} &= \abs{H^{-1} (\ln \lambda r) - e^{\ln \lambda r}} \leq A (e^{\ln \lambda r})^{(1 + \bar{\alpha})} = A\lambda^{1+\bar{\alpha}} r^{1+\bar{\alpha}}
 \end{split}
 \]
 as required.
