@@ -434,7 +434,7 @@ F(Z) = \frac{\ell^2}{2} \sin(2Z)
 \]
 so that
 \[
-G(Z) = \ell^2 \sin^2(Z)
+G(Z) = u(Z) = \ell^2 \sin^2(Z)
 \]
 and
 \[
@@ -499,28 +499,37 @@ L_+^{-1} (\varphi) &= r^{\beta_+ - 1} \int r^{-(\beta_+ - 1)} \varphi(r) dr + C_
 L_-^{-1} (\varphi) &= r^{\beta_-} \int r^{-\beta_-} \varphi(r) dr + C_- r^{\beta_-}
 \end{align*}
 and hence
-\begin{equation}
-\label{eq:}
+\[
 \begin{split}
 \xi &= r^{\beta_-} \int \left[\rho^{-\beta_-} L_+^{-1} \left(\frac{1}{\rho^2} \bar{F}(\xi)\right)\right] d\rho + C_- r^{\beta_-} \\
 &= r^{\beta_-} \int \left[\rho^{-\beta_-} \rho^{\beta_+ - 1} \int \left(\tau^{-(\beta_+ - 1)} \frac{1}{\tau^2} \bar{F}(\xi) \right)d\tau + \rho^{-\beta_-} C_+ \rho^{\beta_+-1}\right] d\rho + C_- r^{\beta_-} \\
 &= r^{\beta_-} \int \left[\rho^{\beta_+ - \beta_- - 1} \int \left(\tau^{-(\beta_+ + 1)} \bar{F}(\xi) \right)d\tau\right] d\rho + \frac{C_+}{\beta_+ - \beta_-} r^{\beta_+} + C_- r^{-\beta_-}.
 \end{split}
-\end{equation}
+\]
 Letting
-\[
+\begin{equation}
+\label{eq:stationaryC_G}
 G(\varphi) = r^{\beta_-} \int \left[\rho^{\beta_+ - \beta_- - 1} \int \left(\tau^{-(\beta_+ + 1)} \bar{F}(\varphi) \right)d\tau\right] d\rho
-\]
+\end{equation}
 and absorbing \(\tfrac{1}{\beta_+ - \beta_-}\) (recall \(\beta_+ \ne \beta_-\)) into \(C_+\), we have
-\[
+\begin{equation}
+\label{eq:stationaryC_implicit}
 (\Id - G) (\xi) = C_+ r^{\beta_+} + C_- r^{\beta_-}.
-\]
+\end{equation}
 
 Formally then, we obtain the representation formula,
-\[
+\begin{equation}
+\label{eq:stationaryC_formal}
 \xi = (\Id - G)^{-1} \left(C_+ r^{\beta_+} + C_- r^{\beta_-}\right).
-\]
+\end{equation}
 Note that in the case \(\bar{F} = 0\) we have \(G = 0\) and as expected, we recover the general solution, \(\xi = C_+ r{\beta_+} + C_- r^{\beta_-}\) to the linearised equation \(L(\xi) = 0\).
+
+{\color{red} We now need a contraction mapping to assert the existence of an inverse}.
+
+{\color{red}We also need to determine how the solutions vary with respect to the free parameters which is needed for barrier construction}.
+
+{\color{red}Work out asymptotics as \(r\to 0\) which is important for barrier construction}.
+\end{proof}
 
 \begin{rem}
 In the case, \(C = 1\), the characteristic equation is \(p(\beta) = \beta^2 - F'(0) = (\beta - \sqrt{F'(0)})(\beta + \sqrt{F'(0)})\), hence \(\beta_+ = -\beta_- = \sqrt{F'(0)}\) and
@@ -529,19 +538,15 @@ L_+ = \partial_r - \frac{\beta_+ - 1}{r}, \quad L_- = \partial_r + \frac{\beta_+
 \]
 It seems this difference of squares structure is what allows for the substitution \(r = e^w\) in the \(C=1\) case described above. Following the discussion there, the reader will observe that integrating to obtain \(\zeta'\) and then integrating again to obtain \(\zeta\) is nothing but factoring \(L\) as the composition of first order operators. It's just that for \(C = 1\), it can be done quite directly after changing variables whereas for the general case, we proceeded slightly less directly. Needless to say, this factoring for \(C = 1\) was the motivation for the general case.
 
-For the sake of completeness, when \(C \ne 1\), the substitution, \(r = (1-C)^{1/(1-C)} w^{1/(1-C)}\) leads to
-\[
+For the sake of completeness, the analogous change of variables for \(C \ne 1\), is \(r = (1-C)^{1/(1-C)} w^{1/(1-C)}\) leads to
+\begin{equation}
+\label{eq:stationaryC_change_var}
 \zeta'' = \frac{1}{(1-C)^2 w^2} F(\zeta)
-\]
+\end{equation}
 which is not so easy to integrate directly, not to mention the complications arising when \(C < 1\) in the coefficient \((1 - C)^{1/(1 - C)}\).
 \end{rem}
 
-{\color{red} We now need a contraction mapping to assert the existence of an inverse}.
-
-{\color{red}We also need to determine how the solutions vary with respect to the free parameters which is needed for barrier construction}.
-
-{\color{red}Work out asymptotics as \(r\to 0\) which is important for barrier construction}.
-\end{proof}
+{\color{red} Maybe this is in fact a good way to look at it? That is solutions satisfy \(\zeta = G(\zeta) = \int \int \frac{1}{(1-C)^2 w^2} F(\zeta(w)) dw\) Probably that's much easier to deal with in terms of fixed point theorems etc.}
 
 \section{Blow up}
 
