@@ -408,18 +408,16 @@ On the other hand, again since \(H(z) = \ln z + \bigo(z^{\alpha})\),
 \end{equation}
 for some \(A > 0\) and \(z \in [0, \eta)\) for some \(\eta > 0\), or equivalently for \(w \in (-\infty, H(\eta))\).
 
-Combining equations \eqref{eq:Hinv_first_order_exp} and \eqref{eq:w_asymptotics} we find that for \(w \in (-\infty, M_{\epsilon})\) where \(M_{\epsilon} = \min\{H(\delta(\epsilon)), H(\eta)\})\), we have
+Combining equations \eqref{eq:Hinv_first_order_exp} and \eqref{eq:w_asymptotics} we find that for \(w \in (-\infty, M_{\epsilon})\) where \(M_{\epsilon} = \min\{H(\delta(\epsilon)), H(\eta)\}) > - \infty\), we have
 \begin{equation}
 \label{eq:Hinv_first_order_exp_estimate}
-\abs{H^{-1}(w) - e^w} \leq A (e^w)^{(1+\alpha)/(1+\epsilon)}.
+\abs{H^{-1}(w) - e^w} \leq A (e^w)^{(1+\alpha)/(1+\epsilon)} \leq A e^{(1+\bar{\alpha}) w}
 \end{equation}
-This is true, in particular for all \(\epsilon \in (0, \alpha)\). Setting
+where
 \[
 \bar{\alpha} = \frac{\alpha - \epsilon}{1 + \epsilon}
 \]
-we have \(\bar{\alpha}\) ranges over all values in \((0, \alpha)\) as \(\epsilon\) ranges over \((0, \alpha)\) and \(1 + \bar{\alpha} = \tfrac{1+\alpha}{1+\epsilon}\).
-
-To finish, let \(w = \ln \lambda r\) in equation \eqref{eq:Hinv_first_order_exp_estimate} to obtain that for \(r \in (0, e^{M_{\epsilon}}/\lambda)\),
+ranges over all values in \((0, \alpha)\) as \(\epsilon\) ranges over \((0, \alpha)\). To finish, let \(w = \ln \lambda r\) in equation \eqref{eq:Hinv_first_order_exp_estimate} to obtain that for \(r \in (0, e^{M_{\epsilon}}/\lambda)\),
 \[
 \begin{split}
 \abs{\xi(r) - \lambda r} &= \abs{H^{-1} (\ln \lambda r) - e^{\ln \lambda r}} \leq A (e^{\ln \lambda r})^{(1 + \bar{\alpha})} = A\lambda^{1+\bar{\alpha}} r^{1+\bar{\alpha}}
