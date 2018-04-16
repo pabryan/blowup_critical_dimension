@@ -3,6 +3,8 @@
 \input{StandardPaper2.tex}
 \input{local_definitions.tex}
 
+
+
 \begin{document}
 
 \title[]
@@ -228,7 +230,7 @@ For each \(\lambda > 0 \) there exists a \emph{strictly monotone} stationary sol
 \begin{enumerate}
 \item \(\xi_{\lambda} (r) = \lambda r^{\sqrt{F'(0)}} + \bigo(r^{(1+\bar{\alpha}) \sqrt{F'(0)}}) \text{ as } r \to 0\) for every \(\bar{\alpha} \in (0, \alpha)\), \label{itm:stationaryC1_asymptotic}
 \item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to 0} \xi_{\lambda} (r) = 0\), \label{itm:stationaryC1_lambda_0}
-\item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to \infty} \xi_{\lambda} (r) = \infty\). \label{itm:stationaryC1_lambda_infty}
+\item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to \infty} \xi_{\lambda} (r) =  a \). \label{itm:stationaryC1_lambda_infty}
 \end{enumerate}
 \end{lemma}
 
@@ -462,15 +464,15 @@ For each \(\lambda > 0 \) there exists a \emph{strictly monotone} stationary sol
 \begin{enumerate}
 \item \(\xi_{\lambda} (r) = \sqrt{F'(0)} \lambda r^{\beta_+} + \bigo(r^{\beta + \epsilon}) \text{ as } r \to 0\) and for some \(\epsilon > 0\) and where \(\beta_+\) is the positive root of the characteristic equation, \label{itm:stationaryC_asymptotic}
 \item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to 0} \xi_{\lambda} (r) = 0\), \label{itm:stationaryC_lambda_0}
-\item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to \infty} \xi_{\lambda} (r) = \infty\). \label{itm:stationaryC_lambda_infty}
+\item For every \(r > 0\), the pointwise limit, \(\lim_{\lambda \to \infty} \xi_{\lambda} (r) = a\). \label{itm:stationaryC_lambda_infty}
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
 We define
 \begin{align*}
-L_+ &= \partial_r - \frac{\beta^+ - 1}{r} = r^{\beta_+ - 1} \partial_r (r^{-(\beta_+ - 1)} \cdot) , \\
-L_- &= \partial_r - \frac{\beta^-}{r} = r^{\beta_-} \partial_r (r^{-\beta_-} \cdot).
+L_+ &= \partial_r - \frac{\beta^+ - 1}{r} = r^{\beta^+ - 1} \partial_r (r^{-(\beta^+ - 1)} \cdot) , \\
+L_- &= \partial_r - \frac{\beta^-}{r} = r^{\beta^-} \partial_r (r^{-\beta^-} \cdot).
 \end{align*}
 Since \(\beta^{\pm}\) are the roots of the characteristic equation,
 \[
@@ -482,7 +484,7 @@ we have
 \]
 Therefore,
 \[
-L_+ \circ L_- = \partial_r^2 + \frac{-(\beta_+ - 1) -\beta_1}{r} + \frac{\beta_+ \beta_-}{r^2} = L.
+L_+ \circ L_- = \partial_r^2 + \frac{-(\beta^+ - 1) -\beta^-}{r} {\partial_r} + \frac{\beta^+ \beta^-}{r^2} = L.
 \]
 
 Then our stationary solution satisfies
@@ -495,8 +497,8 @@ or equivalently
 \]
 where \(L_-^{-1}, L_+^{-1}\) are any left inverses. Note that \(L_{\pm}\) being first order, linear differential operators have non-unique left inverses, determined up to arbitrary constants \(C_{\pm}\). Explicitly,
 \begin{align*}
-L_+^{-1} (\varphi) &= r^{\beta_+ - 1} \int r^{-(\beta_+ - 1)} \varphi(r) dr + C_+ r^{\beta_+-1}, \\
-L_-^{-1} (\varphi) &= r^{\beta_-} \int r^{-\beta_-} \varphi(r) dr + C_- r^{\beta_-}
+L_+^{-1} (\varphi) &= r^{\beta^+ - 1} \int r^{-(\beta^+ - 1)} \varphi(r) dr + C_+ r^{\beta^+-1}, \\
+L_-^{-1} (\varphi) &= r^{\beta^-} \int r^{-\beta^-} \varphi(r) dr + C_- r^{\beta^-}
 \end{align*}
 and hence
 \[
