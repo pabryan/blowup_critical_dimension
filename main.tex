@@ -539,16 +539,44 @@ In the case, \(C = 1\), the characteristic equation is \(p(\beta) = \beta^2 - F'
 L_+ = \partial_r - \frac{\beta_+ - 1}{r}, \quad L_- = \partial_r + \frac{\beta_+}{r}.
 \]
 It seems this difference of squares structure is what allows for the substitution \(r = e^w\) in the \(C=1\) case described above. Following the discussion there, the reader will observe that integrating to obtain \(\zeta'\) and then integrating again to obtain \(\zeta\) is nothing but factoring \(L\) as the composition of first order operators. It's just that for \(C = 1\), it can be done quite directly after changing variables whereas for the general case, we proceeded slightly less directly. Needless to say, this factoring for \(C = 1\) was the motivation for the general case.
-
-For the sake of completeness, the analogous change of variables for \(C \ne 1\), is \(r = (1-C)^{1/(1-C)} w^{1/(1-C)}\) leads to
-\begin{equation}
-\label{eq:stationaryC_change_var}
-\zeta'' = \frac{1}{(1-C)^2 w^2} F(\zeta)
-\end{equation}
-which is not so easy to integrate directly, not to mention the complications arising when \(C < 1\) in the coefficient \((1 - C)^{1/(1 - C)}\).
 \end{rem}
 
-{\color{red} Maybe this is in fact a good way to look at it? That is solutions satisfy \(\zeta = G(\zeta) = \int \int \frac{1}{(1-C)^2 w^2} F(\zeta(w)) dw\) Probably that's much easier to deal with in terms of fixed point theorems etc.}
+\begin{proof}[Proof 2]
+The change of variables for \(C \ne 1\) is
+\[
+r = [1 + (1-C)w]^{\tfrac{1}{1-C}}, \quad w \geq - \frac{1}{1-C}
+\]
+which leads to \(\zeta(w) = \xi\left([1 + (1-C)w]^{\tfrac{1}{1-C}}\right)\) satisfying
+\begin{equation}
+\label{eq:stationaryC_change_var}
+\zeta'' = [1 + (1-C)w]^{-2} \left(r^2 \xi'' + C r \xi'\right) = [1 + (1-C)w]^{-2} F(\zeta).
+\end{equation}
+Note that in the limit,
+\[
+\lim_{C\to 1} [1 + (1-C)w]^{\tfrac{1}{1-C}} = e^w
+\]
+and as expected, we recover the change of variables from the \(C = 1\).
+
+Multiplying both sides by \(\zeta'\) and rearranging, we may rewrite this as
+\[
+[(\zeta')^2]' = 2 [1 + (1-C)w]^{-2} F(\zeta) \zeta'.
+\]
+We now have the awkward factor \([1 + (1-C)w]^{-2}\) preventing us from directly integrating \(F\) as we did for the \(C = 1\) case. Letting \(m(w) = [1 + (1-C)w]\), we {\color{red} could} make a further rewrite as
+\[
+m(w)^2 [(\zeta')^2]' = 2 F(\zeta) \zeta'.
+\]
+{\color{red}Surely this is solvable! The difficulty with applying a general existence theorem is that the function \(m(w)^{-2}\) is not integrable all the way to \(w_0 = -\tfrac{1}{1-C}\). This might actually be what we want - in the \(C = 1\) case we get something similar where we can't integrate \(H\) all the way to \(r = 0\) but it all worked out anyway and we got the \(\ln r\) term.
+
+  If take our initial condition at \(w_1 > w_0\), everything is indeed fine for \(w \geq w_1\), but we want to extend the solution back to \(w_0\) where it should satisfy \(\zeta(w_0) = 0\). Because \(F\) is Lipschitz, we do in fact get the right hand side of our ODE is Lipschitz for \(w > w_0\), but it's not uniformly Lipschitz. So we do get a unique solution taking any initial condition at \(w_1 > w_0\).
+
+  Perhaps we can solve the equation with initial condition \(\xi(w_0 + \epsilon) = f(\epsilon)\) with \(f\) chosen appropriately so that \(f(\epsilon) \to 0\) as \(\epsilon \to 0\) to get \(\xi_{\epsilon}\). Then take \(\xi = \lim_{\epsilon \to 0} \xi_{\epsilon}\). The trick is we'll need some a-priori estimates and recall that the Lipschizt constant is not uniform. In fact it's something like
+  \[
+  m(w)^{-2} \text{Lip}(F).
+  \]
+Maybe the structure of the function \(m(w)\) allows us to get the desired estimates? It's just a quadratic...
+}.
+
+\end{proof}
 
 \section{Blow up}
 
