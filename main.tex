@@ -544,9 +544,21 @@ It seems this difference of squares structure is what allows for the substitutio
 \begin{proof}[Proof 2]
 The change of variables for \(C \ne 1\) is
 \[
-r = [1 + (1-C)w]^{\tfrac{1}{1-C}}, \quad w \geq - \frac{1}{1-C}
+r = [1 + (1-C)w]^{\tfrac{1}{1-C}}.
 \]
-which leads to \(\zeta(w) = \xi\left([1 + (1-C)w]^{\tfrac{1}{1-C}}\right)\) satisfying
+with
+\[
+\zeta(w) = \xi\left([1 + (1-C)w]^{\tfrac{1}{1-C}}\right).
+\]
+Letting \(w_0 = - \frac{1}{1-C}\), we have the range of \(w\) and initial condition at \(r=0\):
+\[
+\begin{cases}
+w \geq w_0, \quad \zeta(w_0) = 0; & C < 1 \\
+w \leq w_0, \quad \zeta(-\infty) = 0; & C > 1.
+\end{cases}
+\]
+
+This change of variables leads to \(\zeta\) satisfying
 \begin{equation}
 \label{eq:stationaryC_change_var}
 \zeta'' = [1 + (1-C)w]^{-2} \left(r^2 \xi'' + C r \xi'\right) = [1 + (1-C)w]^{-2} F(\zeta).
@@ -561,11 +573,23 @@ Multiplying both sides by \(\zeta'\) and rearranging, we may rewrite this as
 \[
 [(\zeta')^2]' = 2 [1 + (1-C)w]^{-2} F(\zeta) \zeta'.
 \]
-We now have the awkward factor \([1 + (1-C)w]^{-2}\) preventing us from directly integrating \(F\) as we did for the \(C = 1\) case. Letting \(m(w) = [1 + (1-C)w]\), we {\color{red} could} make a further rewrite as
+For convenience let \(m(w) = 2[1 + (1-C)w]^{-2}\) so that
 \[
-m(w)^2 [(\zeta')^2]' = 2 F(\zeta) \zeta'.
+[(\zeta')^2]' = m(w) F(\zeta) \zeta'.
 \]
-{\color{red}Surely this is solvable! The difficulty with applying a general existence theorem is that the function \(m(w)^{-2}\) is not integrable all the way to \(w_0 = -\tfrac{1}{1-C}\). This might actually be what we want - in the \(C = 1\) case we get something similar where we can't integrate \(H\) all the way to \(r = 0\) but it all worked out anyway and we got the \(\ln r\) term.
+Letting \(\eta = \zeta'\) we then have the non-linear system
+\[
+\begin{cases}
+\zeta' &= \eta \\
+[\eta^2]' &= m(w) F(\zeta) \eta
+\end{cases}
+\]
+. Letting \(q(w) = \frac{1}{2} [1 + (1-C)w]^2\), we make a further rewrite as
+\[
+m(w)^2 [(\zeta')^2]' =  F(\zeta) \zeta'.
+\]
+
+{\color{red}Surely this is solvable! We now have the awkward factor \([1 + (1-C)w]^{-2}\) preventing us from directly integrating \(F\) as we did for the \(C = 1\) case. The difficulty with applying a general existence theorem is that the function \(m(w)^{-2}\) is not integrable all the way to \(w_0 = -\tfrac{1}{1-C}\). This might actually be what we want - in the \(C = 1\) case we get something similar where we can't integrate \(H\) all the way to \(r = 0\) but it all worked out anyway and we got the \(\ln r\) term.
 
   If take our initial condition at \(w_1 > w_0\), everything is indeed fine for \(w \geq w_1\), but we want to extend the solution back to \(w_0\) where it should satisfy \(\zeta(w_0) = 0\). Because \(F\) is Lipschitz, we do in fact get the right hand side of our ODE is Lipschitz for \(w > w_0\), but it's not uniformly Lipschitz. So we do get a unique solution taking any initial condition at \(w_1 > w_0\).
 
