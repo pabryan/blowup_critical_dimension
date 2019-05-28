@@ -495,7 +495,7 @@ or equivalently
 \[
 \xi = L_-^{-1} \circ L_+^{-1} \left(\frac{1}{r^2} \bar{F}(\xi)\right).
 \]
-where \(L_-^{-1}, L_+^{-1}\) are any left inverses. Note that \(L_{\pm}\) being first order, linear differential operators have non-unique left inverses, determined up to arbitrary constants \(C_{\pm}\). Explicitly,
+where \(L_-^{-1}, L_+^{-1}\) are any right inverses. Note that \(L_{\pm}\) being first order, linear differential operators have non-unique right inverses, determined up to arbitrary constants \(C_{\pm}\). Explicitly,
 \begin{align*}
 L_+^{-1} (\varphi) &= r^{\beta^+ - 1} \int r^{-(\beta^+ - 1)} \varphi(r) dr + C_+ r^{\beta^+-1}, \\
 L_-^{-1} (\varphi) &= r^{\beta^-} \int r^{-\beta^-} \varphi(r) dr + C_- r^{\beta^-}
@@ -514,15 +514,20 @@ Letting
 G(\varphi) = r^{\beta_-} \int \left[\rho^{\beta_+ - \beta_- - 1} \int \left(\tau^{-(\beta_+ + 1)} \bar{F}(\varphi) \right)d\tau\right] d\rho
 \end{equation}
 and absorbing \(\tfrac{1}{\beta_+ - \beta_-}\) (recall \(\beta_+ \ne \beta_-\)) into \(C_+\), we have
+\[
+(\Id - G) (\xi) = C_+ r^{\beta_+} + C_- r^{\beta_-}.
+\]
+Recalling that we require \(\xi(0) = 0\), and that \(\beta_- < 0\), we set \(C_- = 0\) and thus seek solutions of
 \begin{equation}
 \label{eq:stationaryC_implicit}
-(\Id - G) (\xi) = C_+ r^{\beta_+} + C_- r^{\beta_-}.
+(\Id - G) (\xi) = C_+ r^{\beta_+}
 \end{equation}
+for arbitrary \(C_+ > 0\).
 
 Formally then, we obtain the representation formula,
 \begin{equation}
 \label{eq:stationaryC_formal}
-\xi = (\Id - G)^{-1} \left(C_+ r^{\beta_+} + C_- r^{\beta_-}\right).
+\xi = (\Id - G)^{-1} \left(C_+ r^{\beta_+}\right).
 \end{equation}
 Note that in the case \(\bar{F} = 0\) we have \(G = 0\) and as expected, we recover the general solution, \(\xi = C_+ r{\beta_+} + C_- r^{\beta_-}\) to the linearised equation \(L(\xi) = 0\).
 
