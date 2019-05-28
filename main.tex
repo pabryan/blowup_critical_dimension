@@ -531,11 +531,103 @@ Formally then, we obtain the representation formula,
 \end{equation}
 Note that in the case \(\bar{F} = 0\) we have \(G = 0\) and as expected, we recover the general solution, \(\xi = C_+ r{\beta_+} + C_- r^{\beta_-}\) to the linearised equation \(L(\xi) = 0\).
 
-{\color{red} We now need a contraction mapping to assert the existence of an inverse}.
+In order prove the existence and uniqueness of a solution to \eqref{eq:stationaryC_implicit} we use a suitable contraction mapping principle on a suitable function space to ensure the existence of a unique fixed point. To this end, recall that there is a \(z_0 \in (0, a)\) and an \(M > 0\) such that for all \(z \in [0, z_0]\),
+\[
+\abs{\bar{F}(z)} \leq M z^{1+\alpha}.
+\]
+Given \(\epsilon > 0\) and \(r_0 < \left(\tfrac{z_0}{\lambda + \epsilon}\right)^{1/(\beta_+)}\), define
+\begin{equation}
+\label{eq:contraction_space}
+X = X_{\epsilon,r_0} = \left\{\xi \in C([0, 1] \to \R_{\geq 0}) : \forall r \in [0, r_0], \abs{\xi(r)} \leq \epsilon r^{\beta_+} \right\}.
+\end{equation}
+We claim that
+\begin{enumerate}
+\item \(X \subseteq C([0, 1])\) is closed with respect to the sup-norm, \(\|\cdot\|_{\infty}\), \label{itm:closed}
+\item \(G : X \to X\), \label{itm:self_map}
+\item \(G\) is a strict contraction mapping with respect to the sup-norm, \(\|\cdot\|_{\infty}\). \label{itm:contraction}
+\end{enumerate}
+Assuming the claim, then there exists a unique fixed point of \(G\) in \(X\). Existence and uniqueness of solutions to \eqref{eq:stationaryC_implicit} is obtained by taking any \(\lambda > 0\) and defining
+\[
+X_{\lambda} = \{\xi : \xi - \lambda r^{\beta_+} \in X\}, \quad T_{\lambda} : \xi \in X_{\lambda} \mapsto G(\xi) + \lambda r^{\beta_+} \in X_{\lambda}.
+\]
+Then \(X_{\lambda}\) also has a unique fixed point, which is the desired solution.
 
-{\color{red}We also need to determine how the solutions vary with respect to the free parameters which is needed for barrier construction}.
+Thus we must verify the claim. Point \ref{itm:closed} is straight forward: for each \(z \in \R\) and \(r \in [0, r_0]\), the function
+\[
+\Phi : (z, r) \mapsto \abs{z} - \epsilon r^{\beta_+}
+\]
+is a continuous map \(\R \times [0, r_0] \to \R\). Now if \((\xi_n)_{n \in \N} \subseteq X\) is such that \(\xi_n \to \xi\) with respect to \(\|\cdot \|_{\infty}\), then for every \(r \in [0, r_0]\) we have \(\xi_n(r) \to \xi(r)\) and \(\Phi(\xi_n(r), r) \leq 0\). Thus by continuity, for every \(r \in [0, r_0]\), \(\Phi(\xi(r), r) \leq 0\) and \(\xi \in X\).
 
-{\color{red}Work out asymptotics as \(r\to 0\) which is important for barrier construction}.
+For point \ref{itm:self_map}, we need to show that for \(\xi \in X\) and all \(r \in [0, r_0]\) we have
+\[
+\abs{G(\xi(r))} \leq \epsilon r^{\beta_+}.
+\]
+Being more explicit in the bounds of integration in the definition of \(G\) from \eqref{eq:stationaryC_G}, we take
+\[
+\begin{split}
+G(\xi(r)) = r^{\beta_-} \int_0^r \left[\rho^{\beta_+ - \beta_- - 1} \int_0^{\rho} \left(\tau^{-(\beta_+ + 1)} \bar{F}(\xi(\tau)) \right)d\tau\right] d\rho.
+\end{split}
+\]
+To show that \(G\) is well defined and maps to \(X\), note that in defining \(X\) in \eqref{eq:contraction_space}, we used that there is a \(z_0 \in (0, a)\) and an \(M > 0\) such that for all \(z \in [0, z_0]\),
+\[
+\abs{\bar{F}(z)} \leq M z^{1+\alpha}
+\]
+and that we chose \(r_0 < \left(\tfrac{z_0}{\lambda + \epsilon}\right)^{1/(\beta_+)}\). Thus from the definition of \(X\), for \(r \in [0, r_0]\) we have
+\[
+0 \leq \xi(r) \leq (\lambda + \epsilon) r^{\beta_+} \leq (\lambda + \epsilon) r_0^{\beta_+} < z_0,
+\]
+and
+\[
+\abs{\bar{F}(\xi(r))} \leq M \abs{\xi(r)}^{1+\alpha} \leq M (\lambda + \epsilon)^{1+\alpha} r^{(1+\alpha)\beta_+}.
+\]
+
+
+Given \(\lambda, \epsilon > 0\) and \(r_0 < \left(\tfrac{z_0}{\lambda + \epsilon}\right)^{1/(\beta_+)}\), define
+\begin{equation}
+\label{eq:contraction_space}
+X = X_{\lambda,\epsilon,r_0} = \left\{\xi \in C([0, 1] \to \R_{\geq 0}) : \forall r \in [0, r_0], \abs{\xi(r) - \lambda r^{\beta_+}} \leq \epsilon r^{\beta_+} \right\}
+\end{equation}
+and define
+\begin{equation}
+\label{eq:contraction_map}
+T(\xi) = T_{\lambda} (\xi) = G(\xi) + \lambda r^{\beta_+}.
+\end{equation}
+We claim that
+\begin{enumerate}
+\item \(X \subseteq C([0, 1])\) is a closed with respect to the sup-norm, \(\|\cdot\|_{\infty}\), \label{itm:closed}
+\item \(T : X \to X\), \label{itm:self_map}
+\item \(T\) is a strict contraction mapping with respect to the sup-norm, \(\|\cdot\|_{\infty}\). \label{itm:contraction}
+\end{enumerate}
+
+Point \ref{itm:closed} is straight forward: for each \(r \in [0, r_0]\), the function
+\[
+\Phi : (z, r) \mapsto \abs{z - \lambda r^{\beta_+}} - \epsilon r^{\beta_+}
+\]
+is a continuous map \(\R \times [0, r_0] \to \R\). Now if \((\xi_n)_{n \in \N} \subseteq X\) is such that \(\xi_n \to \xi\) with respect to \(\|\cdot \|_{\infty}\), then for every \(r \in [0, r_0]\) we have \(\xi_n(r) \to \xi(r)\) and \(\Phi(\xi_n(r), r) \leq 0\). Thus by continuity, for every \(r \in [0, r_0]\), \(\Phi(\xi(r), r) \leq 0\) and \(\xi \in X\).
+
+For point \ref{itm:self_map}, from definition \eqref{eq:contraction_map} it suffices to show that for \(\xi \in X\) and all \(r \in [0, r_0]\) we have
+\[
+\abs{G(\xi)} \leq \epsilon r^{\beta_+}.
+\]
+Being more explicit in the bounds of integration in the definition of \(G\) from \eqref{eq:stationaryC_G}, we take
+\[
+\begin{split}
+G(\xi(r)) = r^{\beta_-} \int_0^r \left[\rho^{\beta_+ - \beta_- - 1} \int_0^{\rho} \left(\tau^{-(\beta_+ + 1)} \bar{F}(\xi(\tau)) \right)d\tau\right] d\rho.
+\end{split}
+\]
+
+Now in defining \(X\) in \eqref{eq:contraction_space}, we used that there is a \(z_0 \in (0, a)\) and an \(M > 0\) such that for all \(z \in [0, z_0]\),
+\[
+\abs{\bar{F}(z)} = M z^{1+\alpha}
+\]
+and that we chose \(r_0 < \left(\tfrac{z_0}{\lambda + \epsilon}\right)^{1/(\beta_+)}\). Thus from the definition of \(X\), for \(r \in [0, r_0]\) we have
+\[
+0 \leq \xi(r) \leq (\lambda + \epsilon) r^{\beta_+} \leq (\lambda + \epsilon) r_0^{\beta_+} < z_0,
+\]
+and
+\[
+\abs{\bar{F}(\xi)(r)} \leq M \abs{\xi(r)}^{1+\alpha} \leq M (\lambda + \epsilon)^{1+\alpha} r^{(1+\alpha)\beta_+}.
+\]
 \end{proof}
 
 \begin{rem}
