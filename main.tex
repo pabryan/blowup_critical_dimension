@@ -984,4 +984,63 @@ Now we may construct barriers from the stationary solutions given in \Cref{lem:s
 
 This is the simplest case, and we can just use the stationary solution from \Cref{lem:stationaryC1} as a barrier. Recall that \(\xi_{\lambda} (r) = \sqrt{F'(0)} \lambda r^{\beta_+} + \bigo(r^{\beta + \epsilon})\) and \(\lim_{\lambda \to \infty} \xi_{\lambda} (r) = \infty\). Thus we may choose \(\lambda\) large enough such that \(\xi_{\lambda}(r) \geq \psi_0(r)\). Then since \(\xi\) is a stationary solution, it is in particular a super solution hence \Cref{lem:blowup_criteria} applies to rule out finite time blow up. 
 
+\subsection{A Sufficient Criteria For Blow Up In Non-Compact Backgrounds}
+
+{\color{red} I think this did not work in the end.}
+
+Here we construct barriers from the self-similar solution with \(C = 1\) and apply it to the case of arbitrary \(C\).
+
+\begin{thm}
+Suppose there exists \(B > 0\) such that
+\[
+\frac{\sqrt{B}}{(1-B)} \left(\rho^3 + (1-C)\rho\right) \leq \frac{F(\psi(\rho))}{u(\psi(\rho))}.
+\]
+where \(\eta = \eta_{\lambda}(\rho)\) is a solution of
+\[
+\begin{cases}
+\eta_{\rho\rho} + \frac{1}{\rho} \eta - \frac{B F(\eta)}{\rho^2} &= 0 \\
+\eta(0) &= 0.
+\end{cases}
+\]
+and \(u = \sqrt{\abs{\int_0^z F(w) dw}}\).
+
+Then any solution \(\psi\) blows up in finite time at most \(T > 0\) where \(T\) is chosen sufficiently large such that
+\[
+\eta(\sqrt{T}r) \leq \psi(r, 0)
+\]
+for all \(r > 0\).
+\end{thm}
+
+\begin{proof}
+Let \(B > 0\) and \(\lambda > 0\). Let
+
+For \(T > 0\), we make the substitution \(\rho = \mu(t) r\) and ansatz
+\[
+\xi(r, t) = \eta (\mu(t)r), \quad \mu(t) = \frac{1}{\sqrt{T - 2t}} \Rightarrow \partial_t \mu = \mu^3.
+\]
+
+Then,
+\[
+\begin{split}
+\partial_t \xi - \left(\xi_{rr} + \tfrac{C}{r} \xi_r - \frac{F(\xi)}{r^2}\right) &= r\mu^3 \eta_{\rho} - \mu^2 \eta_{\rho\rho} - \frac{C}{r} \mu \eta_{\rho} + \frac{1}{r^2} F(\eta) \\
+&= \frac{1}{r^2} \left[\rho^3 \eta_{\rho} - \rho^2 \eta_{\rho\rho} - C \rho \eta_{\rho} + F(\eta)\right] \\
+&= \frac{1}{r^2} \left[(\rho^3 + (1-C)\rho)\eta_{\rho} + (1-B)F(\eta)\right] \\
+\end{split}
+\]
+We thus have a sub-solution if and only if
+\[
+\frac{1}{1-B}\left(\rho^3 + (1-C)\rho\right) \leq \frac{F(\eta(\rho))}{\eta_{\rho}(\rho)}.
+\]
+Recall by equations \eqref{eq:G} and \eqref{eq:dzeta} in the proof of \Cref{lem:stationaryC1} we have
+\[
+\eta_{\rho} = \sqrt{B\abs{G(\eta)}} = \sqrt{B} u(\eta).
+\]
+Therefore \(\xi\) is a sub-solution if and only if
+\[
+\frac{\sqrt{B}}{(1-B)} \left(\rho^3 + (1-C)\rho\right) \leq \frac{F(\eta(\rho))}{u(\eta(\rho))}.
+\]
+
+By \Cref{thm:comparison}, \(\eta(r\mu(t)) \leq \psi(r, t)\). But \(\xi(r, t) = \eta(r\mu(t))\) and \(\mu\) blows up as \(t \to T\) and hence so too must \(\psi\).
+\end{proof}
+
 \end{document}
