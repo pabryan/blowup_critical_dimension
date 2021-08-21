@@ -108,6 +108,8 @@ and hence one root is positive while the other is negative. Solutions of \(L(\ps
 
 This behaviour carries over to the flow \eqref{eq:pde} as described by main theorems.
 
+{\color{red} Neither of these theorems have been established yet. They may turn out to be incorrect.}
+
 \begin{mainthm}[Finite time blow up for \(C = 1\)]
 \label{thm:mainC1}
 Let \(\psi\) be a finite energy solution of the harmonic map heat flow equation \eqref{eq:pde} with \(C = 1\). Then \(\psi\) has \(C^1\) blow up in finite time if \(\beta_+ = 1\). If \(\beta_+ > 1\), the boundary condition satisfies \(\psi_1 \in (0, 2a)\) and the initial condition satisfies \(\psi_0(r) = \bigo(r^{\beta_+})\) as \(r\to 0\), then finite time blow up does not occur.
@@ -459,6 +461,8 @@ Up to relabeling \(\lambda^{-\ell} \mapsto \lambda\) this is the function used i
 
 \subsection{Stationary solutions for arbitrary \(C\)}
 
+{\color{red} The contraction mapping argument didn't seem to work out. Instead I think a shooting method should work. For example on \([0, 1]\) we have existence and uniqueness for any initial condition away from \(r=0\). So we solve it at \(r=1\) and use the shooting method to get a solution that passes through \(0\) at \(r=0\).}
+
 In this case, we don't have the same integrability structure as with \(C = 1\). However, we can still solve (somewhat less explicitly) by factoring \(L\) as the composition of two first order differential operators.
 
 \begin{lemma}
@@ -529,6 +533,8 @@ Recalling that \(\beta_- < 0\) and that we require \(\xi(0) = 0\), we set \(C_- 
 \end{equation}
 for arbitrary \(\lambda > 0\).
 
+{\color{red} \Cref{lem:contraction} below is yet to be proven}
+
 In order prove the existence and uniqueness of a solution to \eqref{eq:stationaryC_implicit}, we seek a suitable function space to which we may apply a contraction mapping principle, ensuring the existence of a unique fixed point. This is achieved in \Cref{lem:contraction} below, where we prove that for any \(\lambda > 0\) and \(0 < \epsilon < \lambda\), there is an \(R_0 > 0\) such that for any \(r_0 \in (0, R_0)\), there exists a unique \(\xi = \xi_{\epsilon, \lambda, r_0}\) satisfying \eqref{eq:stationaryC_implicit} and such that
 \[
 \abs{\xi(r) - \lambda r^{\beta_+}} \leq \epsilon r^{\beta_+}, \quad r \in [0, r_0].
@@ -595,6 +601,7 @@ Now we prove the claimed contraction mapping used in the proof of \Cref{lem:stat
 \abs{\bar{F}(z)} < M z^{1+\alpha}, \quad z \in (0, z_0].
 \end{equation}
 
+{\color{red}I couldn't make the following lemma work}
 
 \begin{lemma}
 \label{lem:contraction}
