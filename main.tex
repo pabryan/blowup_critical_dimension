@@ -175,7 +175,9 @@ Finite energy functions \(\psi\) must satisfy
 \[
 \int_0^1 \psi_r^2 r^C dr < \infty \text{ and } \int_0^1 u^2(\psi(r)) r^{C-2} dr < \infty
 \]
-First, as \(r\to 0\), \(\psi_r\) must not blow up faster than \(1/r\). Next noting that the assumptions on \(F\) imply \(F(z) = F'(0) z + \bigo(z^{1+\alpha})\) and hence
+Then, as \(r\to 0\), \(\psi_r\) must blow up slower than \(r^{-(1+C)/2}\) so that \(\psi = \littleo(r^{(1-C)/2})\).
+
+Also, the assumptions on \(F\) imply \(F(z) = F'(0) z + \bigo(z^{1+\alpha})\) and hence
 \[
 u^2(z) = \int F(z) dz = \frac{F'(0))}{2} z^2 + \bigo(z^{2+\alpha}).
 \]
@@ -185,11 +187,11 @@ Thus finite energy solutions satisfy for any \(\rho \in (0, 1)\),
 \]
 and hence
 \[
-\psi(r) = \bigo\left(r^{1 + \tfrac{1-C}{2}}\right)
+\psi(r) = \littleo\left(r^{\tfrac{1-C}{2}}\right)
 \]
 as \(r \to 0\). In particular, for \(C = 1\).
 \[
-\psi(r) = \bigo(r)
+\psi(r) = \littleo(1)
 \]
 as \(r \to 0\).
 \end{rem}
@@ -274,9 +276,10 @@ G(z) = 2 \int_0^z F (s) ds = \int_0^z (u^2)' (s) ds = u^2 (z).
 In particular, \(G > 0\) on \((0,a)\) and \(G(0) = G(a) = 0\).
 
 Thus we must solve
-\[
+\begin{equation}
+\label{eq:dzeta}
 \frac{\zeta'}{\sqrt{\abs{G(\zeta)}}} = 1
-\]
+\end{equation}
 Notice that near \(z = 0\) we have \(F (z) = F'(0) z + \bigo(z^{1+\alpha})\) so that
 \[
 G'(z) = 2F(z) \Rightarrow G(z) = z^2F'(0) + \bigo(z^{2 + \alpha})
